@@ -1,0 +1,126 @@
+CREATE TABLE pais(
+    idpais INT NOT NULL AUTO_INCREMENT,
+    pais VARCHAR(45) NOT NULL,
+    PRIMARY KEY (idpais));
+
+CREATE TABLE paisEstrangeiro(
+    idpaisEstrangeiro INT NOT NULL AUTO_INCREMENT,
+    pais VARCHAR(45) NOT NULL,
+    PRIMARY KEY (idpaisEstrangeiro));
+
+
+CREATE TABLE estado(
+    idestado INT NOT NULL AUTO_INCREMENT,
+    estado VARCHAR(45) NOT NULL,
+    uf CHAR(2) NOT NULL,
+    idpais INT NOT NULL,
+    PRIMARY KEY (idestado),
+    FOREIGN KEY (idpais) REFERENCES pais (idpais));
+
+CREATE TABLE cidade(
+    idcidade INT NOT NULL AUTO_INCREMENT,
+    cidade VARCHAR(45) NOT NULL,
+    idestado INT NOT NULL,	
+    PRIMARY KEY (idcidade),
+    FOREIGN KEY (idestado) REFERENCES estado (idestado));
+
+CREATE TABLE IF NOT EXISTS empresa (
+  idempresa INT NOT NULL AUTO_INCREMENT,
+  ac CHAR(1) NOT NULL,
+  email VARCHAR(80) NOT NULL,
+  senha VARCHAR(12) NOT NULL,
+  nome VARCHAR(80) NOT NULL,
+  endereco VARCHAR(80) NOT NULL,
+  numero VARCHAR(45) NOT NULL,
+  cnpj VARCHAR(45) NOT NULL,
+  cep VARCHAR(8) NOT NULL,
+  ramoAtividade VARCHAR(45) NOT NULL,
+  idcidade INT NULL,
+  idestado INT NOT NULL,
+  PRIMARY KEY (idempresa),
+  FOREIGN KEY (idcidade) REFERENCES cidade (idcidade),
+  FOREIGN KEY (idestado) REFERENCES estado (idestado));
+
+--tirar estado
+
+CREATE TABLE IF NOT EXISTS curriculo( 
+    idcurriculo INT NOT NULL AUTO_INCREMENT, 
+    ac CHAR(1) NOT NULL,
+    email VARCHAR(80) NOT NULL, 
+    senha VARCHAR(12) NOT NULL, 
+    nome VARCHAR(80) NOT NULL, 
+    cpf VARCHAR(42) NOT NULL, 
+    cep VARCHAR(42) NULL, 
+    endereco VARCHAR(45) NULL, 
+    numero VARCHAR(45) NULL, 
+    telefone VARCHAR(45) NOT NULL, 
+    objetivoProfissional VARCHAR(45) NOT NULL,
+    empregado INT NOT NULL,
+    pretencao INT NOT NULL,
+    sexo CHAR(1) NOT NULL CHECK (sexo = 'M' OR sexo = 'F'),
+    estadocivil VARCHAR(80) NOT NULL,
+    deficiencia VARCHAR(80) NOT NULL,
+    idcidade INT NULL, 
+    idestado INT NOT NULL, 
+    PRIMARY KEY (idcurriculo), 
+    FOREIGN KEY (idcidade) REFERENCES cidade (idcidade), 
+    FOREIGN KEY (idestado) REFERENCES estado (idestado));
+
+--tirar estado
+
+CREATE TABLE IF NOT EXISTS idiomas( 
+    ididiomas INT NOT NULL AUTO_INCREMENT, 
+    idioma VARCHAR(45) NOT NULL, 
+    PRIMARY KEY (ididiomas));
+
+CREATE TABLE IF NOT EXISTS idiomas_curriculo( 
+    idcurriculo INT NOT NULL,
+    ididiomas INT NOT NULL,
+    nivel VARCHAR(80) NOT NULL,
+    PRIMARY KEY (idcurriculo, ididiomas),
+    FOREIGN KEY (idcurriculo) REFERENCES curriculo (idcurriculo),
+    FOREIGN KEY (ididiomas) REFERENCES idiomas (ididiomas));
+
+
+CREATE TABLE IF NOT EXISTS perguntas(
+    idperguntas INT NOT NULL AUTO_INCREMENT,
+    pergunta VARCHAR(8000) NOT NULL,
+    PRIMARY KEY (idperguntas));
+
+CREATE TABLE IF NOT EXISTS perguntas_curriculo (
+    idperguntas_curriculo INT NOT NULL AUTO_INCREMENT,
+    resposta VARCHAR(45) NOT NULL, 
+    idcurriculo INT NOT NULL,
+    idperguntas INT NOT NULL,
+    PRIMARY KEY (idperguntas_curriculo),
+    FOREIGN KEY (idcurriculo) REFERENCES curriculo (idcurriculo),
+    FOREIGN KEY (idperguntas) REFERENCES perguntas (idperguntas));
+
+CREATE TABLE IF NOT EXISTS nivel(
+    idnivel INT NOT NULL AUTO_INCREMENT,
+    nivel VARCHAR(80) NOT NULL,
+    PRIMARY KEY (idnivel));
+
+CREATE TABLE IF NOT EXISTS curso(
+    idcurso INT NOT NULL AUTO_INCREMENT,
+    curso VARCHAR(800) NOT NULL,
+    idnivel INT NOT NULL,
+    PRIMARY KEY (idcurso),
+    FOREIGN KEY (idnivel) REFERENCES nivel (idnivel));
+
+CREATE TABLE IF NOT EXISTS curso_curriculo(
+    idcurso_curriculo INT NOT NULL AUTO_INCREMENT,
+    idcurso INT NOT NULL,
+    idcurriculo INT NOT NULL,
+    PRIMARY KEY (idcurso_curriculo),
+    FOREIGN KEY (idcurso ) REFERENCES curso (idcurso),
+    FOREIGN KEY (idcurriculo) REFERENCES curriculo (idcurriculo));
+
+CREATE TABLE IF NOT EXISTS idiomas_curriculo( 
+    ididiomas_curriculo INT NOT NULL AUTO_INCREMENT, 
+    idcurriculo INT NOT NULL,
+    ididiomas INT NOT NULL,
+    nivel VARCHAR(80) NOT NULL,
+    PRIMARY KEY (ididiomas_curriculo),
+    FOREIGN KEY (idcurriculo) REFERENCES curriculo (idcurriculo),
+    FOREIGN KEY (ididiomas) REFERENCES idiomas (ididiomas));

@@ -1,0 +1,11 @@
+INSERT INTO perguntas (pergunta) VALUES ("Você está preparado para trabalhar com um grupo de pessoas?");
+INSERT INTO perguntas (pergunta) VALUES ("Você está pronto para apresentar suas ideias para a sua equipe?");
+INSERT INTO perguntas (pergunta) VALUES ("Você está aberto a novas experiências profissionais?");
+INSERT INTO perguntas (pergunta) VALUES ("Você sabe lidar com mudanças?");
+INSERT INTO perguntas (pergunta) VALUES ("Você está preparado para receber críticas construtivas do seu trabalho?");
+INSERT INTO perguntas (pergunta) VALUES ("Você está preparado para tomar uma decisão levando em conta os possíveis riscos dessa decisão?");
+INSERT INTO perguntas (pergunta) VALUES ("Você está comprometido em cumprir horários e metas?");
+INSERT INTO perguntas (pergunta) VALUES ("Você se considera uma pessoa capaz de lidar com adversidades?");
+INSERT INTO perguntas (pergunta) VALUES ("Você se considera uma pessoa comunicativa?");
+INSERT INTO perguntas (pergunta) VALUES ("Você tem experiência e/ou facilidade em falar em público?");
+INSERT INTO perguntas (pergunta) VALUES ("Você tem experiência na sua área de atuação?");
