@@ -151,6 +151,82 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
         </div>
         <div class="form-row">
           <div class="form-group col-sm">
+            <label>Jornada</label>
+            <label class="text-danger">*</label>
+            <select name="jornada" class="custom-select" id="jornada">
+              <option selected="selected" value="0">Selecione</option>
+              <option value="noturno">Noturno</option>
+              <option value="manha">Parcial manhãs</option>
+              <option value="noite">Parcial noites</option>
+              <option value="tarde">Parcial tardes</option>
+              <option value="integral">Período Integral</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-sm">
+            <label>Tipo Contrato</label>
+            <label class="text-danger">*</label>
+            <select name="tipoContrato" class="custom-select" id="tipoContrato">
+              <option selected="selected" value="0">Selecione</option>
+              <option value="autonomo">Autônomo</option>
+              <option value="cooperado">Cooperado</option>
+              <option value="efetivo">Efetivo – CLT</option>
+              <option value="estagiario">Estágio</option>
+              <option value="outros">Outros</option>
+              <option value="prestadorServicos">Prestador de Serviços (PJ)</option>
+              <option value="temporario">Temporário</option>
+              <option value="trainee">Trainee</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-sm">
+            <label>Nível hierárquico mínimo</label>
+            <label class="text-danger">*</label>
+            <select name="nivelHierarquicoMin" class="custom-select" id="nivelHierarquicoMin">
+              <option selected="selected" value="0">Selecione</option>
+              <option value="1">Estagiário</option>
+              <option value="2">Operacional</option>
+              <option value="3">Auxiliar</option>
+              <option value="4">Assistente</option>
+              <option value="5">Trainee</option>
+              <option value="6">Analista</option>
+              <option value="7">Encarregado</option>
+              <option value="8">Supervisor</option>
+              <option value="9">Consultor</option>
+              <option value="10">Especialista</option>
+              <option value="11">Coordenador</option>
+              <option value="12">Gerente</option>
+              <option value="13">Diretor</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-sm">
+            <label>Nível hierárquico máximo</label>
+            <label class="text-danger">*</label>
+            <select name="nivelHierarquicoMax" class="custom-select" id="nivelHierarquicoMax">
+              <option selected="selected" value="0">Selecione</option>
+              <option selected="selected" value="0">Selecione</option>
+              <option value="1">Estagiário</option>
+              <option value="2">Operacional</option>
+              <option value="3">Auxiliar</option>
+              <option value="4">Assistente</option>
+              <option value="5">Trainee</option>
+              <option value="6">Analista</option>
+              <option value="7">Encarregado</option>
+              <option value="8">Supervisor</option>
+              <option value="9">Consultor</option>
+              <option value="10">Especialista</option>
+              <option value="11">Coordenador</option>
+              <option value="12">Gerente</option>
+              <option value="13">Diretor</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-sm">
             <label for="inputIdioma">Pretensão salarial</label>
             <label for="" class="text-danger">*</label>
             <select name="pretensao" class="custom-select" id="pretensao">
@@ -224,12 +300,193 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
           </div>
         </div>
         <input type="hidden" id="qtdeFormacao" name="qtdeFormacao" value="0">
-        <div id="formacaoacademica">
+        <div class="form-row">
+          <div class="form-group col-sm">
+            <label for="inputText">Nome da Instituição</label>
+            <label for="" class="text-danger">*</label>
+            <input name="instituicao" type="text" class="form-control" id="instituicao"
+              placeholder="Nome da Instituição">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <label for="inputState">País</label>
+            <label for="" class="text-danger">*</label>
+            <select name="id_pais" id="id_pais" class="form-control">
+              <option value="0">Escolha</option>
+              <?php
+              $resPais = mysqli_query ($con, 'SELECT * FROM pais');
+              while ($rowPais = mysqli_fetch_assoc($resPais)):
+            ?>
+              <option value="<?php echo $rowPais['idpais'] ?>"><?php echo utf8_encode($rowPais['pais']); ?>
+              </option>
+              <?php endwhile ?>
+            </select>
+          </div>
+        </div>
+        <div id="estado_pais" class="form-row">
+          <div class="form-group col-md">
+            <label for="inputState">Estado</label>
+            <label for="" class="text-danger">*</label>
+            <select name="id_estado2" id="id_estado2" class="form-control">
+              <option value="0">Escolha</option>
+              <?php
+              $resEstado = mysqli_query ($con, 'SELECT * FROM estado');
+              while ($rowEstado = mysqli_fetch_assoc($resEstado)):
+            ?>
+              <option value="<?php echo $rowEstado['idestado'] ?>"><?php echo utf8_encode($rowEstado['estado']); ?>
+              </option>
+              <?php endwhile ?>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <label for="inputState">Nível</label>
+            <label for="" class="text-danger">*</label>
+            <select name="id_nivel" id="id_nivel" class="form-control">
+              <option value="0">Escolha</option>
+              <?php
+              $resnivel = mysqli_query ($con, 'SELECT * FROM nivel');
+              while ($rowNivel = mysqli_fetch_assoc($resnivel)):
+            ?>
+              <option value="<?php echo $rowNivel['idnivel'] ?>"><?php echo utf8_encode($rowNivel['nivel']); ?>
+              </option>
+              <?php endwhile ?>
+            </select>
+          </div>
+        </div>
+        <div id="curso" class="form-row">
+          <div class="form-group col-md">
+            <label for="inputCity">Curso</label>
+            <label for="" class="text-danger">*</label>
+            <span class="carregando text-danger">carregando...</span>
+            <select name="id_curso" id="id_curso" class="form-control">
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-sm-4">
+            <label class="radio-inline"><input type="radio" id="concluido" name="estadoCurso">Concluído</label>
+          </div>
+          <div class="form-group col-sm-4">
+            <label class="radio-inline"><input type="radio" id="cursando" name="estadoCurso">Cursando</label>
+          </div>
+          <div class="form-group col-sm-4">
+            <label class="radio-inline"><input type="radio" id="trancado" name="estadoCurso">Trancado</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-sm-6">
+            <label for="inputInicio">Inicio</label>
+            <input name="inicio" type="date" class="form-control" id="inputInicio" placeholder="Inicio">
+          </div>
+          <div class="form-group col-sm-6" id="conclusao">
+            <label for="inputTermino" id="conclusaoLabel">Conclusão</label>
+            <label for="inputTermino" id="conclusaoLabel2">Conclusão esperada</label>
+            <input name="termino" type="date" class="form-control" id="inputConclusao" placeholder="Conclusão">
+          </div>
+          <div class="form-group col-md">
+            <button type="button" class="btn btn-danger btn-excluir-formcao"><i class="fa fa-trash"
+                aria-hidden="true"></i></button>
+          </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md">
             <button type="button" id="addformacao" class="btn btn-dark btn-lg btn-block btn-sm">Adicionar
               formação acadêmica</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-sm">
+            <h5>Experiência Profissional</h5>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <label for="inputText">Empresa</label>
+            <label for="" class="text-danger">*</label>
+            <input name="empresa" type="text" class="form-control" id="empresa" placeholder="Empresa">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <label for="inputText">Cargo</label>
+            <label for="" class="text-danger">*</label>
+            <input name="cargo" type="text" class="form-control" id="cargo" placeholder="Cargo">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-sm-6">
+            <label for="inputInicio">Inicio</label>
+            <label for="" class="text-danger">*</label>
+            <input name="inicioExp" type="date" class="form-control" id="inicioExp" placeholder="Inicio">
+          </div>
+          <div class="form-group col-sm-6" id="conclusao">
+            <label for="inputTermino" id="conclusaoLabel">Termino</label>
+            <label for="" class="text-danger">*</label>
+            <input name="terminoExp" type="date" class="form-control" id="terminoExp" placeholder="Termino">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <label>Nível hierárquico</label>
+            <label class="text-danger">*</label>
+            <select name="nivelHierarquicoExp" class="custom-select" id="nivelHierarquicoExp">
+              <option selected="selected" value="0">Selecione</option>
+              <option value="1">Estagiário</option>
+              <option value="2">Operacional</option>
+              <option value="3">Auxiliar</option>
+              <option value="4">Assistente</option>
+              <option value="5">Trainee</option>
+              <option value="6">Analista</option>
+              <option value="7">Encarregado</option>
+              <option value="8">Supervisor</option>
+              <option value="9">Consultor</option>
+              <option value="10">Especialista</option>
+              <option value="11">Coordenador</option>
+              <option value="12">Gerente</option>
+              <option value="13">Diretor</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <label for="inputText">Salário</label>
+            <label for="" class="text-danger">*</label>
+            <input name="salario" type="text" class="form-control" id="salario" placeholder="Salário">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <label for="inputState">País</label>
+            <label for="" class="text-danger">*</label>
+            <select name="id_pais2" id="id_pais2" class="form-control">
+              <option value="0">Escolha</option>
+              <?php
+              $resPais = mysqli_query ($con, 'SELECT * FROM pais');
+              while ($rowPais = mysqli_fetch_assoc($resPais)):
+            ?>
+              <option value="<?php echo $rowPais['idpais'] ?>"><?php echo utf8_encode($rowPais['pais']); ?>
+              </option>
+              <?php endwhile ?>
+            </select>
+          </div>
+        </div>
+        <div id="estado_pais2" class="form-row">
+          <div class="form-group col-md">
+            <label for="inputState">Estado</label>
+            <label for="" class="text-danger">*</label>
+            <select name="id_estado3" id="id_estado3" class="form-control">
+              <option value="0">Escolha</option>
+              <?php
+              $resEstado = mysqli_query ($con, 'SELECT * FROM estado');
+              while ($rowEstado = mysqli_fetch_assoc($resEstado)):
+            ?>
+              <option value="<?php echo $rowEstado['idestado'] ?>"><?php echo utf8_encode($rowEstado['estado']); ?>
+              </option>
+              <?php endwhile ?>
+            </select>
           </div>
         </div>
         <div class="form-row">
@@ -246,9 +503,10 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
 </div>
 <script>
   $(document).ready(function () {
-    $("#cpf").mask("000.000.000-00")
-    $("#telefone").mask("(00) 0000-0000")
-    $("#cep").mask("00.000-000")
+    $("#cpf").mask("000.000.000-00");
+    $("#telefone").mask("(00) 0000-0000");
+    $("#cep").mask("00.000-000");
+    $("#salario").mask("999.999.990,00", { reverse: true });
 
     $('#id_cidade').hide();
     $('#cidade').hide();
@@ -256,6 +514,7 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
     $('.carregando').hide();
     $('#estadocom').hide();
     $('#estado_pais').hide();
+    $('#estado_pais2').hide();
     $('#curso').hide();
     $('#conclusaoLabel2').hide();
 
@@ -266,6 +525,7 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
         $('#conclusaoLabel').show();
       });
       $('#cursando').change(function () {
+        $('#conclusao').show();
         $('#conclusaoLabel').hide();
         $('#conclusaoLabel2').show();
       });
@@ -286,16 +546,28 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
       });
     });
 
-    $("#addformacao").click(function (e) { 
-      e.preventDefault();
-      $.get("http://localhost/BuscaEmp/paginas/cadastrar/formacaoacademica.php", 
-        function (data, textStatus, jqXHR) {
-          $("#formacaoacademica").html(data);
-        },
-        "html"
-      );
+    $(function () {
+      $('#id_pais2').change(function () {
+        var pais = document.getElementById("id_pais2");
+        var paisSelect = pais.options[pais.selectedIndex].value;
 
+        if (paisSelect == 26) {
+          $('#estado_pais2').show();
+        }
+
+      });
     });
+
+    // $("#addformacao").click(function (e) { 
+    //   e.preventDefault();
+    //   $.get("http://localhost/BuscaEmp/paginas/cadastrar/formacaoacademica.php", 
+    //     function (data, textStatus, jqXHR) {
+    //       $("#formacaoacademica").html(data);
+    //     },
+    //     "html"
+    //   );
+
+    // });
 
     $(function () {
       $('#id_nivel').change(function () {
@@ -392,12 +664,12 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
       $(idDiv).remove();
     });
 
-    
-      $("#addformacao").click(function () {
-    
-      });
+
+    $("#addformacao").click(function () {
+
+    });
   });
 
-  
+
 
 </script>

@@ -48,9 +48,9 @@ $con = conecta();
             <select name="id_estado" id="id_estado" class="form-control">
               <option value="0" selected>Escolha</option>
               <?php
-                              $resEstado = mysqli_query ($con, 'SELECT * FROM estado');
-                              while ($rowEstado = mysqli_fetch_assoc($resEstado)):
-                                ?>
+                $resEstado = mysqli_query ($con, 'SELECT * FROM estado');
+                while ($rowEstado = mysqli_fetch_assoc($resEstado)):
+              ?>
               <option value="<?php echo $rowEstado['idestado']; ?>"><?php echo utf8_encode($rowEstado['estado']); ?>
               </option>
               <?php endwhile ?>
@@ -99,14 +99,7 @@ $con = conecta();
             <label for="" class="text-danger">*</label>
             <input name="telefone" type="text" class="form-control" id="telefone" placeholder="Telefone">
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <label for="inputText">Ramo de atividade</label>
-            <label for="" class="text-danger">*</label>
-            <input name="ramo" type="text" class="form-control" id="ramo" placeholder="Ramo de atividae">
-          </div>
-        </div>
+        </div>  
         <div class="form-row">
           <div class="form-group col-md-6">
             <button type="reset" class="btn btn-danger btn-lg btn-block">Limpar</button>
@@ -122,7 +115,6 @@ $con = conecta();
 
 <script type="text/javascript">
   $(document).ready(function () {
-    $('#id_cidade').hide();
     $('#cidade').hide();
     $('#cidadecom').hide();
 
@@ -132,7 +124,8 @@ $con = conecta();
           $('.carregando').show();
           $('#cidade').show();
           $('#cidadecom').show();
-          $.getJSON('http://localhost/BuscaEmp/paginas/fks/cidade_post.php', { id_estado: $(this).val(), ajax: 'true' }, function (j) {
+          $.getJSON('http://localhost/BuscaEmp/paginas/fks/cidade_post.php', { id_estado: $(this).val(), ajax: 'true' }, 
+          function (j) {
             var options = '<option value="">Escolha</option>';
             for (var i = 0; i < j.length; i++) {
               options += '<option value="' + j[i].idcidade + '">' + j[i].cidade + '</option>';

@@ -9,18 +9,16 @@ $numero = trim($_POST['numero']);
 $cnpj = trim($_POST['cnpj']);
 $cep = trim($_POST['cep']);
 $ramo = trim($_POST['ramo']);
-$idestado = trim($_POST['id_estado']);
 $idcidade = trim($_POST['id_cidade']);
-$ac = "empresa";
+$ac = "E";
 
 $con = conecta();
-$insert = "insert into empresa (email, senha, nome, endereco, numero, cnpj, cep, ramoAtividade, idestado, idcidade, ac) 
-values ('$email', '$senha', '$nome', '$endereco', '$numero', '$cnpj', '$cep', '$ramo', '$idestado', '$idcidade', '$ac')";
+$insert = "INSERT INTO empresa (ac, email, senha, nome, endereco, numero, cnpj, cep, ramoAtividade, cidade_idcidade) 
+VALUES ('$ac', '$email', '$senha', '$nome', '$endereco', '$numero', '$cnpj', '$cep', '$ramo', '$idcidade')";
 $res = mysqli_query($con, $insert);
 
 if ($res){
   echo "<script>alert('Empresa cadastrada')</script>";
-  header("Location: ?pagina=home");
 } else {
   echo "<script>alert('Erro')</script>";
 }

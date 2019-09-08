@@ -18,7 +18,7 @@ $empregado = trim($_POST['empregado']);
 $obj = trim($_POST['obj']);
 $pretensao = trim($_POST['pretensao']);
 $telefone = trim($_POST['telefone']);
-$ac = "curriculo";
+$ac = "C";
 
 $con = conecta();
 $insertCurriculo = "insert into curriculo (email, senha, nome, cpf, cep, endereco, numero, telefone,
