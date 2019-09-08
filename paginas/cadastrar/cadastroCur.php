@@ -105,12 +105,13 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
         </div>
         <div class="form-row">
           <div class="form-group col-md">
-            <label for="inputAddress">Sexo</label>
+            <label for="inputAddress">Gênero</label>
             <label for="" class="text-danger">*</label>
-            <select name="sexo" id="sexo" class="form-control">
+            <select name="genero" id="genero" class="form-control">
               <option selected="selected" value="0">Selecione</option>
-              <option value="Homem">Homem</option>
-              <option value="Mulher">Mulher</option>
+              <option value="M">Masculino</option>
+              <option value="F">Feminino</option>
+              <option value="O">Outro</option>
             </select>
           </div>
         </div>
@@ -120,11 +121,11 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
             <label for="" class="text-danger">*</label>
             <select name="estadocivil" id="estadocivil" class="form-control">
               <option selected="selected" value="0">Selecione</option>
-              <option value="Casado">Casado</option>
-              <option value="Divorciado">Divorciado</option>
-              <option value="Separado">Separado</option>
-              <option value="Solteiro">Solteiro</option>
-              <option value="Viuvo">Viúvo</option>
+              <option value="C">Casado</option>
+              <option value="D">Divorciado</option>
+              <option value="S">Separado</option>
+              <option value="X">Solteiro</option>
+              <option value="V">Viúvo</option>
             </select>
           </div>
         </div>
@@ -155,11 +156,11 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
             <label class="text-danger">*</label>
             <select name="jornada" class="custom-select" id="jornada">
               <option selected="selected" value="0">Selecione</option>
-              <option value="noturno">Noturno</option>
-              <option value="manha">Parcial manhãs</option>
-              <option value="noite">Parcial noites</option>
-              <option value="tarde">Parcial tardes</option>
-              <option value="integral">Período Integral</option>
+              <option value="NO">Noturno</option>
+              <option value="MA">Parcial manhãs</option>
+              <option value="NI">Parcial noites</option>
+              <option value="TR">Parcial tardes</option>
+              <option value="IN">Período Integral</option>
             </select>
           </div>
         </div>
@@ -169,14 +170,14 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
             <label class="text-danger">*</label>
             <select name="tipoContrato" class="custom-select" id="tipoContrato">
               <option selected="selected" value="0">Selecione</option>
-              <option value="autonomo">Autônomo</option>
-              <option value="cooperado">Cooperado</option>
-              <option value="efetivo">Efetivo – CLT</option>
-              <option value="estagiario">Estágio</option>
-              <option value="outros">Outros</option>
-              <option value="prestadorServicos">Prestador de Serviços (PJ)</option>
-              <option value="temporario">Temporário</option>
-              <option value="trainee">Trainee</option>
+              <option value="AU">Autônomo</option>
+              <option value="CO">Cooperado</option>
+              <option value="EF">Efetivo – CLT</option>
+              <option value="ES">Estágio</option>
+              <option value="OU">Outros</option>
+              <option value="PS">Prestador de Serviços (PJ)</option>
+              <option value="TM">Temporário</option>
+              <option value="TR">Trainee</option>
             </select>
           </div>
         </div>
@@ -186,19 +187,19 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
             <label class="text-danger">*</label>
             <select name="nivelHierarquicoMin" class="custom-select" id="nivelHierarquicoMin">
               <option selected="selected" value="0">Selecione</option>
-              <option value="1">Estagiário</option>
-              <option value="2">Operacional</option>
-              <option value="3">Auxiliar</option>
-              <option value="4">Assistente</option>
-              <option value="5">Trainee</option>
-              <option value="6">Analista</option>
-              <option value="7">Encarregado</option>
-              <option value="8">Supervisor</option>
-              <option value="9">Consultor</option>
-              <option value="10">Especialista</option>
-              <option value="11">Coordenador</option>
-              <option value="12">Gerente</option>
-              <option value="13">Diretor</option>
+              <option value="ES">Estagiário</option>
+              <option value="OP">Operacional</option>
+              <option value="AU">Auxiliar</option>
+              <option value="AS">Assistente</option>
+              <option value="TR">Trainee</option>
+              <option value="AN">Analista</option>
+              <option value="EN">Encarregado</option>
+              <option value="SU">Supervisor</option>
+              <option value="CO">Consultor</option>
+              <option value="EP">Especialista</option>
+              <option value="CR">Coordenador</option>
+              <option value="GE">Gerente</option>
+              <option value="DI">Diretor</option>
             </select>
           </div>
         </div>
@@ -209,19 +210,19 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
             <select name="nivelHierarquicoMax" class="custom-select" id="nivelHierarquicoMax">
               <option selected="selected" value="0">Selecione</option>
               <option selected="selected" value="0">Selecione</option>
-              <option value="1">Estagiário</option>
-              <option value="2">Operacional</option>
-              <option value="3">Auxiliar</option>
-              <option value="4">Assistente</option>
-              <option value="5">Trainee</option>
-              <option value="6">Analista</option>
-              <option value="7">Encarregado</option>
-              <option value="8">Supervisor</option>
-              <option value="9">Consultor</option>
-              <option value="10">Especialista</option>
-              <option value="11">Coordenador</option>
-              <option value="12">Gerente</option>
-              <option value="13">Diretor</option>
+              <option value="ES">Estagiário</option>
+              <option value="OP">Operacional</option>
+              <option value="AU">Auxiliar</option>
+              <option value="AS">Assistente</option>
+              <option value="TR">Trainee</option>
+              <option value="AN">Analista</option>
+              <option value="EN">Encarregado</option>
+              <option value="SU">Supervisor</option>
+              <option value="CO">Consultor</option>
+              <option value="EP">Especialista</option>
+              <option value="CR">Coordenador</option>
+              <option value="GE">Gerente</option>
+              <option value="DI">Diretor</option>
             </select>
           </div>
         </div>
