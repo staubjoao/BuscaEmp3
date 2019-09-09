@@ -594,7 +594,7 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
           $('.carregando').show();
           $('#cidade').show();
           $('#cidadecom').show();
-          $.getJSON('http://localhost/BuscaEmp/paginas/fks/cidade_post.php', { id_estado: $(this).val(), ajax: 'true' }, function (j) {
+          $.getJSON('http://localhost/BuscaEmp3/paginas/fks/cidade_post.php', { id_estado: $(this).val(), ajax: 'true' }, function (j) {
             var options = '<option value="">Escolha</option>';
             for (var i = 0; i < j.length; i++) {
               options += '<option value="' + j[i].idcidade + '">' + j[i].cidade + '</option>';
@@ -670,7 +670,5 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
 
     });
   });
-
-
-
+  
 </script>

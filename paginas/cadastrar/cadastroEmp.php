@@ -113,19 +113,20 @@ $con = conecta();
   </div>
 </div>
 
-<script type="text/javascript">
-  $(document).ready(function () {
-    $('#cidade').hide();
+<script>
+ $(document).ready(function () {
+    $("#cnpj").mask("00.000.000/0000-00");
+    $("#telefone").mask("(00) 0000-0000");
+    $("#cep").mask("00.000-000");
+
     $('#cidadecom').hide();
 
     $(function () {
       $('#id_estado').change(function () {
         if ($(this).val()) {
           $('.carregando').show();
-          $('#cidade').show();
           $('#cidadecom').show();
-          $.getJSON('http://localhost/BuscaEmp/paginas/fks/cidade_post.php', { id_estado: $(this).val(), ajax: 'true' }, 
-          function (j) {
+          $.getJSON('http://localhost/BuscaEmp3/paginas/fks/cidade_post.php', { id_estado: $(this).val(), ajax: 'true' }, function (j) {
             var options = '<option value="">Escolha</option>';
             for (var i = 0; i < j.length; i++) {
               options += '<option value="' + j[i].idcidade + '">' + j[i].cidade + '</option>';
@@ -138,15 +139,5 @@ $con = conecta();
         }
       });
     });
-
-  });
-
-</script>
-
-<script type="text/javascript">
-  $(document).ready(function () {
-    $("#cnpj").mask("00.000.000/0000-00")
-    $("#telefone").mask("(00) 0000-0000")
-    $("#cep").mask("00.000-000")
   });
 </script>

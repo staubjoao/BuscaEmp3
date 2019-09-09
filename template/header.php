@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <script src="js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery.mask.min.js"></script>
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
     <script src="lib/datatables/datatables.js"></script>

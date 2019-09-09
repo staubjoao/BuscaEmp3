@@ -11,43 +11,6 @@ if(!empty($_SESSION['id'])){
 }
 ?>
 
-<script>
-$(document).ready(function () {
-    $("#tabela").DataTable();
-    });
-
-    $("#tabela").DataTable({
-                responsive: true,
-                // "bSort": false,
-                "aaSorting": [],
-                "pageLength": 50,
-                "language": {
-                    "decimal": "",
-                    "emptyTable": "Sem dados disponíveis",
-                    "info": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
-                    "infoEmpty": "Mostrando de 0 até 0 de 0 registos",
-                    "infoFiltered": "(filtrado de _MAX_ registos no total)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ registos",
-                    "loadingRecords": "A carregar dados...",
-                    "processing": "A processar...",
-                    "search": "Procurar:",
-                    "zeroRecords": "Não foram encontrados resultados",
-                    "paginate": {
-                        "first": "Primeiro",
-                        "last": "Último",
-                        "next": "Seguinte",
-                        "previous": "Anterior"
-                    },
-                    "aria": {
-                        "sortAscending": ": ordem crescente",
-                        "sortDescending": ": ordem decrescente"
-                    }
-                }
-            });
-</script>
-
 <div class='container-fluid'>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
@@ -96,7 +59,7 @@ $(document).ready(function () {
                         <td><?php echo $empresas['cep'];?></td>
                         <td><?php echo $empresas['ramoAtividade'];?></td>
                         <td><?php echo $empresas['idestado'];?></td>
-                        <td><?php echo $empresas['idcidade'];?></td>
+                        <td><?php echo $empresas['cidade_idcidade'];?></td>
                         <td><a class="btn btn-danger"
                                 href="?pagina=empresaalterar&idempresa=<?php echo$empresas['idempresa'];?>"
                                 role="button">Alterar</a>
@@ -116,3 +79,14 @@ $(document).ready(function () {
     </div>
     <a href="?pagina=sair">sair</a>
 </div>
+
+
+<script>
+$(document).ready(function(){
+    $('#tabela').dataTable( {
+        "language": {
+            "url": "../../datatables/Portugues-Brasil.lang"
+        }
+    });
+});
+</script>

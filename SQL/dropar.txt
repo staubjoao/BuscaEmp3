@@ -1,9 +1,0 @@
-DROP TABLE perguntas_curriculo;
-DROP TABLE idiomas_curriculo;
-DROP TABLE curriculo;
-DROP TABLE empresa;
-DROP TABLE cidade;
-DROP TABLE estado;
-DROP TABLE idiomas;
-DROP TABLE peguntas;
-
