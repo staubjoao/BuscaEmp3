@@ -1,126 +1,306 @@
-CREATE TABLE pais(
-    idpais INT NOT NULL AUTO_INCREMENT,
-    pais VARCHAR(45) NOT NULL,
-    PRIMARY KEY (idpais));
-
-CREATE TABLE paisEstrangeiro(
-    idpaisEstrangeiro INT NOT NULL AUTO_INCREMENT,
-    pais VARCHAR(45) NOT NULL,
-    PRIMARY KEY (idpaisEstrangeiro));
-
-
-CREATE TABLE estado(
-    idestado INT NOT NULL AUTO_INCREMENT,
-    estado VARCHAR(45) NOT NULL,
-    uf CHAR(2) NOT NULL,
-    idpais INT NOT NULL,
-    PRIMARY KEY (idestado),
-    FOREIGN KEY (idpais) REFERENCES pais (idpais));
-
-CREATE TABLE cidade(
-    idcidade INT NOT NULL AUTO_INCREMENT,
-    cidade VARCHAR(45) NOT NULL,
-    idestado INT NOT NULL,	
-    PRIMARY KEY (idcidade),
-    FOREIGN KEY (idestado) REFERENCES estado (idestado));
-
-CREATE TABLE IF NOT EXISTS empresa (
-  idempresa INT NOT NULL AUTO_INCREMENT,
-  ac CHAR(1) NOT NULL,
-  email VARCHAR(80) NOT NULL,
-  senha VARCHAR(12) NOT NULL,
-  nome VARCHAR(80) NOT NULL,
-  endereco VARCHAR(80) NOT NULL,
-  numero VARCHAR(45) NOT NULL,
-  cnpj VARCHAR(45) NOT NULL,
-  cep VARCHAR(8) NOT NULL,
-  ramoAtividade VARCHAR(45) NOT NULL,
-  idcidade INT NULL,
-  idestado INT NOT NULL,
-  PRIMARY KEY (idempresa),
-  FOREIGN KEY (idcidade) REFERENCES cidade (idcidade),
-  FOREIGN KEY (idestado) REFERENCES estado (idestado));
-
---tirar estado
-
-CREATE TABLE IF NOT EXISTS curriculo( 
-    idcurriculo INT NOT NULL AUTO_INCREMENT, 
-    ac CHAR(1) NOT NULL,
-    email VARCHAR(80) NOT NULL, 
-    senha VARCHAR(12) NOT NULL, 
-    nome VARCHAR(80) NOT NULL, 
-    cpf VARCHAR(42) NOT NULL, 
-    cep VARCHAR(42) NULL, 
-    endereco VARCHAR(45) NULL, 
-    numero VARCHAR(45) NULL, 
-    telefone VARCHAR(45) NOT NULL, 
-    objetivoProfissional VARCHAR(45) NOT NULL,
-    empregado INT NOT NULL,
-    pretencao INT NOT NULL,
-    sexo CHAR(1) NOT NULL CHECK (sexo = 'M' OR sexo = 'F'),
-    estadocivil VARCHAR(80) NOT NULL,
-    deficiencia VARCHAR(80) NOT NULL,
-    idcidade INT NULL, 
-    idestado INT NOT NULL, 
-    PRIMARY KEY (idcurriculo), 
-    FOREIGN KEY (idcidade) REFERENCES cidade (idcidade), 
-    FOREIGN KEY (idestado) REFERENCES estado (idestado));
-
---tirar estado
-
-CREATE TABLE IF NOT EXISTS idiomas( 
-    ididiomas INT NOT NULL AUTO_INCREMENT, 
-    idioma VARCHAR(45) NOT NULL, 
-    PRIMARY KEY (ididiomas));
-
-CREATE TABLE IF NOT EXISTS idiomas_curriculo( 
-    idcurriculo INT NOT NULL,
-    ididiomas INT NOT NULL,
-    nivel VARCHAR(80) NOT NULL,
-    PRIMARY KEY (idcurriculo, ididiomas),
-    FOREIGN KEY (idcurriculo) REFERENCES curriculo (idcurriculo),
-    FOREIGN KEY (ididiomas) REFERENCES idiomas (ididiomas));
+-- -----------------------------------------------------
+-- Table `pais`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pais` (
+  `idpais` INT NOT NULL AUTO_INCREMENT,
+  `pais` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idpais`))
+ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS perguntas(
-    idperguntas INT NOT NULL AUTO_INCREMENT,
-    pergunta VARCHAR(8000) NOT NULL,
-    PRIMARY KEY (idperguntas));
+-- -----------------------------------------------------
+-- Table `estado`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `estado` (
+  `idestado` INT NOT NULL AUTO_INCREMENT,
+  `estado` VARCHAR(45) NOT NULL,
+  `uf` CHAR(2) NOT NULL,
+  `pais_idpais` INT NOT NULL,
+  PRIMARY KEY (`idestado`),
+  INDEX `fk_estado_pais1_idx` (`pais_idpais` ASC),
+  CONSTRAINT `fk_estado_pais1`
+    FOREIGN KEY (`pais_idpais`)
+    REFERENCES `pais` (`idpais`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS perguntas_curriculo (
-    idperguntas_curriculo INT NOT NULL AUTO_INCREMENT,
-    resposta VARCHAR(45) NOT NULL, 
-    idcurriculo INT NOT NULL,
-    idperguntas INT NOT NULL,
-    PRIMARY KEY (idperguntas_curriculo),
-    FOREIGN KEY (idcurriculo) REFERENCES curriculo (idcurriculo),
-    FOREIGN KEY (idperguntas) REFERENCES perguntas (idperguntas));
 
-CREATE TABLE IF NOT EXISTS nivel(
-    idnivel INT NOT NULL AUTO_INCREMENT,
-    nivel VARCHAR(80) NOT NULL,
-    PRIMARY KEY (idnivel));
+-- -----------------------------------------------------
+-- Table `cidade`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cidade` (
+  `idcidade` INT NOT NULL AUTO_INCREMENT,
+  `cidade` VARCHAR(45) NOT NULL,
+  `estado_idestado` INT NOT NULL,
+  PRIMARY KEY (`idcidade`),
+  INDEX `fk_cidade_estado1_idx` (`estado_idestado` ASC),
+  CONSTRAINT `fk_cidade_estado1`
+    FOREIGN KEY (`estado_idestado`)
+    REFERENCES `estado` (`idestado`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS curso(
-    idcurso INT NOT NULL AUTO_INCREMENT,
-    curso VARCHAR(800) NOT NULL,
-    idnivel INT NOT NULL,
-    PRIMARY KEY (idcurso),
-    FOREIGN KEY (idnivel) REFERENCES nivel (idnivel));
 
-CREATE TABLE IF NOT EXISTS curso_curriculo(
-    idcurso_curriculo INT NOT NULL AUTO_INCREMENT,
-    idcurso INT NOT NULL,
-    idcurriculo INT NOT NULL,
-    PRIMARY KEY (idcurso_curriculo),
-    FOREIGN KEY (idcurso ) REFERENCES curso (idcurso),
-    FOREIGN KEY (idcurriculo) REFERENCES curriculo (idcurriculo));
+-- -----------------------------------------------------
+-- Table `curriculo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `curriculo` (
+  `idcurriculo` INT NOT NULL AUTO_INCREMENT,
+  `ac` CHAR(1) NOT NULL,
+  `email` VARCHAR(80) NOT NULL,
+  `senha` VARCHAR(12) NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
+  `cpf` CHAR(11) NOT NULL,
+  `cep` CHAR(8) NULL,
+  `endereco` VARCHAR(100) NULL,
+  `numero` INT NULL,
+  `complemento` VARCHAR(150) NULL,
+  `telefone` VARCHAR(13) NOT NULL,
+  `jornada` CHAR(2) NOT NULL,
+  `tipoContrato` CHAR(2) NOT NULL,
+  `nivelHierarquicoMin` CHAR(2) NOT NULL,
+  `nivelHierarquicoMax` CHAR(2) NOT NULL,
+  `empregado` INT NOT NULL,
+  `pretencao` INT NOT NULL,
+  `genero` CHAR(1) NOT NULL,
+  `estadocivil` CHAR(1) NOT NULL,
+  `deficiencia` INT NOT NULL,
+  `cidade_idcidade` INT NOT NULL,
+  PRIMARY KEY (`idcurriculo`),
+  INDEX `fk_curriculo_cidade1_idx` (`cidade_idcidade` ASC),
+  CONSTRAINT `fk_curriculo_cidade1`
+    FOREIGN KEY (`cidade_idcidade`)
+    REFERENCES `cidade` (`idcidade`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS idiomas_curriculo( 
-    ididiomas_curriculo INT NOT NULL AUTO_INCREMENT, 
-    idcurriculo INT NOT NULL,
-    ididiomas INT NOT NULL,
-    nivel VARCHAR(80) NOT NULL,
-    PRIMARY KEY (ididiomas_curriculo),
-    FOREIGN KEY (idcurriculo) REFERENCES curriculo (idcurriculo),
-    FOREIGN KEY (ididiomas) REFERENCES idiomas (ididiomas));
+
+-- -----------------------------------------------------
+-- Table `idiomas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `idiomas` (
+  `ididiomas` INT NOT NULL AUTO_INCREMENT,
+  `idioma` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ididiomas`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `idiomas_curriculo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `idiomas_curriculo` (
+  `idiomas_ididiomas` INT NULL,
+  `curriculo_idcurriculo` INT NOT NULL,
+  `nivel` VARCHAR(45) NULL,
+  PRIMARY KEY (`idiomas_ididiomas`, `curriculo_idcurriculo`),
+  INDEX `fk_idiomas_curriculo_curriculo1_idx` (`curriculo_idcurriculo` ASC),
+  CONSTRAINT `fk_idiomas_curriculo_idiomas`
+    FOREIGN KEY (`idiomas_ididiomas`)
+    REFERENCES `idiomas` (`ididiomas`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_idiomas_curriculo_curriculo1`
+    FOREIGN KEY (`curriculo_idcurriculo`)
+    REFERENCES `curriculo` (`idcurriculo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `area`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `area` (
+  `idarea` INT NOT NULL AUTO_INCREMENT,
+  `area` VARCHAR(150) NOT NULL,
+  PRIMARY KEY (`idarea`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `especializacao`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `especializacao` (
+  `idespecializacao` INT NOT NULL AUTO_INCREMENT,
+  `especializacao` VARCHAR(150) NOT NULL,
+  `area_idarea` INT NOT NULL,
+  PRIMARY KEY (`idespecializacao`),
+  INDEX `fk_especializacao_area1_idx` (`area_idarea` ASC),
+  CONSTRAINT `fk_especializacao_area1`
+    FOREIGN KEY (`area_idarea`)
+    REFERENCES `area` (`idarea`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `expProfissional`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `expProfissional` (
+  `idexpProfissional` INT NOT NULL AUTO_INCREMENT,
+  `empresa` VARCHAR(45) NULL,
+  `cargo` VARCHAR(45) NULL,
+  `inicio` DATE NULL,
+  `termino` DATE NULL,
+  `nivelHierarquico` CHAR(2) NULL,
+  `salario` INT NULL,
+  `curriculo_idcurriculo` INT NULL,
+  `cidade_idcidade` INT NULL,
+  `pais_estrangeiro_idpais_estrangeiro` INT NULL,
+  `especializacao_idespecializacao` INT NULL,
+  `pais_idpais` INT NULL,
+  PRIMARY KEY (`idexpProfissional`),
+  INDEX `fk_expProfissional_curriculo1_idx` (`curriculo_idcurriculo` ASC),
+  INDEX `fk_expProfissional_cidade1_idx` (`cidade_idcidade` ASC),
+  INDEX `fk_expProfissional_especializacao1_idx` (`especializacao_idespecializacao` ASC),
+  INDEX `fk_expProfissional_pais1_idx` (`pais_idpais` ASC),
+  CONSTRAINT `fk_expProfissional_curriculo1`
+    FOREIGN KEY (`curriculo_idcurriculo`)
+    REFERENCES `curriculo` (`idcurriculo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_expProfissional_cidade1`
+    FOREIGN KEY (`cidade_idcidade`)
+    REFERENCES `cidade` (`idcidade`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_expProfissional_especializacao1`
+    FOREIGN KEY (`especializacao_idespecializacao`)
+    REFERENCES `especializacao` (`idespecializacao`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_expProfissional_pais1`
+    FOREIGN KEY (`pais_idpais`)
+    REFERENCES `pais` (`idpais`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `perguntas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `perguntas` (
+  `idperguntas` INT NOT NULL AUTO_INCREMENT,
+  `pergunta` VARCHAR(8000) NOT NULL,
+  PRIMARY KEY (`idperguntas`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `perguntas_curriculo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `perguntas_curriculo` (
+  `curriculo_idcurriculo` INT NOT NULL,
+  `perguntas_idperguntas` INT NOT NULL,
+  `resposta` VARCHAR(45) NOT NULL,
+  INDEX `fk_perguntas_curriculo_curriculo1_idx` (`curriculo_idcurriculo` ASC),
+  INDEX `fk_perguntas_curriculo_perguntas1_idx` (`perguntas_idperguntas` ASC),
+  PRIMARY KEY (`curriculo_idcurriculo`, `perguntas_idperguntas`),
+  CONSTRAINT `fk_perguntas_curriculo_curriculo1`
+    FOREIGN KEY (`curriculo_idcurriculo`)
+    REFERENCES `curriculo` (`idcurriculo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_perguntas_curriculo_perguntas1`
+    FOREIGN KEY (`perguntas_idperguntas`)
+    REFERENCES `perguntas` (`idperguntas`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `empresa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `empresa` (
+  `idempresa` INT NOT NULL AUTO_INCREMENT,
+  `ac` VARCHAR(42) NOT NULL,
+  `email` VARCHAR(80) NOT NULL,
+  `senha` VARCHAR(12) NOT NULL,
+  `nome` VARCHAR(150) NOT NULL,
+  `endereco` VARCHAR(100) NOT NULL,
+  `numero` INT NOT NULL,
+  `complemento` VARCHAR(150) NOT NULL,
+  `cnpj` VARCHAR(45) NULL,
+  `cep` VARCHAR(8) NOT NULL,
+  `ramoAtividade` VARCHAR(100) NOT NULL,
+  `cidade_idcidade` INT NOT NULL,
+  PRIMARY KEY (`idempresa`),
+  INDEX `fk_empresa_cidade1_idx` (`cidade_idcidade` ASC),
+  CONSTRAINT `fk_empresa_cidade1`
+    FOREIGN KEY (`cidade_idcidade`)
+    REFERENCES `cidade` (`idcidade`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `nivel`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `nivel` (
+  `idnivel` INT NOT NULL AUTO_INCREMENT,
+  `nivel` VARCHAR(80) NOT NULL,
+  PRIMARY KEY (`idnivel`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `curso`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `curso` (
+  `idcurso` INT NOT NULL AUTO_INCREMENT,
+  `curso` VARCHAR(80) NOT NULL,
+  `nivel_idnivel` INT NOT NULL,
+  PRIMARY KEY (`idcurso`),
+  INDEX `fk_curso_nivel1_idx` (`nivel_idnivel` ASC),
+  CONSTRAINT `fk_curso_nivel1`
+    FOREIGN KEY (`nivel_idnivel`)
+    REFERENCES `nivel` (`idnivel`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `curso_curriculo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `curso_curriculo` (
+  `curso_idcurso` INT NOT NULL,
+  `curriculo_idcurriculo` INT NOT NULL,
+  `inicio` DATE NULL,
+  `termino` DATE NULL,
+  `ead` CHAR(1) NULL,
+  `cidade_idcidade` INT NULL,
+  `pais_idpais` INT NULL,
+  PRIMARY KEY (`curso_idcurso`, `curriculo_idcurriculo`),
+  INDEX `fk_curso_curriculo_curso1_idx` (`curso_idcurso` ASC),
+  INDEX `fk_curso_curriculo_curriculo1_idx` (`curriculo_idcurriculo` ASC),
+  INDEX `fk_curso_curriculo_cidade1_idx` (`cidade_idcidade` ASC),
+  INDEX `fk_curso_curriculo_pais1_idx` (`pais_idpais` ASC),
+  CONSTRAINT `fk_curso_curriculo_curso1`
+    FOREIGN KEY (`curso_idcurso`)
+    REFERENCES `curso` (`idcurso`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_curso_curriculo_curriculo1`
+    FOREIGN KEY (`curriculo_idcurriculo`)
+    REFERENCES `curriculo` (`idcurriculo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_curso_curriculo_cidade1`
+    FOREIGN KEY (`cidade_idcidade`)
+    REFERENCES `cidade` (`idcidade`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_curso_curriculo_pais1`
+    FOREIGN KEY (`pais_idpais`)
+    REFERENCES `pais` (`idpais`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
