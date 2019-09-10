@@ -1,9 +1,16 @@
+-- -----------------------------------------------------
+-- Table `pais`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `pais` (
   `idpais` INT NOT NULL AUTO_INCREMENT,
   `pais` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idpais`))
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `estado`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `estado` (
   `idestado` INT NOT NULL AUTO_INCREMENT,
   `estado` VARCHAR(45) NOT NULL,
@@ -18,6 +25,10 @@ CREATE TABLE IF NOT EXISTS `estado` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `cidade`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cidade` (
   `idcidade` INT NOT NULL AUTO_INCREMENT,
   `cidade` VARCHAR(45) NOT NULL,
@@ -31,6 +42,10 @@ CREATE TABLE IF NOT EXISTS `cidade` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `curriculo`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `curriculo` (
   `idcurriculo` INT NOT NULL AUTO_INCREMENT,
   `ac` CHAR(1) NOT NULL,
@@ -62,16 +77,24 @@ CREATE TABLE IF NOT EXISTS `curriculo` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `idiomas`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `idiomas` (
   `ididiomas` INT NOT NULL AUTO_INCREMENT,
   `idioma` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ididiomas`))
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `idiomas_curriculo`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `idiomas_curriculo` (
   `idiomas_ididiomas` INT NULL,
   `curriculo_idcurriculo` INT NOT NULL,
-  `nivel` VARCHAR(45) NOT NULL,
+  `nivel` VARCHAR(45) NULL,
   PRIMARY KEY (`idiomas_ididiomas`, `curriculo_idcurriculo`),
   INDEX `fk_idiomas_curriculo_curriculo1_idx` (`curriculo_idcurriculo` ASC),
   CONSTRAINT `fk_idiomas_curriculo_idiomas`
@@ -86,12 +109,20 @@ CREATE TABLE IF NOT EXISTS `idiomas_curriculo` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `area`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `area` (
   `idarea` INT NOT NULL AUTO_INCREMENT,
   `area` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`idarea`))
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `especializacao`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `especializacao` (
   `idespecializacao` INT NOT NULL AUTO_INCREMENT,
   `especializacao` VARCHAR(150) NOT NULL,
@@ -105,6 +136,10 @@ CREATE TABLE IF NOT EXISTS `especializacao` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `expProfissional`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `expProfissional` (
   `idexpProfissional` INT NOT NULL AUTO_INCREMENT,
   `empresa` VARCHAR(45) NULL,
@@ -115,7 +150,6 @@ CREATE TABLE IF NOT EXISTS `expProfissional` (
   `salario` INT NULL,
   `curriculo_idcurriculo` INT NULL,
   `cidade_idcidade` INT NULL,
-  `pais_estrangeiro_idpais_estrangeiro` INT NULL,
   `especializacao_idespecializacao` INT NULL,
   `pais_idpais` INT NULL,
   PRIMARY KEY (`idexpProfissional`),
@@ -145,12 +179,20 @@ CREATE TABLE IF NOT EXISTS `expProfissional` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `perguntas`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `perguntas` (
   `idperguntas` INT NOT NULL AUTO_INCREMENT,
   `pergunta` VARCHAR(8000) NOT NULL,
   PRIMARY KEY (`idperguntas`))
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `perguntas_curriculo`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `perguntas_curriculo` (
   `curriculo_idcurriculo` INT NOT NULL,
   `perguntas_idperguntas` INT NOT NULL,
@@ -170,17 +212,21 @@ CREATE TABLE IF NOT EXISTS `perguntas_curriculo` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `empresa`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `empresa` (
   `idempresa` INT NOT NULL AUTO_INCREMENT,
-  `ac` VARCHAR(42) NOT NULL,
+  `ac` CHAR(42) NOT NULL,
   `email` VARCHAR(80) NOT NULL,
   `senha` VARCHAR(12) NOT NULL,
   `nome` VARCHAR(150) NOT NULL,
   `endereco` VARCHAR(100) NOT NULL,
   `numero` INT NOT NULL,
   `complemento` VARCHAR(150) NOT NULL,
-  `cnpj` VARCHAR(45) NULL,
-  `cep` VARCHAR(8) NOT NULL,
+  `cnpj` VARCHAR(14) NULL,
+  `cep` CHAR(8) NOT NULL,
   `ramoAtividade` VARCHAR(100) NOT NULL,
   `cidade_idcidade` INT NOT NULL,
   PRIMARY KEY (`idempresa`),
@@ -192,48 +238,50 @@ CREATE TABLE IF NOT EXISTS `empresa` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `nivel`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `nivel` (
   `idnivel` INT NOT NULL AUTO_INCREMENT,
   `nivel` VARCHAR(80) NOT NULL,
   PRIMARY KEY (`idnivel`))
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `curso`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `curso` (
   `idcurso` INT NOT NULL AUTO_INCREMENT,
   `curso` VARCHAR(80) NOT NULL,
   `nivel_idnivel` INT NOT NULL,
-  `cidade_idcidade` INT NULL,
-  `pais_idpais` INT NOT NULL,
   PRIMARY KEY (`idcurso`),
   INDEX `fk_curso_nivel1_idx` (`nivel_idnivel` ASC),
-  INDEX `fk_curso_cidade1_idx` (`cidade_idcidade` ASC),
-  INDEX `fk_curso_pais1_idx` (`pais_idpais` ASC),
   CONSTRAINT `fk_curso_nivel1`
     FOREIGN KEY (`nivel_idnivel`)
     REFERENCES `nivel` (`idnivel`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_curso_cidade1`
-    FOREIGN KEY (`cidade_idcidade`)
-    REFERENCES `cidade` (`idcidade`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_curso_pais1`
-    FOREIGN KEY (`pais_idpais`)
-    REFERENCES `pais` (`idpais`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `curso_curriculo`
+-- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `curso_curriculo` (
   `curso_idcurso` INT NOT NULL,
   `curriculo_idcurriculo` INT NOT NULL,
-  `inicio` DATE NOT NULL,
-  `termino` DATE NOT NULL,
-  `ead` CHAR(1) NOT NULL,
+  `inicio` DATE NULL,
+  `termino` DATE NULL,
+  `ead` CHAR(1) NULL,
+  `cidade_idcidade` INT NULL,
+  `pais_idpais` INT NULL,
   PRIMARY KEY (`curso_idcurso`, `curriculo_idcurriculo`),
   INDEX `fk_curso_curriculo_curso1_idx` (`curso_idcurso` ASC),
   INDEX `fk_curso_curriculo_curriculo1_idx` (`curriculo_idcurriculo` ASC),
+  INDEX `fk_curso_curriculo_cidade1_idx` (`cidade_idcidade` ASC),
+  INDEX `fk_curso_curriculo_pais1_idx` (`pais_idpais` ASC),
   CONSTRAINT `fk_curso_curriculo_curso1`
     FOREIGN KEY (`curso_idcurso`)
     REFERENCES `curso` (`idcurso`)
@@ -243,6 +291,15 @@ CREATE TABLE IF NOT EXISTS `curso_curriculo` (
     FOREIGN KEY (`curriculo_idcurriculo`)
     REFERENCES `curriculo` (`idcurriculo`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_curso_curriculo_cidade1`
+    FOREIGN KEY (`cidade_idcidade`)
+    REFERENCES `cidade` (`idcidade`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_curso_curriculo_pais1`
+    FOREIGN KEY (`pais_idpais`)
+    REFERENCES `pais` (`idpais`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-

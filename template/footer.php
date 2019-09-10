@@ -57,6 +57,15 @@
 
 </footer>
 <!-- Footer -->
+
+
+<!-- <script src="js/validator.js"></script>
+<script src="js/validator.min.js"></script> -->
+<!-- <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> -->
+<!-- <script src="http://platform.twitter.com/widgets.js"></script>
+<script src="js/application.js"></script> -->
+
+
 </body>
 
 </html>
