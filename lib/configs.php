@@ -2,5 +2,5 @@
 define ('HOST', 'localhost');
 define ('USER', 'root');
 define ('PASS', '');
-define ('BANCO', 'buscaemp3');
+define ('BANCO', 'buscaemp4');
 ?>
