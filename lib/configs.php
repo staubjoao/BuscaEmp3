@@ -1,6 +1,6 @@
 <?php
 define ('HOST', 'localhost');
 define ('USER', 'root');
-define ('PASS', 'mysql');
-define ('BANCO', 'buscaemp');
+define ('PASS', '');
+define ('BANCO', 'buscaemp4');
 ?>

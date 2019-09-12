@@ -1,15 +1,35 @@
 <?php
 //print_r($_POST);
+if(trim($_POST['email']) != ""){
+  $email = trim($_POST['email']);
+}
+if(trim($_POST['senha']) != ""){
+  if((trim($_POST['senha'])) == trim($_POST['confirmarSenha'])){
+    $senha = trim($_POST['senha']);
+  }
+}
+if(trim($_POST['empNome']) != ""){
+  $nome = trim($_POST['empNome']);
+}
+if(trim($_POST['endereco']) != ""){
+  $endereco = trim($_POST['endereco']);
+}
+if(trim($_POST['numero']) != ""){
+  $numero = trim($_POST['numero']);
+}
 
-$email = trim($_POST['email']);
-$senha = trim($_POST['senha']);
-$nome = trim($_POST['empNome']);
-$endereco = trim($_POST['endereco']);
-$numero = trim($_POST['numero']);
 $cnpj = trim($_POST['cnpj']);
-$cep = trim($_POST['cep']);
-$ramo = trim($_POST['ramo']);
-$idcidade = trim($_POST['id_cidade']);
+
+if(trim($_POST['cep']) != ""){
+  $cep = trim($_POST['cep']);
+}
+if(trim($_POST['ramo']) != ""){
+  $ramo = trim($_POST['ramo']);
+}
+if(trim($_POST['id_cidade']) != ""){
+  $idcidade = trim($_POST['id_cidade']);
+}
+
 $ac = "E";
 
 $con = conecta();
