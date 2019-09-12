@@ -1,0 +1,67 @@
+<html>
+    <head>
+    </head> 
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+
+<form method="POST" action="recebe.php?valida=TRUE">
+    <input type="button" id="add_div" value="adicionar"> 
+    <input type="submit" value="Enviar">
+    <br>
+    <div id="idDiv">
+        <div>
+        Idioma <input type="text" name="codProduto[]">
+        Nivel <input type="text" name="qtdProduto[]">
+        
+        </div>
+    </div>
+</form>
+    <script type="text/javascript">
+        $(document).ready(function() {
+   var maximo = 5;   //maximo de 5 campos
+   var i = 1;
+   $('#add_div').click (function(e) {
+     e.preventDefault();  //previne novos cliques
+     if (i < maximo) {
+        $('#idDiv').append('<div class="form-group col-md-6">\
+            <label for="inputIdioma">Idioma</label>\
+            <label for="" class="text-danger">*</label>\
+            <select name="idioma1" class="custom-select" id="inlineFormCustomSelect">\
+              <option selected value="0">Escolha</option>\
+              <?php $resIdiomas = mysqli_query ($con, "SELECT * FROM idiomas");\
+              while ($rowIdiomas = mysqli_fetch_assoc($resIdiomas)):?>\
+              <option value="<?php echo $rowIdiomas["ididiomas"] ?>">\
+                <?php echo utf8_encode($rowIdiomas["idioma"]); ?>\
+              </option>\
+              <?php endwhile ?>\
+            </select>\
+          </div>\
+           <div class="form-group col-md-6">\
+            <label for="inputIdioma">Nível</label>\
+            <label for="" class="text-danger">*</label>\
+            <select name="nivel1" class="custom-select" id="inlineFormCustomSelect">\
+              <option value="0">Nível</option>\
+              <option value="Basico">Básico</option>\
+              <option value="Intermediario">Intermediário</option>\
+              <option value="Avancado">Avançado</option>\
+              <option value="Nativo">Nativo</option>\
+            </select>\
+            <div class="form-group col-md-1">\
+            <label class="text-white">Remover</label>\
+            <button type="button" class="btn btn-danger btn-excluir-idioma" numIdioma="' + i + '">REMOVER</button>\
+            </div>\
+            </div>' 
+            );
+           i++;
+     }
+  });
+ 
+    // Remove o div anterior
+    $('#idDiv').on("click",".btn-excluir-idioma",function(e) {
+      e.preventDefault();
+      $(idDiv).remove();
+      i--;
+    });
+});
+    </script>
+

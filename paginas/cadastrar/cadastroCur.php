@@ -261,6 +261,16 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
           </div>
         </div>
         <div class="form-row">
+          <h1>TESTE</h1>
+          <div id="jabuticaba">
+
+          </div>
+        </div>
+        <div class="form-row">
+          <button type="button" id="addjabuticaba" class="btn btn-dark btn-lg btn-block btn-sm">Adicionar outro
+              idioma</button>
+          </div>
+        <div class="form-row">
           <input type="hidden" id="qtdeIdiomas" name="qtdeIdiomas" value="1">
           <div class="form-group col-md-6">
             <label for="inputIdioma">Idioma</label>
@@ -570,6 +580,17 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
       });
     });
 
+    //tá dando errado
+    $("#addjabuticaba").click(function (e)){
+      e.preventDefault();
+      $.get("http://localhost/BuscaEmp3/paginas/cadastrar/idiomas.html", 
+        function (data, textStatus, jqXHR) {
+          $("#jabuticaba").html(data);
+        },
+        "html"
+      );
+    }
+
     // $("#addformacao").click(function (e) { 
     //   e.preventDefault();
     //   $.get("http://localhost/BuscaEmp/paginas/cadastrar/formacaoacademica.php", 
@@ -644,7 +665,7 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
         '<option selected value="0">Escolha</option>' +
           <?php
             $resIdiomas = mysqli_query($con, 'SELECT * FROM idiomas');
-      while ($rowIdiomas = mysqli_fetch_assoc($resIdiomas)):
+            while ($rowIdiomas = mysqli_fetch_assoc($resIdiomas)):
           ?>
           '<option value="<?php echo $rowIdiomas['ididiomas'] ?>"><?php echo utf8_encode($rowIdiomas['idioma']); ?></option>' +
           <?php endwhile ?>
