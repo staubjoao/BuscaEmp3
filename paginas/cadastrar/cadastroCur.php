@@ -13,41 +13,61 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
 <div class="container-fluid">
   <div class="row justify-content-center bg-light">
     <div class="col-md-5 ml-md-4  border border-dark  shadow-lg p-3 mb-5 bg-white rounded" style="margin-top: 100px">
-      <form action="?pagina=questionario" method="post">
+      <form id="formCurriculo" action="?pagina=questionario" method="post">
         <div class="form-row">
           <div class="form-group col-md">
-            <label for="inputEmail4">Email</label>
+            <label for="inputEmail" class="control-label">Email</label>
             <label for="" class="text-danger">*</label>
-            <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+            <input name="email" type="email" class="form-control obrigatorio" id="inputEmail" placeholder="Email" data-error="Por favor, informe um e-mail válido." >
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md">
             <label for="inputPassword4">Senha</label>
             <label for="" class="text-danger">*</label>
-            <input name="senha" type="password" class="form-control" id="senha" placeholder="Senha">
+            <input type="password" class="form-control obrigatorio" name="senha" id="inputPassword" placeholder="Senha" data-minlength="6" data-maxlength="12">
+            <div class="help-block with-errors text-danger"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <label for="inputPassword4">Confirmar senha</label>
+            <label for="" class="text-danger">*</label>
+            <input name="confirmarSenha" type="password" class="form-control obrigatorio" id="confirmarSenha" data-match="#inputPassword" placeholder="Confirmar senha">
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md">
             <label for="inputText">Nome</label>
             <label for="" class="text-danger">*</label>
-            <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome">
+            <input name="nome" data-error="Digite o seu nome" type="text" class="form-control obrigatorio" id="nome" placeholder="Nome">
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md">
             <label for="inputText">CPF</label>
             <label for="" class="text-danger">*</label>
-            <input name="cpf" type="text" class="form-control" id="cpf" placeholder="CPF">
+            <input name="cpf" data-error="Digite o seu CPF" data-error="Digite o seu CPF" type="text" class="form-control obrigatorio" id="cpf" placeholder="CPF">
+            <div class="help-block with-errors text-danger"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <label for="inputZip">CEP</label>
+            <label for="" class="text-danger">*</label>
+            <input name="cep" type="text" data-error="Digite o seu CEP" class="form-control obrigatorio" id="cep" placeholder="CEP">
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md">
             <label for="inputState">Estado</label>
             <label for="" class="text-danger">*</label>
-            <select name="id_estado" id="id_estado" class="form-control">
-              <option value="0">Escolha</option>
+            <select name="id_estado" data-error="Selecione um estado"  id="id_estado" class="form-control obrigatorio">
+              <option value="">Escolha</option>
               <?php
               $resEstado = mysqli_query ($con, 'SELECT * FROM estado');
               while ($rowEstado = mysqli_fetch_assoc($resEstado)):
@@ -56,6 +76,7 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
               </option>
               <?php endwhile ?>
             </select>
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div id="cidadecom" class="form-row">
@@ -63,34 +84,33 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
             <label for="inputCity" id="cidade">Cidade</label>
             <label for="" class="text-danger">*</label>
             <span class="carregando text-danger">carregando...</span>
-            <select name="id_cidade" id="id_cidade" class="form-control">
+            <select name="id_cidade" data-error="Selecione uma cidade" id="id_cidade" class="form-control obrigatorio">
             </select>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <label for="inputZip">CEP</label>
-            <input name="cep" type="text" class="form-control" id="cep" placeholder="CEP">
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md">
             <label for="inputAddress">Endereço</label>
-            <input name="endereco" type="text" class="form-control" id="endereco" placeholder="Endereço">
+            <label for="" class="text-danger">*</label>
+            <input name="endereco" data-error="Digite seu endereço" type="text" class="form-control obrigatorio" id="endereco" placeholder="Endereço">
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md">
             <label for="inputAddress">Número</label>
-            <input name="numero" type="number" class="form-control" id="numero" placeholder="Número">
+            <label for="" class="text-danger">*</label>
+            <input name="numero" data-error="Digite o número do seu endereço" type="number" class="form-control obrigatorio" id="numero" placeholder="Número">
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md">
             <label for="inputAddress">Deficiência</label>
             <label for="" class="text-danger">*</label>
-            <select name="deficiencia" id="deficiencia" class="form-control">
-              <option selected="selected" value="0">Selecione</option>
+            <select name="deficiencia" data-error="Selecione" id="deficiencia" class="form-control obrigatorio">
+              <option selected="selected" value="">Selecione</option>
               <option value="1">Não tenho deficiência</option>
               <option value="2">Deficiência visual</option>
               <option value="3">Deficiência intelectual</option>
@@ -101,39 +121,43 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
               <option value="8">Deficiência Transtorno do Espectro Autista(TEA)</option>
               <option value="9">Reabilitado pelo INSS</option>
             </select>
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md">
             <label for="inputAddress">Gênero</label>
             <label for="" class="text-danger">*</label>
-            <select name="genero" id="genero" class="form-control">
-              <option selected="selected" value="0">Selecione</option>
+            <select name="genero" data-error="Selecione um gênero" id="genero" class="form-control obrigatorio">
+              <option selected="selected" value="">Selecione</option>
               <option value="M">Masculino</option>
               <option value="F">Feminino</option>
               <option value="O">Outro</option>
             </select>
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md">
             <label for="inputAddress">Estado civil</label>
             <label for="" class="text-danger">*</label>
-            <select name="estadocivil" id="estadocivil" class="form-control">
-              <option selected="selected" value="0">Selecione</option>
+            <select name="estadocivil" data-error="Selecione um estado civil" id="estadocivil" class="form-control obrigatorio">
+              <option selected="selected" value="">Selecione</option>
               <option value="C">Casado</option>
               <option value="D">Divorciado</option>
               <option value="S">Separado</option>
               <option value="X">Solteiro</option>
               <option value="V">Viúvo</option>
             </select>
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-sm">
             <label for="inputText">Está empregado</label>
-            <label for="" class="text-danger">*</label>
+            <label for="" data-error="Selecione uma opção" class="text-danger obrigatorio">*</label>
           </div>
+          <div class="help-block with-errors text-danger"></div>
         </div>
         <div class="form-row">
           <div class="form-group col-sm-6">
@@ -538,6 +562,39 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
     $('#curso').hide();
     $('#conclusaoLabel2').hide();
     $('#expProfissinal').hide();
+
+    // Quando o formulário for submetido...
+    $("#formCurriculo").submit(function(evento){
+      // Para cada elemento com a classe "obrigatorio"
+      $(".obrigatorio").each(function(){
+        // Se o valor do campo for vazio...
+        if( $(this).val() == "" ){
+          // Busca o próximo "span" depois do campo e altera o texto
+          var text = $(this).attr("data-error");
+          $(this).next("div").text(text);
+          $(this).addClass("border-danger");
+
+          // Para a submissão do form
+          evento.preventDefault();
+              
+          }else{
+            // Limpa o texto do span
+            $(this).next("div").text("");
+            $(this).removeClass("border-danger");
+          }
+
+          var tamanhomin = $(this).attr('data-minlength');
+          var tamonhomax = $(this).attr('data-maxlength');
+
+          if(parseInt(tamanhomin) > $(this).val().trim().length){
+            $(this).next("div").text("A senha precisa ter, pelo menos, "+ tamanhomin + " caracteres.");
+            $(this).addClass("border-danger");
+          }else if(parseInt(tamonhomax) < $(this).val().trim().length){
+            $(this).next("div").text("A senha pode ter  até "+ tamonhomax + " caracteres.");
+            $(this).addClass("border-danger");
+          }
+        });
+      });
     
 
     $(function () {
@@ -579,17 +636,6 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
 
       });
     });
-
-    //tá dando errado
-    $("#addjabuticaba").click(function (e)){
-      e.preventDefault();
-      $.get("http://localhost/BuscaEmp3/paginas/cadastrar/idiomas.html", 
-        function (data, textStatus, jqXHR) {
-          $("#jabuticaba").html(data);
-        },
-        "html"
-      );
-    }
 
     // $("#addformacao").click(function (e) { 
     //   e.preventDefault();
@@ -635,7 +681,7 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
             $('.carregando').hide();
           });
         } else {
-          $('#id_cidade').html('<option value="">– Escolha –</option>');
+          $('#id_cidade').html('<option value="">Escolha</option>');
         }
       });
     });
