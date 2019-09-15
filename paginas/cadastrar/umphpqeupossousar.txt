@@ -1,0 +1,130 @@
+<?php
+session_start();
+// print_r($_POST);
+
+$email = trim($_POST['email']);
+$senha = trim($_POST['senha']);
+$nome = trim($_POST['nome']);
+$cpf = trim($_POST['cpf']);
+$idcidade = trim($_POST['id_cidade']);
+$cep = trim($_POST['cep']);
+$endereco = trim($_POST['endereco']);
+$numero = trim($_POST['numero']);
+$obj = trim($_POST['obj']);
+$telefone = trim($_POST['telefone']);
+$nivelHierarquicoMax = trim($_POST['nivelHierarquicoMax']);
+$ac = "C";
+
+if((trim($_POST['deficiencia']))==1 || (trim($_POST['deficiencia']))==2 || (trim($_POST['deficiencia']))==3 || 
+(trim($_POST['deficiencia']))==4 || (trim($_POST['deficiencia']))==5 || (trim($_POST['deficiencia']))==6 || 
+(trim($_POST['deficiencia']))==7 || (trim($_POST['deficiencia']))==8 || (trim($_POST['deficiencia']))==9){
+  $deficiencia = trim($_POST['deficiencia']);
+  echo$deficiencia."<br>";
+}
+if((trim($_POST['genero']))=="M" || (trim($_POST['genero']))=="F" || (trim($_POST['genero']))=="I"){
+  $genero = trim($_POST['genero']);
+  echo$genero."<br>";
+}
+if((trim($_POST['estadocivil']))=="C" || (trim($_POST['estadocivil']))=="D" || (trim($_POST['estadocivil']))=="S" || 
+(trim($_POST['estadocivil']))=="X" || (trim($_POST['estadocivil']))=="V"){
+  $estadocivil = trim($_POST['estadocivil']);
+  echo$estadocivil."<br>";
+}
+if((trim($_POST['empregado']))==1 || (trim($_POST['empregado']))==2){
+  $empregado = trim($_POST['empregado']);
+  echo$empregado."<br>";
+}
+if((trim($_POST['jornada']))=="NO" || (trim($_POST['jornada']))=="MA" || (trim($_POST['jornada']))=="NI" || 
+(trim($_POST['jornada']))=="TR" || (trim($_POST['jornada']))=="IN"){
+  $jornada = trim($_POST['jornada']);
+  echo$jornada."<br>";
+}
+if((trim($_POST['tipoContrato']))=="AU" || (trim($_POST['tipoContrato']))=="CO" || (trim($_POST['tipoContrato']))=="EF" || 
+(trim($_POST['tipoContrato']))=="ES" || (trim($_POST['tipoContrato']))=="OU" || (trim($_POST['tipoContrato']))=="PS" || 
+(trim($_POST['tipoContrato']))=="TM" || (trim($_POST['tipoContrato']))=="TR"){
+  $tipoContrato = trim($_POST['tipoContrato']);
+  echo$tipoContrato."<br>";
+}
+if((trim($_POST['nivelHierarquicoMin']))=="ES" || (trim($_POST['nivelHierarquicoMin']))=="OP" || (trim($_POST['nivelHierarquicoMin']))=="AU" || 
+(trim($_POST['nivelHierarquicoMin']))=="AS" || (trim($_POST['nivelHierarquicoMin']))=="TR" || (trim($_POST['nivelHierarquicoMin']))=="AN" || 
+(trim($_POST['nivelHierarquicoMin']))=="EN" || (trim($_POST['nivelHierarquicoMin']))=="SU" || (trim($_POST['nivelHierarquicoMin']))=="CO" || 
+(trim($_POST['nivelHierarquicoMin']))=="EP" || (trim($_POST['nivelHierarquicoMin']))=="CR" || (trim($_POST['nivelHierarquicoMin']))=="GE" || 
+(trim($_POST['nivelHierarquicoMin']))=="DI"){
+  $nivelHierarquicoMin = trim($_POST['nivelHierarquicoMin']);
+  echo$nivelHierarquicoMin."<br>";
+}
+if(
+(trim($_POST['nivelHierarquicoMax']))=="ES" || (trim($_POST['nivelHierarquicoMax']))=="OP" || (trim($_POST['nivelHierarquicoMax']))=="AU" || 
+(trim($_POST['nivelHierarquicoMax']))=="AS" || (trim($_POST['nivelHierarquicoMax']))=="TR" || (trim($_POST['nivelHierarquicoMax']))=="AN" || 
+(trim($_POST['nivelHierarquicoMax']))=="EN" || (trim($_POST['nivelHierarquicoMax']))=="SU" || (trim($_POST['nivelHierarquicoMax']))=="CO" || 
+(trim($_POST['nivelHierarquicoMax']))=="EP" || (trim($_POST['nivelHierarquicoMax']))=="CR" || (trim($_POST['nivelHierarquicoMax']))=="GE" || 
+(trim($_POST['nivelHierarquicoMax']))=="DI"){
+  $nivelHierarquicoMax = trim($_POST['nivelHierarquicoMax']);
+  echo$nivelHierarquicoMax."<br>";
+}
+if((trim($_POST['pretensao']))==1 || (trim($_POST['pretensao']))==2 || (trim($_POST['pretensao']))==3 || (trim($_POST['pretensao']))==4 || 
+(trim($_POST['pretensao']))==5 || (trim($_POST['pretensao']))==6 || (trim($_POST['pretensao']))==7 || (trim($_POST['pretensao']))==8 || 
+(trim($_POST['pretensao']))==9 || (trim($_POST['pretensao']))==10 || (trim($_POST['pretensao']))==11 || (trim($_POST['pretensao']))==12 || 
+(trim($_POST['pretensao']))==13){
+  $pretensao = trim($_POST['pretensao']);
+  echo$pretensao."<br>";
+}
+
+// $con = conecta();
+// $insertCurriculo = "insert into curriculo (email, senha, nome, cpf, cep, endereco, numero, telefone,
+// objetivoProfissionaL, empregado, pretencao, idcidade, deficiencia, sexo, estadocivil, ac) 
+// values ('$email', '$senha', '$nome', '$cpf', '$cep', '$endereco', '$numero', '$telefone', '$obj', '$empregado', '$pretensao',
+// '$idcidade', '$deficiencia', '$sexo', '$estadocivil', '$ac')";
+// $res = mysqli_query($con, $insertCurriculo);
+
+// $selcurriculo = "SELECT idcurriculo FROM curriculo WHERE cpf='$cpf' LIMIT 1";
+// $rescurriculo = mysqli_query($con, $selcurriculo);
+// $rowcurriculo = mysqli_fetch_assoc($rescurriculo);
+// $idcurriculo = $rowcurriculo['idcurriculo'];
+
+// $_SESSION['idCurriculo'] = $idcurriculo;
+
+// if ($res){
+//   $idiomas = trim($_POST['qtdeIdiomas']);
+//   $i = 1;
+
+//   while($i <= $idiomas){
+//     $idioma = 'idioma'.$i;
+//     $nivel = 'nivel'.$i;
+
+//     if(((trim($_POST[$idioma])) == null) || ((trim($_POST[$nivel])) == null)){
+//       echo"null <br>";
+//     }else{
+//       $idiomasalvar = trim($_POST[$idioma]);
+//       $nivelsalvar = trim($_POST[$nivel]);
+//       $insertIdiomas = "insert into idiomas_curriculo (idcurriculo, ididiomas, nivel)
+//       values ('$idcurriculo','$idiomasalvar', '$nivelsalvar')";
+//       $residiomas = mysqli_query($con, $insertIdiomas);
+      
+//       echo "<script>alert('Show')</script>";
+//     }
+//     $i++;
+//   }
+  
+// }else {
+//   echo "<script>alert('Erro')</script>";
+// }
+
+// $_SESSION['emailCurriculo'] = $email;
+// $_SESSION['senhaCurriculo'] = $senha;
+// $_SESSION['nomeCurriculo'] = $nome;
+// $_SESSION['cpf'] = $cpf;
+// $_SESSION['idestado'] = $idestado;
+// $_SESSION['idcidade'] = $idcidade;
+// $_SESSION['cep'] = $cep;
+// $_SESSION['endereco'] = $endereco;
+// $_SESSION['numero'] = $numero;
+// $_SESSION['deficiencia'] = $deficiencia;
+// $_SESSION['sexo'] = $sexo;
+// $_SESSION['estadocivil'] = $estadocivil;
+// $_SESSION['empregado'] = $empregado;
+// $_SESSION['obj'] = $obj;
+// $_SESSION['pretensao'] = $pretensao;
+// $_SESSION['telefone'] = $telefone;
+// $_SESSION['acCurriculo'] = $ac;
+?>

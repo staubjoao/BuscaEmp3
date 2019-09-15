@@ -8,12 +8,16 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
     color: #ff0000;
     display: none;
   }
+
+  .hidden{
+    display:none;
+  }
 </style>
 
 <div class="container-fluid">
   <div class="row justify-content-center bg-light">
     <div class="col-md-5 ml-md-4  border border-dark  shadow-lg p-3 mb-5 bg-white rounded" style="margin-top: 100px">
-      <form id="formCurriculo" action="?pagina=questionario" method="post">
+      <form id="formCurriculo" action="?pagina=salvarcurriculo" method="post">
         <div class="form-row">
           <div class="form-group col-md">
             <label for="inputEmail" class="control-label">Email</label>
@@ -79,21 +83,21 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
             <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
-        <div id="cidadecom" class="form-row">
+        <div id="cidadecom" class="form-row hidden">
           <div class="form-group col-md">
             <label for="inputCity" id="cidade">Cidade</label>
             <label for="" class="text-danger">*</label>
-            <span class="carregando text-danger">carregando...</span>
-            <select name="id_cidade" data-error="Selecione uma cidade" id="id_cidade" class="form-control obrigatorio">
+            <span class="carregando text-danger hidden">carregando...</span>
+            <select name="id_cidade" data-error="Selecione uma cidade" id="id_cidade" class="form-control obrigatorio1">
             </select>
             <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md">
-            <label for="inputAddress">Endereço</label>
+            <label for="inputAddress">Rua</label>
             <label for="" class="text-danger">*</label>
-            <input name="endereco" data-error="Digite seu endereço" type="text" class="form-control obrigatorio" id="endereco" placeholder="Endereço">
+            <input name="rua" data-error="Digite seu endereço" type="text" class="form-control obrigatorio" id="rua" placeholder="Rua">
             <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
@@ -107,11 +111,16 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
         </div>
         <div class="form-row">
           <div class="form-group col-md">
+            <label for="inputAddress">Complemento</label>
+            <input name="complemento" type="text" class="form-control" id="complemento" placeholder="Complemento">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
             <label for="inputAddress">Deficiência</label>
             <label for="" class="text-danger">*</label>
             <select name="deficiencia" data-error="Selecione" id="deficiencia" class="form-control obrigatorio">
-              <option selected="selected" value="">Selecione</option>
-              <option value="1">Não tenho deficiência</option>
+              <option selected value="1">Não tenho deficiência</option>
               <option value="2">Deficiência visual</option>
               <option value="3">Deficiência intelectual</option>
               <option value="4">Deficiência auditiva</option>
@@ -155,7 +164,7 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
         <div class="form-row">
           <div class="form-group col-sm">
             <label for="inputText">Está empregado</label>
-            <label for="" data-error="Selecione uma opção" class="text-danger obrigatorio">*</label>
+            <label for="" class="text-danger">*</label>
           </div>
           <div class="help-block with-errors text-danger"></div>
         </div>
@@ -164,36 +173,39 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
             <label class="radio-inline"><input value="1" type="radio" name="empregado">Sim</label>
           </div>
           <div class="form-group col-sm-6">
-            <label class="radio-inline"><input value="2" type="radio" name="empregado">Não</label>
+            <label class="radio-inline"><input value="2" checked type="radio" name="empregado">Não</label>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-sm">
             <label for="inputText">Objetico profissional</label>
             <label for="" class="text-danger">*</label>
-            <input name="obj" type="text" class="form-control" id="obj" placeholder="Objetico profissional">
+            <input name="obj" type="text" data-error="Digite seu objetivo profissinal" class="form-control obrigatorio" id="obj" placeholder="Objetico profissional">
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-sm">
             <label>Jornada</label>
             <label class="text-danger">*</label>
-            <select name="jornada" class="custom-select" id="jornada">
-              <option selected="selected" value="0">Selecione</option>
+            <select name="jornada" data-error="Selecione uma jornada" class=" custom-select obrigatorio" id="jornada">
+              <option selected="selected" value="">Selecione</option>
               <option value="NO">Noturno</option>
               <option value="MA">Parcial manhãs</option>
               <option value="NI">Parcial noites</option>
               <option value="TR">Parcial tardes</option>
               <option value="IN">Período Integral</option>
+              <option value="AL">Todas</option>
             </select>
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-sm">
             <label>Tipo Contrato</label>
             <label class="text-danger">*</label>
-            <select name="tipoContrato" class="custom-select" id="tipoContrato">
-              <option selected="selected" value="0">Selecione</option>
+            <select name="tipoContrato" data-error="Selecione um tipo de contrato" class="custom-select obrigatorio" id="tipoContrato">
+              <option selected="selected" value="">Selecione</option>
               <option value="AU">Autônomo</option>
               <option value="CO">Cooperado</option>
               <option value="EF">Efetivo – CLT</option>
@@ -202,15 +214,17 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
               <option value="PS">Prestador de Serviços (PJ)</option>
               <option value="TM">Temporário</option>
               <option value="TR">Trainee</option>
+              <option value="AL">Todos</option>
             </select>
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-sm">
             <label>Nível hierárquico mínimo</label>
             <label class="text-danger">*</label>
-            <select name="nivelHierarquicoMin" class="custom-select" id="nivelHierarquicoMin">
-              <option selected="selected" value="0">Selecione</option>
+            <select name="nivelHierarquicoMin" data-error="Selecione um nível hierárquico mínimo" class="custom-select obrigatorio" id="nivelHierarquicoMin">
+              <option selected="selected" value="">Selecione</option>
               <option value="ES">Estagiário</option>
               <option value="OP">Operacional</option>
               <option value="AU">Auxiliar</option>
@@ -225,15 +239,15 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
               <option value="GE">Gerente</option>
               <option value="DI">Diretor</option>
             </select>
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-sm">
             <label>Nível hierárquico máximo</label>
             <label class="text-danger">*</label>
-            <select name="nivelHierarquicoMax" class="custom-select" id="nivelHierarquicoMax">
-              <option selected="selected" value="0">Selecione</option>
-              <option selected="selected" value="0">Selecione</option>
+            <select name="nivelHierarquicoMax" data-error="Selecione um nível hierárquico máximo" class="custom-select obrigatorio" id="nivelHierarquicoMax">
+              <option selected="selected" value="">Selecione</option>
               <option value="ES">Estagiário</option>
               <option value="OP">Operacional</option>
               <option value="AU">Auxiliar</option>
@@ -248,14 +262,32 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
               <option value="GE">Gerente</option>
               <option value="DI">Diretor</option>
             </select>
+            <div class="help-block with-errors text-danger"></div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-sm">
+            <label>Cargo almejado</label>
+            <label class="text-danger">*</label>
+            <select name="cargoAlmejado" data-error="Selecione um cargo almejado" class="custom-select obrigatorio" id="cargoAlmejado">
+            <option value="">Escolha</option>
+              <?php
+              $resCargos = mysqli_query ($con, 'SELECT * FROM cargos');
+              while ($rowCargos = mysqli_fetch_assoc($resCargos)):
+            ?>
+              <option value="<?php echo $rowCargos['idcargos'] ?>"><?php echo utf8_encode($rowCargos['cargo']); ?>
+              </option>
+              <?php endwhile ?>
+            </select>
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-sm">
             <label for="inputIdioma">Pretensão salarial</label>
             <label for="" class="text-danger">*</label>
-            <select name="pretensao" class="custom-select" id="pretensao">
-              <option selected="selected" value="0">Selecione</option>
+            <select name="pretensao" data-error="Selecione a pretensão salarial" class="custom-select obrigatorio" id="pretensao">
+              <option selected="selected" value="">Selecione</option>
               <option value="1">Até R$ 1.000,00</option>
               <option value="2">A partir de R$ 1.000,00</option>
               <option value="3">A partir de R$ 2.000,00</option>
@@ -270,13 +302,15 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
               <option value="12">A partir de R$ 15.000,00</option>
               <option value="13">Acima de R$ 20.000,00</option>
             </select>
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-sm">
             <label for="inputText">Telefone</label>
             <label for="" class="text-danger">*</label>
-            <input name="telefone" type="text" class="form-control" id="telefone" placeholder="Telefone">
+            <input name="telefone" type="text" data-error="Digite seu telefone" class="form-control obrigatorio" id="telefone" placeholder="Telefone">
+            <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
         <div class="form-row">
@@ -284,18 +318,8 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
             <h5>Idiomas</h5>
           </div>
         </div>
-        <div class="form-row">
-          <h1>TESTE</h1>
-          <div id="jabuticaba">
-
-          </div>
-        </div>
-        <div class="form-row">
-          <button type="button" id="addjabuticaba" class="btn btn-dark btn-lg btn-block btn-sm">Adicionar outro
-              idioma</button>
-          </div>
-        <div class="form-row">
-          <input type="hidden" id="qtdeIdiomas" name="qtdeIdiomas" value="1">
+        <div id="idiomas">
+          <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputIdioma">Idioma</label>
             <label for="" class="text-danger">*</label>
@@ -321,14 +345,52 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
               <option value="Nativo">Nativo</option>
             </select>
           </div>
+          </div>
+
+
+          <div id="divIdioma2" class="hidden">
+          <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputIdioma">Idioma</label>
+            <label for="" class="text-danger">*</label>
+            <select name="idioma2" class="custom-select" id="idioma2">
+              <option selected value="">Escolha</option>
+              <?php
+              $resIdiomas = mysqli_query ($con, 'SELECT * FROM idiomas');
+              while ($rowIdiomas = mysqli_fetch_assoc($resIdiomas)):
+              ?>
+              <option value="<?php echo $rowIdiomas['ididiomas'] ?>"><?php echo utf8_encode($rowIdiomas['idioma']); ?>
+              </option>
+              <?php endwhile ?>
+            </select>
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputIdioma">Nível</label>
+            <label for="" class="text-danger">*</label>
+            <select name="nivel2" class="custom-select" id="nivel2">
+              <option value="">Nível</option>
+              <option value="Basico">Básico</option>
+              <option value="Intermediario">Intermediário</option>
+              <option value="Avancado">Avançado</option>
+              <option value="Nativo">Nativo</option>
+            </select>
+          </div>
+          <div class="form-group col-md-1">
+          <label class="text-white">R</label>
+          <button id="dellIdioma2" type="button" class="btn btn-danger btn-excluir-idioma" numIdioma=""><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </div>
         </div>
-        <div id="novosIdiomas"></div>
+        </div>
+        <!-- <div id="novosIdiomas"></div> -->
         <div class="form-row">
           <div class="form-group col-sm">
             <button type="button" id="addIdioma" class="btn btn-dark btn-lg btn-block btn-sm">Adicionar outro
               idioma</button>
           </div>
         </div>
+        </div>
+
+        <div class="hidden" id="formacaoAcademica">
         <div class="form-row">
           <div class="form-group col-sm">
             <h5>Formação Acadêmica</h5>
@@ -359,7 +421,7 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
             </select>
           </div>
         </div>
-        <div id="estado_pais" class="form-row">
+        <div id="estado_pais" class="form-row hidden">
           <div class="form-group col-md">
             <label for="inputState">Estado</label>
             <label for="" class="text-danger">*</label>
@@ -373,6 +435,14 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
               </option>
               <?php endwhile ?>
             </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-sm">
+            <label for="inputText">Cidade</label>
+            <label for="" class="text-danger">*</label>
+            <input name="cidadeAcademica" type="text" class="form-control" id="cidadeAcademica"
+              placeholder="Cidade">
           </div>
         </div>
         <div class="form-row">
@@ -391,7 +461,7 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
             </select>
           </div>
         </div>
-        <div id="curso" class="form-row">
+        <div id="curso" class="form-row hidden">
           <div class="form-group col-md">
             <label for="inputCity">Curso</label>
             <label for="" class="text-danger">*</label>
@@ -412,20 +482,34 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
           </div>
         </div>
         <div class="form-row">
+          <div class="form-group col-sm">
+          <label>EAD</label>
+            <label class="text-danger">*</label>
+            <select name="ead" id="ead" class="form-control">
+              <option value="">Escolha</option>
+              <option value="S">Sim</option>
+              <option value="N">Não</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
           <div class="form-group col-sm-6">
             <label for="inputInicio">Inicio</label>
             <input name="inicio" type="date" class="form-control" id="inputInicio" placeholder="Inicio">
           </div>
-          <div class="form-group col-sm-6" id="conclusao">
+          <div class="form-group col-sm-5" id="conclusao">
             <label for="inputTermino" id="conclusaoLabel">Conclusão</label>
-            <label for="inputTermino" id="conclusaoLabel2">Conclusão esperada</label>
+            <label class="hidden" for="inputTermino" id="conclusaoLabel2">Conclusão esperada</label>
             <input name="termino" type="date" class="form-control" id="inputConclusao" placeholder="Conclusão">
+            <input type="date" class="form-control hidden" id="inputConclusaoDisabled" placeholder="Conclusão" disabled>
           </div>
-          <div class="form-group col-md">
-            <button type="button" class="btn btn-danger btn-excluir-formcao"><i class="fa fa-trash"
+          <div class="form-group col-md-1">
+            <label class="text-white" for="">R</label>
+            <button type="button" id="excluirFormacao" class="btn btn-danger btn-excluir-formcao"><i class="fa fa-trash"
                 aria-hidden="true"></i></button>
           </div>
         </div>
+      </div>
         <div class="form-row">
           <div class="form-group col-md">
             <button type="button" id="addformacao" class="btn btn-dark btn-lg btn-block btn-sm">Adicionar
@@ -433,15 +517,22 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
           </div>
         </div>
         <div class="form-row">
-          <div class="col-sm">
-          <h5>Já trabalhou?</h5>
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+          <div class="col-sm-4">
+            <h5>Já trabalhou?</h5>
           </div>
-          </div>
+        <div class="col-sm-2">
+          <button type="button" id="trabalhouNao" class="btn btn-danger btn-excluir-formcao">Não</button>
         </div>
-          <div class="form-row">
+        <div class="col-sm-3">
+          <button type="button" id="trabalhouSim" class="btn btn-danger btn-excluir-formcao">Sim</button>
+        </div>
+        </div>
+        <div class="form-row">
+          <hr>
+        </div>
+        
+        <div id="trabalhos" class="hidden">
+        <div class="form-row">
             <div class="form-group col-sm">
               <h5>Experiência Profissional</h5>
             </div>
@@ -517,7 +608,7 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
               </select>
             </div>
           </div>
-          <div id="estado_pais2" class="form-row">
+          <div id="estado_pais2" class="form-row hidden">
             <div class="form-group col-md">
               <label for="inputState">Estado</label>
               <label for="" class="text-danger">*</label>
@@ -533,6 +624,16 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
               </select>
             </div>
           </div>
+          <div class="form-row">
+            <div class="form-group col-sm">
+              <label for="inputText">Cidade</label>
+              <label for="" class="text-danger">*</label>
+              <input name="cidadeExperiencia" type="text" class="form-control" id="cidadeExperiencia"
+                placeholder="Cidade">
+            </div>
+          </div>
+        </div>
+
         <div class="form-row">
           <div class="form-group col-md-6">
             <button type="reset" class="btn btn-danger btn-lg btn-block">Limpar</button>
@@ -551,104 +652,120 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
     $("#telefone").mask("(00) 0000-0000");
     $("#cep").mask("00.000-000");
     $("#salario").mask("999.999.990,00", { reverse: true });
+    $(".hiddenIdi").hide();
 
-    $('#id_cidade').hide();
-    $('#cidade').hide();
-    $('#cidadecom').hide();
-    $('.carregando').hide();
-    $('#estadocom').hide();
-    $('#estado_pais').hide();
-    $('#estado_pais2').hide();
-    $('#curso').hide();
-    $('#conclusaoLabel2').hide();
-    $('#expProfissinal').hide();
+    $("#addformacao").click(function(){
+      $("#formacaoAcademica").show();
+    });
 
-    // Quando o formulário for submetido...
-    $("#formCurriculo").submit(function(evento){
-      // Para cada elemento com a classe "obrigatorio"
-      $(".obrigatorio").each(function(){
-        // Se o valor do campo for vazio...
-        if( $(this).val() == "" ){
-          // Busca o próximo "span" depois do campo e altera o texto
-          var text = $(this).attr("data-error");
-          $(this).next("div").text(text);
-          $(this).addClass("border-danger");
-
-          // Para a submissão do form
-          evento.preventDefault();
-              
-          }else{
-            // Limpa o texto do span
-            $(this).next("div").text("");
-            $(this).removeClass("border-danger");
-          }
-
-          var tamanhomin = $(this).attr('data-minlength');
-          var tamonhomax = $(this).attr('data-maxlength');
-
-          if(parseInt(tamanhomin) > $(this).val().trim().length){
-            $(this).next("div").text("A senha precisa ter, pelo menos, "+ tamanhomin + " caracteres.");
-            $(this).addClass("border-danger");
-          }else if(parseInt(tamonhomax) < $(this).val().trim().length){
-            $(this).next("div").text("A senha pode ter  até "+ tamonhomax + " caracteres.");
-            $(this).addClass("border-danger");
-          }
-        });
-      });
+    $("#excluirFormacao").click(function(){
+      $("#formacaoAcademica").hide();
+      document.getElementById("id_pais").selectedIndex = "0";
+      document.getElementById("id_estado2").selectedIndex = "0";
+    });
     
 
-    $(function () {
+    $("#addIdioma").click(function(){
+      $("#divIdioma2").show();
+    });
+
+    $("#dellIdioma2").click(function(){
+      $("#divIdioma2").hide();  
+      document.getElementById("idioma2").selectedIndex = "0";
+      document.getElementById("nivel2").selectedIndex = "0";
+    });
+
+    // Quando o formulário for submetido...
+    // $("#formCurriculo").submit(function(evento){
+    //   $(".obrigatorio1").each(function(){
+    //     if( $(this).val() == "" ){
+    //       var text = $(this).attr("data-error");
+    //       $(this).next("div").text(text);
+    //       $(this).addClass("border-danger");
+
+    //       evento.preventDefault();
+              
+    //       }else{
+    //         $(this).next("div").text("");
+    //         $(this).removeClass("border-danger");
+    //       }
+    //     });
+    //   $(".obrigatorio").each(function(){
+    //     // Se o valor do campo for vazio...
+    //     if( $(this).val() == "" ){
+    //       // Busca o próximo "span" depois do campo e altera o texto
+    //       var text = $(this).attr("data-error");
+    //       $(this).next("div").text(text);
+    //       $(this).addClass("border-danger");
+
+    //       // Para a submissão do form
+    //       evento.preventDefault();
+              
+    //       }else{
+    //         // Limpa o texto do span
+    //         $(this).next("div").text("");
+    //         $(this).removeClass("border-danger");
+    //       }
+
+    //       var tamanhomin = $(this).attr('data-minlength');
+    //       var tamonhomax = $(this).attr('data-maxlength');
+
+    //       if(parseInt(tamanhomin) > $(this).val().trim().length){
+    //         $(this).next("div").text("A senha precisa ter, pelo menos, "+ tamanhomin + " caracteres.");
+    //         $(this).addClass("border-danger");
+    //       }else if(parseInt(tamonhomax) < $(this).val().trim().length){
+    //         $(this).next("div").text("A senha pode ter  até "+ tamonhomax + " caracteres.");
+    //         $(this).addClass("border-danger");
+    //       }
+    //     });
+    //   });
+
       $('#concluido').change(function () {
-        $('#conclusao').show();
+        $('#inputConclusaoDisabled').hide();
+        $('#inputConclusao').show();
         $('#conclusaoLabel2').hide();
         $('#conclusaoLabel').show();
       });
       $('#cursando').change(function () {
-        $('#conclusao').show();
+        $('#inputConclusaoDisabled').hide();
+        $('#inputConclusao').show();
         $('#conclusaoLabel').hide();
         $('#conclusaoLabel2').show();
       });
       $('#trancado').change(function () {
-        $('#conclusao').hide();
+        $('#inputConclusaoDisabled').show();
+        $('#inputConclusao').hide();
       });
-    });
 
-    $(function () {
-      $('#id_pais').change(function () {
-        var pais = document.getElementById("id_pais");
-        var paisSelect = pais.options[pais.selectedIndex].value;
+      $("#trabalhouSim").click(function(){
+        $('#trabalhos').show();
+      });
 
-        if (paisSelect == 26) {
-          $('#estado_pais').show();
+      $("#trabalhouNao").click(function(){
+        $('#trabalhos').hide();
+      });
+
+      $(function () {
+      $('#id_estado').change(function () {
+        if ($(this).val()) {
+          $('.carregando').show();
+          $('#cidadecom').show();
+          $.getJSON('http://localhost/BuscaEmp3/paginas/fks/cidade_post.php', { id_estado: $(this).val(), ajax: 'true' }, function (j) {
+            var options = '<option value="">Escolha</option>';
+            for (var i = 0; i < j.length; i++) {
+              options += '<option value="' + j[i].idcidade + '">' + j[i].cidade + '</option>';
+            }
+            $('#id_cidade').html(options).show();
+            $('.carregando').hide();
+          });
+        } else {
+          $('#id_cidade').html('<option value="">Escolha</option>');
         }
-
       });
     });
+  });
 
-    $(function () {
-      $('#id_pais2').change(function () {
-        var pais = document.getElementById("id_pais2");
-        var paisSelect = pais.options[pais.selectedIndex].value;
-
-        if (paisSelect == 26) {
-          $('#estado_pais2').show();
-        }
-
-      });
-    });
-
-    // $("#addformacao").click(function (e) { 
-    //   e.preventDefault();
-    //   $.get("http://localhost/BuscaEmp/paginas/cadastrar/formacaoacademica.php", 
-    //     function (data, textStatus, jqXHR) {
-    //       $("#formacaoacademica").html(data);
-    //     },
-    //     "html"
-    //   );
-
-    // });
-
-    $(function () {
+  $(function () {
       $('#id_nivel').change(function () {
         if ($(this).val()) {
           $('#curso').show();
@@ -665,88 +782,27 @@ $res = mysqli_query ($con, 'SELECT * FROM estado');
       });
     });
 
-
     $(function () {
-      $('#id_estado').change(function () {
-        if ($(this).val()) {
-          $('.carregando').show();
-          $('#cidade').show();
-          $('#cidadecom').show();
-          $.getJSON('http://localhost/BuscaEmp3/paginas/fks/cidade_post.php', { id_estado: $(this).val(), ajax: 'true' }, function (j) {
-            var options = '<option value="">Escolha</option>';
-            for (var i = 0; i < j.length; i++) {
-              options += '<option value="' + j[i].idcidade + '">' + j[i].cidade + '</option>';
-            }
-            $('#id_cidade').html(options).show();
-            $('.carregando').hide();
-          });
-        } else {
-          $('#id_cidade').html('<option value="">Escolha</option>');
+      $('#id_pais').change(function () {
+        var pais = document.getElementById("id_pais");
+        var paisSelect = pais.options[pais.selectedIndex].value;
+
+        if (paisSelect == 26) {
+          $('#estado_pais').show();
         }
+
       });
     });
+    $(function () {
+      $('#id_pais2').change(function () {
+        var pais = document.getElementById("id_pais2");
+        var paisSelect = pais.options[pais.selectedIndex].value;
 
-    $("#addIdioma").click(function () {
+        if (paisSelect == 26) {
+          $('#estado_pais2').show();
+        }
 
-      // Buscar propriedade: var num = ...attr('numIdioma');
-
-      //if( isset($_REQUEST['idiomaX']) ){}
-
-      // alert("ok");
-      // recebe o valor atual do qtdeIdiomas
-      var qtde = parseInt($("#qtdeIdiomas").val()) + 1;
-      // incrementa o valor e atualiza o campo .val(..+1)
-      $("#qtdeIdiomas").val("" + qtde);
-
-      var nameIdioma = 'idioma' + qtde;
-      var nameNivel = 'nivel' + qtde;
-
-      var idiomas = $("#novosIdiomas").html();
-
-      idiomas += '' +
-        '<div class="form-row" id="idioma' + qtde + '">' +
-        '<div class="form-group col-md-5" >' +
-        '<label for="inputIdioma">Idioma</label>' +
-        '<select class="custom-select" name="' + nameIdioma + '">' +
-        '<option selected value="0">Escolha</option>' +
-          <?php
-            $resIdiomas = mysqli_query($con, 'SELECT * FROM idiomas');
-            while ($rowIdiomas = mysqli_fetch_assoc($resIdiomas)):
-          ?>
-          '<option value="<?php echo $rowIdiomas['ididiomas'] ?>"><?php echo utf8_encode($rowIdiomas['idioma']); ?></option>' +
-          <?php endwhile ?>
-        '</select>' +
-        '</div >' +
-        '<div class="form-group col-md-5">' +
-        '<label for="inputIdioma">Nível</label>' +
-        '<select class="custom-select" name="' + nameNivel + '">' +
-        '<option value="0">Nível</option>' +
-        '<option value="Basico">Básico</option>' +
-        '<option value="Intermediario">Intermediário</option>' +
-        '<option value="Avancado">Avançado</option>' +
-        '<option value="Nativo">Nativo</option>' +
-        '</select>' +
-        '</div>' +
-        '<div class="form-group col-md-1">' +
-        '<label class="text-white">Remover</label>' +
-        '<button type="button" class="btn btn-danger btn-excluir-idioma" numIdioma="' + qtde + '"><i class="fa fa-trash" aria-hidden="true"></i></button>' +
-        '</div>' +
-        '</div>' +
-        '';
-
-      $("#novosIdiomas").html(idiomas);
-
+      });
     });
-
-    $('#novosIdiomas').on('click', '.btn-excluir-idioma', function () {
-      var idDiv = "#idioma" + $(this).attr("numIdioma");
-      $(idDiv).remove();
-    });
-
-
-    $("#addformacao").click(function () {
-
-    });
-  });
   
 </script>

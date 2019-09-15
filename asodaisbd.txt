@@ -1,0 +1,82 @@
+
+
+
+
+
+
+
+
+    // $("#addformacao").click(function (e) { 
+    //   e.preventDefault();
+    //   $.get("http://localhost/BuscaEmp/paginas/cadastrar/formacaoacademica.php", 
+    //     function (data, textStatus, jqXHR) {
+    //       $("#formacaoacademica").html(data);
+    //     },
+    //     "html"
+    //   );
+
+    // });
+
+
+
+    $("#addIdioma").click(function () {
+
+      // Buscar propriedade: var num = ...attr('numIdioma');
+
+      //if( isset($_REQUEST['idiomaX']) ){}
+
+      // alert("ok");
+      // recebe o valor atual do qtdeIdiomas
+      var qtde = parseInt($("#qtdeIdiomas").val()) + 1;
+      // incrementa o valor e atualiza o campo .val(..+1)
+      $("#qtdeIdiomas").val("" + qtde);
+
+      var nameIdioma = 'idioma' + qtde;
+      var nameNivel = 'nivel' + qtde;
+
+      var idiomas = $("#novosIdiomas").html();
+
+      idiomas += '' +
+        '<div class="form-row" id="idioma' + qtde + '">' +
+        '<div class="form-group col-md-5" >' +
+        '<label for="inputIdioma">Idioma</label>' +
+        '<select class="custom-select" name="' + nameIdioma + '">' +
+        '<option selected value="0">Escolha</option>' +
+          <?php
+            $resIdiomas = mysqli_query($con, 'SELECT * FROM idiomas');
+            while ($rowIdiomas = mysqli_fetch_assoc($resIdiomas)):
+          ?>
+          '<option value="<?php echo $rowIdiomas['ididiomas'] ?>"><?php echo utf8_encode($rowIdiomas['idioma']); ?></option>' +
+          <?php endwhile ?>
+        '</select>' +
+        '</div >' +
+        '<div class="form-group col-md-5">' +
+        '<label for="inputIdioma">Nível</label>' +
+        '<select class="custom-select" name="' + nameNivel + '">' +
+        '<option value="0">Nível</option>' +
+        '<option value="Basico">Básico</option>' +
+        '<option value="Intermediario">Intermediário</option>' +
+        '<option value="Avancado">Avançado</option>' +
+        '<option value="Nativo">Nativo</option>' +
+        '</select>' +
+        '</div>' +
+        '<div class="form-group col-md-1">' +
+        '<label class="text-white">Remover</label>' +
+        '<button type="button" class="btn btn-danger btn-excluir-idioma" numIdioma="' + qtde + '"><i class="fa fa-trash" aria-hidden="true"></i></button>' +
+        '</div>' +
+        '</div>' +
+        '';
+
+      $("#novosIdiomas").html(idiomas);
+
+    });
+
+    $('#novosIdiomas').on('click', '.btn-excluir-idioma', function () {
+      var idDiv = "#idioma" + $(this).attr("numIdioma");
+      $(idDiv).remove();
+    });
+
+
+    $("#addformacao").click(function () {
+
+    });
