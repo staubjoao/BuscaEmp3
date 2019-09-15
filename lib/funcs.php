@@ -45,7 +45,10 @@ function navega($pagina){
       require 'paginas/cadastrar/questionario.php';
     break;
 
-    
+    case 'idiomas';
+      require 'paginas/add/idiomas.php';
+    break;
+
     //adm
     case 'adm':
       require 'paginas/users/admin.php';
