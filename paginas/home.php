@@ -9,6 +9,7 @@
 
         <div class="col-md-3 border border-dark shadow-lg p-3 mb-5 bg-white rounded" style="margin-top: 100px">
         <a href="?pagina=idiomas">aaaaaaaaaaaaaa</a>
+        <a href="?pagina=teste">asdasdasdasd</a>
           <h2>Candidato</h2>
           <h4><li>Mais de 8mil</li></h4>
           <h4><li>sempre a disposição</li></h4>

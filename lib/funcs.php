@@ -14,6 +14,9 @@ function navega($pagina){
     case 'salvarcurriculo':
       require 'controle/gravarcurriculo.php';
     break;
+    case 'salvarall':
+      require 'controle/salvarCurriculoQuestionario.php';
+    break;
     case 'login':
       require 'paginas/login.php';
     break;
@@ -47,6 +50,13 @@ function navega($pagina){
 
     case 'idiomas';
       require 'paginas/add/idiomas.php';
+    break;
+
+    case 'teste':
+      require 'teste/testeQuestionario.php';
+    break;
+    case 'testeSalvar':
+      require 'teste/testeSalvar.php';
     break;
 
     //adm

@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center bg-light">
     <div class="col-md-5 ml-md-4  border border-dark  shadow-lg p-3 mb-5 bg-white rounded" style="margin-top: 100px">
-      <form action="?pagina=salvarcurriculo" method="post">
+      <form action="?pagina=salvarall" method="post">
         <div class="form-row">
           <div class="form-group col-md">
             <h4>Formulário de competências:</h4>
@@ -22,27 +22,27 @@
         <div class="form-row">
           <div class="form-group col-md">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo1" id="q1r0" value="option1">
+              <input class="form-check-input" type="radio" name="grupo1" id="q1r0" value="0">
               <label class="form-check-label" for="q1r0">0</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="option2">
+              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="1">
               <label class="form-check-label" for="q1r1">1</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="option3">
+              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="2">
               <label class="form-check-label" for="q1r2">2</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="option4">
+              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="3">
               <label class="form-check-label" for="q1r3">3</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="option5">
+              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="5">
               <label class="form-check-label" for="q1r4">4</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="option5">
+              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="6">
               <label class="form-check-label" for="q1r5">5</label>
             </div>
           </div>
@@ -57,27 +57,27 @@
         <div class="form-row">
           <div class="form-group col-md">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo2" id="q2r0" value="option1">
+              <input class="form-check-input" type="radio" name="grupo2" id="q2r0" value="0">
               <label class="form-check-label" for="q2r0">0</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="option2">
+              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="1">
               <label class="form-check-label" for="q2r1">1</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="option3">
+              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="2">
               <label class="form-check-label" for="q2r2">2</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="option4">
+              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="3">
               <label class="form-check-label" for="q2r3">3</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="option5">
+              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="5">
               <label class="form-check-label" for="q2r4">4</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="option5">
+              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="6">
               <label class="form-check-label" for="q2r5">5</label>
             </div>
           </div>
@@ -97,27 +97,27 @@
           <div class="form-group col-md">
             <div class="form-group col-md">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo3" id="q3r0" value="option1">
+                <input class="form-check-input" type="radio" name="grupo3" id="q3r0" value="0">
                 <label class="form-check-label" for="q3r0">0</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="option2">
+                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="1">
                 <label class="form-check-label" for="q3r1">1</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="option3">
+                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="2">
                 <label class="form-check-label" for="q3r2">2</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="option4">
+                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="3">
                 <label class="form-check-label" for="q3r3">3</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="5">
                 <label class="form-check-label" for="q3r4">4</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="6">
                 <label class="form-check-label" for="q3r5">5</label>
               </div>
             </div>
@@ -132,27 +132,27 @@
           <div class="form-group col-md">
             <div class="form-group col-md">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo4" id="q4r0" value="option1">
+                <input class="form-check-input" type="radio" name="grupo4" id="q4r0" value="0">
                 <label class="form-check-label" for="q4r0">0</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="option2">
+                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="1">
                 <label class="form-check-label" for="q4r1">1</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="option3">
+                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="2">
                 <label class="form-check-label" for="q4r2">2</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="option4">
+                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="3">
                 <label class="form-check-label" for="q4r3">3</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="5">
                 <label class="form-check-label" for="q4r4">4</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="6">
                 <label class="form-check-label" for="q4r5">5</label>
               </div>
             </div>
@@ -173,27 +173,27 @@
           <div class="form-group col-md">
             <div class="form-group col-md">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo5" id="q5r0" value="option1">
+                <input class="form-check-input" type="radio" name="grupo5" id="q5r0" value="0">
                 <label class="form-check-label" for="q5r0">0</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="option2">
+                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="1">
                 <label class="form-check-label" for="q5r1">1</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="option3">
+                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="2">
                 <label class="form-check-label" for="q5r2">2</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="option4">
+                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="3">
                 <label class="form-check-label" for="q5r3">3</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="5">
                 <label class="form-check-label" for="q5r4">4</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="6">
                 <label class="form-check-label" for="q5r5">5</label>
               </div>
             </div>
@@ -214,27 +214,27 @@
           <div class="form-group col-md">
             <div class="form-group col-md">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo6" id="q6r0" value="option1">
+                <input class="form-check-input" type="radio" name="grupo6" id="q6r0" value="0">
                 <label class="form-check-label" for="q6r0">0</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="option2">
+                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="1">
                 <label class="form-check-label" for="q6r1">1</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="option3">
+                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="2">
                 <label class="form-check-label" for="q6r2">2</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="option4">
+                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="3">
                 <label class="form-check-label" for="q6r3">3</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="5">
                 <label class="form-check-label" for="q6r4">4</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="6">
                 <label class="form-check-label" for="q6r5">5</label>
               </div>
             </div>
@@ -255,27 +255,27 @@
           <div class="form-group col-md">
             <div class="form-group col-md">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo7" id="q7r0" value="option1">
+                <input class="form-check-input" type="radio" name="grupo7" id="q7r0" value="0">
                 <label class="form-check-label" for="q7r0">0</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="option2">
+                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="1">
                 <label class="form-check-label" for="q7r1">1</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="option3">
+                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="2">
                 <label class="form-check-label" for="q7r2">2</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="option4">
+                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="3">
                 <label class="form-check-label" for="q7r3">3</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="5">
                 <label class="form-check-label" for="q7r4">4</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="6">
                 <label class="form-check-label" for="q7r5">5</label>
               </div>
             </div>
@@ -296,27 +296,63 @@
           <div class="form-group col-md">
             <div class="form-group col-md">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo8" id="q8r0" value="option1">
+                <input class="form-check-input" type="radio" name="grupo8" id="q8r0" value="0">
                 <label class="form-check-label" for="q8r0">0</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="option2">
+                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="1">
                 <label class="form-check-label" for="q8r1">1</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="option3">
+                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="2">
                 <label class="form-check-label" for="q8r2">2</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="option4">
+                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="3">
                 <label class="form-check-label" for="q8r3">3</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="5">
                 <label class="form-check-label" for="q8r4">4</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="6">
+                <label class="form-check-label" for="q8r5">5</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md">
+            <h5>Você consegue lidar com suas emoções?</h5>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <div class="form-group col-md">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="grupo9" id="q8r0" value="0">
+                <label class="form-check-label" for="q8r0">0</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="grupo9" id="q8r1" value="1">
+                <label class="form-check-label" value="1" for="q8r1">1</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="grupo9" id="q8r1" value="2">
+                <label class="form-check-label" for="q8r2">2</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="grupo9" id="q8r1" value="3">
+                <label class="form-check-label" for="q8r3">3</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="grupo9" id="q8r1" value="5">
+                <label class="form-check-label" for="q8r4">4</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="grupo9" id="q8r1" value="6">
                 <label class="form-check-label" for="q8r5">5</label>
               </div>
             </div>
@@ -337,27 +373,27 @@
           <div class="form-group col-md">
             <div class="form-group col-md">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo9" id="q9r0" value="option1">
+                <input class="form-check-input" type="radio" name="grupo10" id="q9r0" value="0">
                 <label class="form-check-label" for="q9r0">0</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo9" id="q9r1" value="option2">
+                <input class="form-check-input" type="radio" name="grupo10" id="q9r1" value="1">
                 <label class="form-check-label" for="q9r1">1</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo9" id="q9r1" value="option3">
+                <input class="form-check-input" type="radio" name="grupo10" id="q9r1" value="2">
                 <label class="form-check-label" for="q9r2">2</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo9" id="q9r1" value="option4">
+                <input class="form-check-input" type="radio" name="grupo10" id="q9r1" value="3">
                 <label class="form-check-label" for="q9r3">3</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo9" id="q9r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo10" id="q9r1" value="5">
                 <label class="form-check-label" for="q9r4">4</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo9" id="q9r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo10" id="q9r1" value="6">
                 <label class="form-check-label" for="q9r5">5</label>
               </div>
             </div>
@@ -373,27 +409,27 @@
           <div class="form-group col-md">
             <div class="form-group col-md">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo10" id="q10r0" value="option1">
+                <input class="form-check-input" type="radio" name="grupo11" id="q10r0" value="0">
                 <label class="form-check-label" for="q10r0">0</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo10" id="q10r1" value="option2">
+                <input class="form-check-input" type="radio" name="grupo11" id="q10r1" value="1">
                 <label class="form-check-label" for="q10r1">1</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo10" id="q10r1" value="option3">
+                <input class="form-check-input" type="radio" name="grupo11" id="q10r1" value="2">
                 <label class="form-check-label" for="q10r2">2</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo10" id="q10r1" value="option4">
+                <input class="form-check-input" type="radio" name="grupo11" id="q10r1" value="3">
                 <label class="form-check-label" for="q10r3">3</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo10" id="q10r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo11" id="q10r1" value="5">
                 <label class="form-check-label" for="q10r4">4</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo10" id="q10r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo11" id="q10r1" value="6">
                 <label class="form-check-label" for="q10r5">5</label>
               </div>
             </div>
@@ -414,27 +450,62 @@
           <div class="form-group col-md">
             <div class="form-group col-md">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo11" id="q11r0" value="option1">
+                <input class="form-check-input" type="radio" name="grupo12" id="q11r0" value="0">
                 <label class="form-check-label" for="q11r0">0</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo11" id="q11r1" value="option2">
+                <input class="form-check-input" type="radio" name="grupo12" id="q11r1" value="1">
                 <label class="form-check-label" for="q11r1">1</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo11" id="q11r1" value="option3">
+                <input class="form-check-input" type="radio" name="grupo12" id="q11r1" value="2">
                 <label class="form-check-label" for="q11r2">2</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo11" id="q11r1" value="option4">
+                <input class="form-check-input" type="radio" name="grupo12" id="q11r1" value="3">
                 <label class="form-check-label" for="q11r3">3</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo11" id="q11r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo12" id="q11r1" value="5">
                 <label class="form-check-label" for="q11r4">4</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo11" id="q11r1" value="option5">
+                <input class="form-check-input" type="radio" name="grupo12" id="q11r1" value="6">
+                <label class="form-check-label" for="q11r5">5</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <h5>Você consegue aplicar seus conhecimentos com destreza?</h5>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <div class="form-group col-md">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="grupo13" id="q11r0" value="0">
+                <label class="form-check-label" for="q11r0">0</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="grupo13" id="q11r1" value="1">
+                <label class="form-check-label" for="q11r1">1</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="grupo13" id="q11r1" value="2">
+                <label class="form-check-label" for="q11r2">2</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="grupo13" id="q11r1" value="3">
+                <label class="form-check-label" for="q11r3">3</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="grupo13" id="q11r1" value="5">
+                <label class="form-check-label" for="q11r4">4</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="grupo13" id="q11r1" value="6">
                 <label class="form-check-label" for="q11r5">5</label>
               </div>
             </div>

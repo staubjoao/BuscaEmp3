@@ -6,6 +6,8 @@ INSERT INTO perguntas (pergunta) VALUES ("Você está preparado para receber cr�
 INSERT INTO perguntas (pergunta) VALUES ("Você está preparado para tomar uma decisão levando em conta os possíveis riscos dessa decisão?");
 INSERT INTO perguntas (pergunta) VALUES ("Você está comprometido em cumprir horários e metas?");
 INSERT INTO perguntas (pergunta) VALUES ("Você se considera uma pessoa capaz de lidar com adversidades?");
+INSERT INTO perguntas (pergunta) VALUES ("Você consegue lidar com suas emoções?");
 INSERT INTO perguntas (pergunta) VALUES ("Você se considera uma pessoa comunicativa?");
 INSERT INTO perguntas (pergunta) VALUES ("Você tem experiência e/ou facilidade em falar em público?");
 INSERT INTO perguntas (pergunta) VALUES ("Você tem experiência na sua área de atuação?");
+INSERT INTO perguntas (pergunta) VALUES ("Você consegue aplicar seus conhecimentos com destreza? ");

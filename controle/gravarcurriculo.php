@@ -160,7 +160,7 @@ $_SESSION['genero'] = $genero;
 $_SESSION['estadocivil'] = $estadocivil;
 $_SESSION['empregado'] = $empregado;
 $_SESSION['jornada'] = $jornada;
-$_SESSION['tipoContrato'] = $email;
+$_SESSION['tipoContrato'] = $tipoContrato;
 $_SESSION['nivelHierarquicoMin'] = $nivelHierarquicoMin;
 $_SESSION['nivelHierarquicoMax'] = $nivelHierarquicoMax;
 $_SESSION['pretensao'] = $pretensao;
@@ -172,62 +172,62 @@ if((trim($_POST['idioma2'])) == "" && (trim($_POST['nivel2'])) == ""){
   $nivel2 = trim($_POST['nivel2']);
 }
 
-//Idiomas
-$_SESSION['idioma1'] = $idioma1;
-$_SESSION['nivel1'] = $nivel1;
-$_SESSION['idioma2'] = $idioma2;
-$_SESSION['nivel2'] = $nivel2;
+// //Idiomas
+// $_SESSION['idioma1'] = $idioma1;
+// $_SESSION['nivel1'] = $nivel1;
+// $_SESSION['idioma2'] = $idioma2;
+// $_SESSION['nivel2'] = $nivel2;
 
-if((trim($_POST['instituicao'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $instituicao = trim($_POST['instituicao']);
-}
-if((trim($_POST['id_pais'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $id_pais = trim($_POST['id_pais']);
-}
-if((trim($_POST['cidadeAcademica'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $cidadeAcademica = trim($_POST['cidadeAcademica']);
-}
-if((trim($_POST['id_nivel'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $id_nivel = trim($_POST['id_nivel']);
-}
-if((trim($_POST['id_curso'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $id_curso = trim($_POST['id_curso']);
-}
-if((trim($_POST['inicio'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $inicio = trim($_POST['inicio']);
-}
-if((trim($_POST['termino'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $termino = trim($_POST['termino']);
-}
-if((trim($_POST['inicio'])) == "S" || (trim($_POST['inicio'])) == "N"){
-  $ead = trim($_POST['ead']);
-}else{
-  header("Location: ?pagina=");
-}
+// if((trim($_POST['instituicao'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $instituicao = trim($_POST['instituicao']);
+// }
+// if((trim($_POST['id_pais'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $id_pais = trim($_POST['id_pais']);
+// }
+// if((trim($_POST['cidadeAcademica'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $cidadeAcademica = trim($_POST['cidadeAcademica']);
+// }
+// if((trim($_POST['id_nivel'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $id_nivel = trim($_POST['id_nivel']);
+// }
+// if((trim($_POST['id_curso'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $id_curso = trim($_POST['id_curso']);
+// }
+// if((trim($_POST['inicio'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $inicio = trim($_POST['inicio']);
+// }
+// if((trim($_POST['termino'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $termino = trim($_POST['termino']);
+// }
+// if((trim($_POST['inicio'])) == "S" || (trim($_POST['inicio'])) == "N"){
+//   $ead = trim($_POST['ead']);
+// }else{
+//   header("Location: ?pagina=");
+// }
 
-//Curso
-$_SESSION['instituicao'] = $instituicao;
-$_SESSION['cidadeAcademica'] = $cidadeAcademica;
-$_SESSION['id_pais'] = $id_pais;
-$_SESSION['id_nivel'] = $id_nivel;
-$_SESSION['id_curso'] = $id_curso;
-$_SESSION['inicio'] = $inicio;
-$_SESSION['termino'] = $termino;
-$_SESSION['ead'] = $ead;
+// //Curso
+// $_SESSION['instituicao'] = $instituicao;
+// $_SESSION['cidadeAcademica'] = $cidadeAcademica;
+// $_SESSION['id_pais'] = $id_pais;
+// $_SESSION['id_nivel'] = $id_nivel;
+// $_SESSION['id_curso'] = $id_curso;
+// $_SESSION['inicio'] = $inicio;
+// $_SESSION['termino'] = $termino;
+// $_SESSION['ead'] = $ead;
 
 
 
