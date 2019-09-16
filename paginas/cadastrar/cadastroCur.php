@@ -1,5 +1,9 @@
 <?php
+@session_start();
 $con = conecta();
+
+$_SESSION['idiomasCont'] = 2;
+ $_SESSION['formacaoCont'] = 1;
 ?>
 
 <style type="text/css">
@@ -88,12 +92,13 @@ $con = conecta();
             <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
-        <div id="cidadecom" class="form-row hidden">
+        <div id="cidadecom" class="form-row">
           <div class="form-group col-md">
             <label for="inputCity" id="cidade">Cidade</label>
             <label for="" class="text-danger">*</label>
-            <span class="carregando text-danger hidden">carregando...</span>
-            <select name="id_cidade" data-error="Selecione uma cidade" id="id_cidade" class="form-control obrigatorio1">
+            <span class="carregando text-danger">carregando...</span>
+            <select name="id_cidade" data-error="Selecione uma cidade" id="id_cidade" class="form-control obrigatorio">
+              <option value="">Escolha um estado primeiro</option>
             </select>
             <div class="help-block with-errors text-danger"></div>
           </div>
@@ -336,7 +341,7 @@ $con = conecta();
 
         <div id="idiomas">
           <div class="form-row">
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-6">
               <label for="inputIdioma">Idioma</label>
               <label for="" class="text-danger">*</label>
               <select name="idioma" class="custom-select" id="idioma">
@@ -350,7 +355,7 @@ $con = conecta();
                 <?php endwhile ?>
               </select>
             </div>
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-6">
               <label for="inputIdioma">Nível</label>
               <label for="" class="text-danger">*</label>
               <select name="nivel" class="custom-select" id="inlineFormCustomSelect">
@@ -360,14 +365,6 @@ $con = conecta();
                 <option value="Avancado">Avançado</option>
                 <option value="Nativo">Nativo</option>
               </select>
-            </div>
-            <div class="form-group col-md-1">
-              <label class="text-white">R</label>
-              <button id="incluirIdioma" type="button" class="btn btn-primary btn-excluir-idioma" numIdioma=""><i class="fa fa-plus" aria-hidden="true"></i></button>
-            </div>
-            <div class="form-group col-md-1">
-              <label class="text-white">R</label>
-              <button id="cancelarIdioma" type="button" class="btn btn-danger btn-excluir-idioma" numIdioma=""><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
           </div>
         
@@ -380,126 +377,8 @@ $con = conecta();
           </div>
         </div>
 
-        <div class="hidden" id="formacaoAcademica">
-          <div class="form-row">
-            <div class="form-group col-sm">
-              <h5>Formação Acadêmica</h5>
-            </div>
-          </div>
-          <input type="hidden" id="qtdeFormacao" name="qtdeFormacao" value="0">
-          <div class="form-row">
-            <div class="form-group col-sm">
-              <label for="inputText">Nome da Instituição</label>
-              <label for="" class="text-danger">*</label>
-              <input name="instituicao" type="text" class="form-control" id="instituicao"
-                placeholder="Nome da Instituição">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md">
-              <label for="inputState">País</label>
-              <label for="" class="text-danger">*</label>
-              <select name="id_pais" id="id_pais" class="form-control">
-                <option value="0">Escolha</option>
-                <?php
-              $resPais = mysqli_query ($con, 'SELECT * FROM pais');
-              while ($rowPais = mysqli_fetch_assoc($resPais)):
-            ?>
-                <option value="<?php echo $rowPais['idpais'] ?>"><?php echo utf8_encode($rowPais['pais']); ?>
-                </option>
-                <?php endwhile ?>
-              </select>
-            </div>
-          </div>
-          <div id="estado_pais" class="form-row hidden">
-            <div class="form-group col-md">
-              <label for="inputState">Estado</label>
-              <label for="" class="text-danger">*</label>
-              <select name="id_estado2" id="id_estado2" class="form-control">
-                <option value="0">Escolha</option>
-                <?php
-              $resEstado = mysqli_query ($con, 'SELECT * FROM estado');
-              while ($rowEstado = mysqli_fetch_assoc($resEstado)):
-            ?>
-                <option value="<?php echo $rowEstado['idestado'] ?>"><?php echo utf8_encode($rowEstado['estado']); ?>
-                </option>
-                <?php endwhile ?>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-sm">
-              <label for="inputText">Cidade</label>
-              <label for="" class="text-danger">*</label>
-              <input name="cidadeAcademica" type="text" class="form-control" id="cidadeAcademica" placeholder="Cidade">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md">
-              <label for="inputState">Nível</label>
-              <label for="" class="text-danger">*</label>
-              <select name="id_nivel" id="id_nivel" class="form-control">
-                <option value="0">Escolha</option>
-                <?php
-              $resnivel = mysqli_query ($con, 'SELECT * FROM nivel');
-              while ($rowNivel = mysqli_fetch_assoc($resnivel)):
-            ?>
-                <option value="<?php echo $rowNivel['idnivel'] ?>"><?php echo utf8_encode($rowNivel['nivel']); ?>
-                </option>
-                <?php endwhile ?>
-              </select>
-            </div>
-          </div>
-          <div id="curso" class="form-row hidden">
-            <div class="form-group col-md">
-              <label for="inputCity">Curso</label>
-              <label for="" class="text-danger">*</label>
-              <span class="carregando text-danger">carregando...</span>
-              <select name="id_curso" id="id_curso" class="form-control">
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-sm-4">
-              <label class="radio-inline"><input type="radio" id="concluido" name="estadoCurso">Concluído</label>
-            </div>
-            <div class="form-group col-sm-4">
-              <label class="radio-inline"><input type="radio" id="cursando" name="estadoCurso">Cursando</label>
-            </div>
-            <div class="form-group col-sm-4">
-              <label class="radio-inline"><input type="radio" id="trancado" name="estadoCurso">Trancado</label>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-sm">
-              <label>EAD</label>
-              <label class="text-danger">*</label>
-              <select name="ead" id="ead" class="form-control">
-                <option value="">Escolha</option>
-                <option value="S">Sim</option>
-                <option value="N">Não</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-sm-6">
-              <label for="inputInicio">Inicio</label>
-              <input name="inicio" type="date" class="form-control" id="inputInicio" placeholder="Inicio">
-            </div>
-            <div class="form-group col-sm-5" id="conclusao">
-              <label for="inputTermino" id="conclusaoLabel">Conclusão</label>
-              <label class="hidden" for="inputTermino" id="conclusaoLabel2">Conclusão esperada</label>
-              <input name="termino" type="date" class="form-control" id="inputConclusao" placeholder="Conclusão">
-              <input type="date" class="form-control hidden" id="inputConclusaoDisabled" placeholder="Conclusão"
-                disabled>
-            </div>
-            <div class="form-group col-md-1">
-              <label class="text-white" for="">R</label>
-              <button type="button" id="excluirFormacao" class="btn btn-danger btn-excluir-formcao"><i
-                  class="fa fa-trash" aria-hidden="true"></i></button>
-            </div>
-          </div>
-        </div>
+        <div id="novasFormacoes"></div>
+
         <div class="form-row">
           <div class="form-group col-md">
             <button type="button" id="addformacao" class="btn btn-dark btn-lg btn-block btn-sm">Adicionar
@@ -642,11 +521,6 @@ $con = conecta();
     $("#telefone").mask("(00) 0000-0000");
     $("#cep").mask("00.000-000");
     $("#salario").mask("999.999.990,00", { reverse: true });
-    $(".hiddenIdi").hide();
-
-    $("#addformacao").click(function () {
-      $("#formacaoAcademica").show();
-    });
 
     // function imprimirIdioma(idioma)
     // {
@@ -676,17 +550,29 @@ $con = conecta();
       document.getElementById("id_estado2").selectedIndex = "0";
     });
 
+    $('body').on('click', '.btn-excluir-idioma', function() {
+      var idiomaRow = "#"+$(this).attr("idioma") ;
+      $(idiomaRow).remove();
+    });
 
+    $("#addformacao").click(function () {
+      $.ajax({
+        dataType: 'html',
+        url: 'http://localhost/BuscaEmp3/paginas/add/formacaoAcademica.php',
+        success: function(idiomas){
+          $("#novasFormacoes").append(idiomas);
+        }
+      });
+    });
     $("#addIdioma").click(function () {
       // $("#idiomas").append('<h2>asdasd</h2>');
       $.ajax({
         dataType: 'html',
         url: 'http://localhost/BuscaEmp3/paginas/add/idiomas.php',
         success: function(idiomas){
-          $("#novosIdiomas").html(idiomas);
+          $("#novosIdiomas").append(idiomas);
         }
       });
-      alert("asdasd");
     });
 
     $("#dellIdioma2").click(function () {
@@ -695,50 +581,47 @@ $con = conecta();
       document.getElementById("nivel2").selectedIndex = "0";
     });
 
+    function validar(evento, this_element){
+      if( this_element.val() == "" ){
+          // Busca o próximo "span" depois do campo e altera o texto
+          var text = this_element.attr("data-error");
+          this_element.next("div").text(text);
+          this_element.addClass("border-danger");
+
+          // Para a submissão do form
+          evento.preventDefault();
+
+          }else{
+            // Limpa o texto do span
+            this_element.next("div").text("");
+            this_element.removeClass("border-danger");
+          }
+    }
+
     // Quando o formulário for submetido...
     // $("#formCurriculo").submit(function(evento){
-    //   $(".obrigatorio1").each(function(){
-    //     if( $(this).val() == "" ){
-    //       var text = $(this).attr("data-error");
-    //       $(this).next("div").text(text);
-    //       $(this).addClass("border-danger");
+      $('body').on('blur', '.obrigatorio', function(evento){
+        validar(evento, $(this));
+      });
 
-    //       evento.preventDefault();
+        $('body').on('submit', '#formCurriculo', function(evento){
+      $(".obrigatorio").each(function(){
+        // Se o valor do campo for vazio...
+        validar(evento, $(this));
 
-    //       }else{
-    //         $(this).next("div").text("");
-    //         $(this).removeClass("border-danger");
-    //       }
-    //     });
-    //   $(".obrigatorio").each(function(){
-    //     // Se o valor do campo for vazio...
-    //     if( $(this).val() == "" ){
-    //       // Busca o próximo "span" depois do campo e altera o texto
-    //       var text = $(this).attr("data-error");
-    //       $(this).next("div").text(text);
-    //       $(this).addClass("border-danger");
+          var tamanhomin = $(this).attr('data-minlength');
+          var tamonhomax = $(this).attr('data-maxlength');
 
-    //       // Para a submissão do form
-    //       evento.preventDefault();
+          if(parseInt(tamanhomin) > $(this).val().trim().length){
+            $(this).next("div").text("A senha precisa ter, pelo menos, "+ tamanhomin + " caracteres.");
+            $(this).addClass("border-danger");
+          }else if(parseInt(tamonhomax) < $(this).val().trim().length){
+            $(this).next("div").text("A senha pode ter  até "+ tamonhomax + " caracteres.");
+            $(this).addClass("border-danger");
+          }
 
-    //       }else{
-    //         // Limpa o texto do span
-    //         $(this).next("div").text("");
-    //         $(this).removeClass("border-danger");
-    //       }
-
-    //       var tamanhomin = $(this).attr('data-minlength');
-    //       var tamonhomax = $(this).attr('data-maxlength');
-
-    //       if(parseInt(tamanhomin) > $(this).val().trim().length){
-    //         $(this).next("div").text("A senha precisa ter, pelo menos, "+ tamanhomin + " caracteres.");
-    //         $(this).addClass("border-danger");
-    //       }else if(parseInt(tamonhomax) < $(this).val().trim().length){
-    //         $(this).next("div").text("A senha pode ter  até "+ tamonhomax + " caracteres.");
-    //         $(this).addClass("border-danger");
-    //       }
-    //     });
-    //   });
+        });
+      });
 
     $('#concluido').change(function () {
       $('#inputConclusaoDisabled').hide();
@@ -786,33 +669,9 @@ $con = conecta();
   });
 
   $(function () {
-    $('#id_nivel').change(function () {
-      if ($(this).val()) {
-        $('#curso').show();
-        $.getJSON('http://localhost/BuscaEmp/paginas/fks/curso_post.php', { id_nivel: $(this).val(), ajax: 'true' }, function (j) {
-          var options = '<option value="">Escolha</option>';
-          for (var i = 0; i < j.length; i++) {
-            options += '<option value="' + j[i].idccurso + '">' + j[i].curso + '</option>';
-          }
-          $('#id_curso').html(options).show();
-        });
-      } else {
-        $('#id_curso').html('<option value="">– Escolha –</option>');
-      }
-    });
+
   });
 
-  $(function () {
-    $('#id_pais').change(function () {
-      var pais = document.getElementById("id_pais");
-      var paisSelect = pais.options[pais.selectedIndex].value;
-
-      if (paisSelect == 26) {
-        $('#estado_pais').show();
-      }
-
-    });
-  });
   $(function () {
     $('#id_pais2').change(function () {
       var pais = document.getElementById("id_pais2");

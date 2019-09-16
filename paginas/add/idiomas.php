@@ -1,9 +1,10 @@
 <?php
+@session_start();
 require_once('../../lib/funcs.php');
 
 $con = conecta();
 
-$numIdiomas = 2;
+$numIdiomas = $_SESSION['idiomasCont'];
 ?>
 <div class="form-row" id="<?php echo"idiomaRow".$numIdiomas?>">
     <div class="form-group col-md-6">
@@ -33,10 +34,10 @@ $numIdiomas = 2;
     </div>
     <div class="form-group col-md-1">
         <label class="text-white">R</label>
-        <button id="<?php echo"dellIdioma".$numIdiomas?>" type="button" class="btn btn-danger btn-excluir-idioma" numIdioma=""><i class="fa fa-trash" aria-hidden="true"></i></button>
+        <button idioma="<?php echo"idiomaRow".$numIdiomas?>" type="button" class="btn btn-danger btn-excluir-idioma" numIdioma=""><i class="fa fa-trash" aria-hidden="true"></i></button>
     </div>
 </div>
 
 <?php
-$numIdiomas = $numIdiomas + 1;
+$_SESSION['idiomasCont'] = $numIdiomas + 1;
 ?>

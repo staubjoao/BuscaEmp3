@@ -5,7 +5,7 @@ $con = conecta();
 
 $id_nivel = $_REQUEST['id_nivel'];
 
-$result_curso = "SELECT * FROM curso WHERE idnivel=$id_nivel";
+$result_curso = "SELECT * FROM curso WHERE nivel_idnivel=$id_nivel";
 $resultado_curso = mysqli_query($con, $result_curso);
 
 
