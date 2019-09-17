@@ -5,6 +5,7 @@ $con = conecta();
 $_SESSION['idiomasCont'] = 2;
 $_SESSION['formacaoCont'] = 1;
 $_SESSION['experienciaCont'] = 1;
+$_SESSION['cargosCont'] = 1;
 ?>
 
 <style type="text/css">
@@ -301,6 +302,11 @@ $_SESSION['experienciaCont'] = 1;
             <div class="help-block with-errors text-danger"></div>
           </div>
         </div>
+        <div id="novosCargos"></div>
+        <div class="form-row">
+          <button type="button" id="addCargoAlmejado" class="btn btn-dark btn-lg btn-block btn-sm">Adicionar Cargo 
+          Almejado</button>
+        </div>
         <div class="form-row">
           <div class="form-group col-sm">
             <label for="inputIdioma">Pretensão salarial</label>
@@ -468,6 +474,11 @@ $_SESSION['experienciaCont'] = 1;
       $(formacaoRow).remove();
     });
     
+    $('body').on('click', '.btn-excluir-cargo', function() {
+      var cargoRow = "#"+$(this).attr("cargoAlmejado") ;
+      $(cargoRow).remove();
+    });
+
     $('body').on('click', '.btn-excluir-experiencia', function() {
       var experienciaRow = "#"+$(this).attr("experiencia") ;
       $(experienciaRow).remove();
@@ -475,6 +486,16 @@ $_SESSION['experienciaCont'] = 1;
     
     $("#trabalhouSim").click(function () {
       $('#trabalhos').show();
+    });
+
+    $("#addCargoAlmejado").click(function () {
+      $.ajax({
+        dataType: 'html',
+        url: 'http://localhost/BuscaEmp3/paginas/add/cargoAlmejado.php',
+        success: function(curso){
+          $("#novosCargos").append(curso);
+        }
+      });
     });
 
     $("#addexperienciaprof").click(function () {
