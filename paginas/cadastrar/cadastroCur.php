@@ -3,7 +3,8 @@
 $con = conecta();
 
 $_SESSION['idiomasCont'] = 2;
- $_SESSION['formacaoCont'] = 1;
+$_SESSION['formacaoCont'] = 1;
+$_SESSION['experienciaCont'] = 1;
 ?>
 
 <style type="text/css">
@@ -402,105 +403,19 @@ $_SESSION['idiomasCont'] = 2;
 
         <div id="trabalhos" class="hidden">
           <div class="form-row">
-            <div class="form-group col-sm">
+            <div class="form-group col-md">
               <h5>Experiência Profissional</h5>
             </div>
           </div>
+          <div id="novasexperiencias"></div>
           <div class="form-row">
             <div class="form-group col-md">
-              <label for="inputText">Empresa</label>
-              <label for="" class="text-danger">*</label>
-              <input name="empresa" type="text" class="form-control" id="empresa" placeholder="Empresa">
-            </div>
+            <button type="button" id="addexperienciaprof" class="btn btn-dark btn-lg btn-block btn-sm">experiência 
+              Profissional</button>
           </div>
-          <div class="form-row">
-            <div class="form-group col-md">
-              <label for="inputText">Cargo</label>
-              <label for="" class="text-danger">*</label>
-              <input name="cargo" type="text" class="form-control" id="cargo" placeholder="Cargo">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-sm-6">
-              <label for="inputInicio">Inicio</label>
-              <label for="" class="text-danger">*</label>
-              <input name="inicioExp" type="date" class="form-control" id="inicioExp" placeholder="Inicio">
-            </div>
-            <div class="form-group col-sm-6" id="conclusao">
-              <label for="inputTermino" id="conclusaoLabel">Termino</label>
-              <label for="" class="text-danger">*</label>
-              <input name="terminoExp" type="date" class="form-control" id="terminoExp" placeholder="Termino">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md">
-              <label>Nível hierárquico</label>
-              <label class="text-danger">*</label>
-              <select name="nivelHierarquicoExp" class="custom-select" id="nivelHierarquicoExp">
-                <option selected="selected" value="0">Selecione</option>
-                <option value="1">Estagiário</option>
-                <option value="2">Operacional</option>
-                <option value="3">Auxiliar</option>
-                <option value="4">Assistente</option>
-                <option value="5">Trainee</option>
-                <option value="6">Analista</option>
-                <option value="7">Encarregado</option>
-                <option value="8">Supervisor</option>
-                <option value="9">Consultor</option>
-                <option value="10">Especialista</option>
-                <option value="11">Coordenador</option>
-                <option value="12">Gerente</option>
-                <option value="13">Diretor</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md">
-              <label for="inputText">Salário</label>
-              <label for="" class="text-danger">*</label>
-              <input name="salario" type="text" class="form-control" id="salario" placeholder="Salário">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md">
-              <label for="inputState">País</label>
-              <label for="" class="text-danger">*</label>
-              <select name="id_pais2" id="id_pais2" class="form-control">
-                <option value="0">Escolha</option>
-                <?php
-                $resPais = mysqli_query ($con, 'SELECT * FROM pais');
-                while ($rowPais = mysqli_fetch_assoc($resPais)):
-              ?>
-                <option value="<?php echo $rowPais['idpais'] ?>"><?php echo utf8_encode($rowPais['pais']); ?>
-                </option>
-                <?php endwhile ?>
-              </select>
-            </div>
-          </div>
-          <div id="estado_pais2" class="form-row hidden">
-            <div class="form-group col-md">
-              <label for="inputState">Estado</label>
-              <label for="" class="text-danger">*</label>
-              <select name="id_estado3" id="id_estado3" class="form-control">
-                <option value="0">Escolha</option>
-                <?php
-                $resEstado = mysqli_query ($con, 'SELECT * FROM estado');
-                while ($rowEstado = mysqli_fetch_assoc($resEstado)):
-              ?>
-                <option value="<?php echo $rowEstado['idestado'] ?>"><?php echo utf8_encode($rowEstado['estado']); ?>
-                </option>
-                <?php endwhile ?>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-sm">
-              <label for="inputText">Cidade</label>
-              <label for="" class="text-danger">*</label>
-              <input name="cidadeExperiencia" type="text" class="form-control" id="cidadeExperiencia"
-                placeholder="Cidade">
-            </div>
-          </div>
+        </div>
+      </div>
+          
         </div>
 
         <div class="form-row">
@@ -508,7 +423,7 @@ $_SESSION['idiomasCont'] = 2;
             <button type="reset" class="btn btn-danger btn-lg btn-block">Limpar</button>
           </div>
           <div class="form-group col-md-6">
-            <button type="submit" class="btn btn-dark btn-lg btn-block">Próximo</button>
+            <button type="submit" id="proximo" class="btn btn-dark btn-lg btn-block">Próximo</button>
           </div>
         </div>
       </form>
@@ -543,27 +458,45 @@ $_SESSION['idiomasCont'] = 2;
     //   buscar($("#idioma").val());
     // });
 
-
-    $("#excluirFormacao").click(function (){
-      $("#formacaoAcademica").hide();
-      document.getElementById("id_pais").selectedIndex = "0";
-      document.getElementById("id_estado2").selectedIndex = "0";
-    });
-
     $('body').on('click', '.btn-excluir-idioma', function() {
       var idiomaRow = "#"+$(this).attr("idioma") ;
       $(idiomaRow).remove();
+    });
+
+    $('body').on('click', '.btn-excluir-formcao', function() {
+      var formacaoRow = "#"+$(this).attr("formacao") ;
+      $(formacaoRow).remove();
+    });
+    
+    $('body').on('click', '.btn-excluir-experiencia', function() {
+      var experienciaRow = "#"+$(this).attr("experiencia") ;
+      $(experienciaRow).remove();
+    });
+    
+    $("#trabalhouSim").click(function () {
+      $('#trabalhos').show();
+    });
+
+    $("#addexperienciaprof").click(function () {
+      $.ajax({
+        dataType: 'html',
+        url: 'http://localhost/BuscaEmp3/paginas/add/experienciaProfissinal.php',
+        success: function(experiencia){
+          $("#novasexperiencias").append(experiencia);
+        }
+      });
     });
 
     $("#addformacao").click(function () {
       $.ajax({
         dataType: 'html',
         url: 'http://localhost/BuscaEmp3/paginas/add/formacaoAcademica.php',
-        success: function(idiomas){
-          $("#novasFormacoes").append(idiomas);
+        success: function(formacao){
+          $("#novasFormacoes").append(formacao);
         }
       });
     });
+
     $("#addIdioma").click(function () {
       // $("#idiomas").append('<h2>asdasd</h2>');
       $.ajax({
@@ -573,12 +506,6 @@ $_SESSION['idiomasCont'] = 2;
           $("#novosIdiomas").append(idiomas);
         }
       });
-    });
-
-    $("#dellIdioma2").click(function () {
-      $("#divIdioma2").hide();
-      document.getElementById("idioma2").selectedIndex = "0";
-      document.getElementById("nivel2").selectedIndex = "0";
     });
 
     function validar(evento, this_element){
@@ -604,24 +531,24 @@ $_SESSION['idiomasCont'] = 2;
         validar(evento, $(this));
       });
 
-        $('body').on('submit', '#formCurriculo', function(evento){
-      $(".obrigatorio").each(function(){
-        // Se o valor do campo for vazio...
-        validar(evento, $(this));
+      // $('body').on('click', '#proximo', function(evento){
+      // $(".obrigatorio").each(function(){
+      //   // Se o valor do campo for vazio...
+      //   validar(evento, $(this));
 
-          var tamanhomin = $(this).attr('data-minlength');
-          var tamonhomax = $(this).attr('data-maxlength');
+      //     var tamanhomin = $(this).attr('data-minlength');
+      //     var tamonhomax = $(this).attr('data-maxlength');
 
-          if(parseInt(tamanhomin) > $(this).val().trim().length){
-            $(this).next("div").text("A senha precisa ter, pelo menos, "+ tamanhomin + " caracteres.");
-            $(this).addClass("border-danger");
-          }else if(parseInt(tamonhomax) < $(this).val().trim().length){
-            $(this).next("div").text("A senha pode ter  até "+ tamonhomax + " caracteres.");
-            $(this).addClass("border-danger");
-          }
+      //     if(parseInt(tamanhomin) > $(this).val().trim().length){
+      //       $(this).next("div").text("A senha precisa ter, pelo menos, "+ tamanhomin + " caracteres.");
+      //       $(this).addClass("border-danger");
+      //     }else if(parseInt(tamonhomax) < $(this).val().trim().length){
+      //       $(this).next("div").text("A senha pode ter  até "+ tamonhomax + " caracteres.");
+      //       $(this).addClass("border-danger");
+      //     }
 
-        });
-      });
+      //   });
+      // });
 
     $('#concluido').change(function () {
       $('#inputConclusaoDisabled').hide();
@@ -640,13 +567,9 @@ $_SESSION['idiomasCont'] = 2;
       $('#inputConclusao').hide();
     });
 
-    $("#trabalhouSim").click(function () {
-      $('#trabalhos').show();
-    });
-
-    $("#trabalhouNao").click(function () {
-      $('#trabalhos').hide();
-    });
+    // $("#trabalhouNao").click(function () {
+    //   $('#trabalhos').hide();
+    // });
 
     $(function () {
       $('#id_estado').change(function () {

@@ -1,176 +1,180 @@
 <?php
-session_start();
+@session_start();
 
 echo"<br>"."<br>"."<br>";
 
-print_r($_POST);
+// print_r($_POST);
 
-if((strlen(trim($_POST['senha']))) > 1 && (strlen(trim($_POST['senha']))) < 12){
-  if((trim($_POST['senha'])) == (trim($_POST['senha']))){
-    $senha = trim($_POST['senha']);
-  }else{
-    header("Location: ?pagina=");
-  }
-}else{
-  header("Location: ?pagina=");
-}
+// $idiomaCont = $_SESSION['idiomasCont'];
 
-if((trim($_POST['email'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $email = trim($_POST['email']);
-}
+// $idiomas = 2;
+// while($idiomas <= $idiomaCont){
+//   // $_SESSION['idiomas'].$idiomas;
+//   // $_SESSION['nivel'].$idiomas;
+//   // $idiomas++;
+// }
 
-if((trim($_POST['nome'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $nome = trim($_POST['nome']);
-}
+//validação dps tira os comentarios
 
-if((trim($_POST['cpf'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $cpf = trim($_POST['cpf']);
-}
+// if((strlen(trim($_POST['senha']))) > 1 && (strlen(trim($_POST['senha']))) < 12){
+//   if((trim($_POST['senha'])) == (trim($_POST['senha']))){
+//     $senha = trim($_POST['senha']);
+//   }else{
+//     header("Location: ?pagina=");
+//   }
+// }else{
+//   header("Location: ?pagina=");
+// }
 
-if((trim($_POST['cep'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $cep = trim($_POST['cep']);
-}
+// if((trim($_POST['email'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $email = trim($_POST['email']);
+// }
 
-if((trim($_POST['id_cidade'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $id_cidade = trim($_POST['id_cidade']);
-}
+// if((trim($_POST['nome'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $nome = trim($_POST['nome']);
+// }
 
-if((trim($_POST['cargoAlmejado'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $cargoAlmejado = trim($_POST['cargoAlmejado']);
-}
+// if((trim($_POST['cpf'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $cpf = trim($_POST['cpf']);
+// }
 
-if((trim($_POST['rua'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $rua = trim($_POST['rua']);
-}
+// if((trim($_POST['cep'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $cep = trim($_POST['cep']);
+// }
 
-$complemento = trim($_POST['complemento']);
+// if((trim($_POST['id_cidade'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $id_cidade = trim($_POST['id_cidade']);
+// }
 
-if((trim($_POST['numero'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $numero = trim($_POST['numero']);
-}
+// if((trim($_POST['cargoAlmejado'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $cargoAlmejado = trim($_POST['cargoAlmejado']);
+// }
 
-if((trim($_POST['telefone'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $telefone = trim($_POST['telefone']);
-}
+// if((trim($_POST['rua'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $rua = trim($_POST['rua']);
+// }
 
-if((trim($_POST['deficiencia']))==1 || (trim($_POST['deficiencia']))==2 || (trim($_POST['deficiencia']))==3 || 
-(trim($_POST['deficiencia']))==4 || (trim($_POST['deficiencia']))==5 || (trim($_POST['deficiencia']))==6 || 
-(trim($_POST['deficiencia']))==7 || (trim($_POST['deficiencia']))==8 || (trim($_POST['deficiencia']))==9){
-  $deficiencia = trim($_POST['deficiencia']);
-}else{
-  header("Location: ?pagina=");
-}
+// $complemento = trim($_POST['complemento']);
 
-if((trim($_POST['genero']))=="M" || (trim($_POST['genero']))=="F" || (trim($_POST['genero']))=="I"){
-  $genero = trim($_POST['genero']);
-}else{
-  header("Location: ?pagina=");
-}
+// if((trim($_POST['numero'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $numero = trim($_POST['numero']);
+// }
 
-if((trim($_POST['estadocivil']))=="C" || (trim($_POST['estadocivil']))=="D" || (trim($_POST['estadocivil']))=="S" || 
-(trim($_POST['estadocivil']))=="X" || (trim($_POST['estadocivil']))=="V"){
-  $estadocivil = trim($_POST['estadocivil']);
-}else{
-  header("Location: ?pagina=");
-}
+// if((trim($_POST['telefone'])) == ""){
+//   header("Location: ?pagina=");
+// }else{
+//   $telefone = trim($_POST['telefone']);
+// }
 
-if((trim($_POST['empregado']))==1 || (trim($_POST['empregado']))==2){
-  $empregado = trim($_POST['empregado']);
-}else{
-  header("Location: ?pagina=");
-}
+// if((trim($_POST['deficiencia']))==1 || (trim($_POST['deficiencia']))==2 || (trim($_POST['deficiencia']))==3 || 
+// (trim($_POST['deficiencia']))==4 || (trim($_POST['deficiencia']))==5 || (trim($_POST['deficiencia']))==6 || 
+// (trim($_POST['deficiencia']))==7 || (trim($_POST['deficiencia']))==8 || (trim($_POST['deficiencia']))==9){
+//   $deficiencia = trim($_POST['deficiencia']);
+// }else{
+//   header("Location: ?pagina=");
+// }
 
-if((trim($_POST['jornada']))=="NO" || (trim($_POST['jornada']))=="MA" || (trim($_POST['jornada']))=="NI" || 
-(trim($_POST['jornada']))=="TR" || (trim($_POST['jornada']))=="IN"){
-  $jornada = trim($_POST['jornada']);
-}else{
-  header("Location: ?pagina=");
-}
+// if((trim($_POST['genero']))=="M" || (trim($_POST['genero']))=="F" || (trim($_POST['genero']))=="I"){
+//   $genero = trim($_POST['genero']);
+// }else{
+//   header("Location: ?pagina=");
+// }
 
-if((trim($_POST['tipoContrato']))=="AU" || (trim($_POST['tipoContrato']))=="CO" || (trim($_POST['tipoContrato']))=="EF" || 
-(trim($_POST['tipoContrato']))=="ES" || (trim($_POST['tipoContrato']))=="OU" || (trim($_POST['tipoContrato']))=="PS" || 
-(trim($_POST['tipoContrato']))=="TM" || (trim($_POST['tipoContrato']))=="TR"){
-  $tipoContrato = trim($_POST['tipoContrato']);
-}else{
-  header("Location: ?pagina=");
-}
+// if((trim($_POST['estadocivil']))=="C" || (trim($_POST['estadocivil']))=="D" || (trim($_POST['estadocivil']))=="S" || 
+// (trim($_POST['estadocivil']))=="X" || (trim($_POST['estadocivil']))=="V"){
+//   $estadocivil = trim($_POST['estadocivil']);
+// }else{
+//   header("Location: ?pagina=");
+// }
 
-if((trim($_POST['nivelHierarquicoMin']))=="ES" || (trim($_POST['nivelHierarquicoMin']))=="OP" || (trim($_POST['nivelHierarquicoMin']))=="AU" || 
-(trim($_POST['nivelHierarquicoMin']))=="AS" || (trim($_POST['nivelHierarquicoMin']))=="TR" || (trim($_POST['nivelHierarquicoMin']))=="AN" || 
-(trim($_POST['nivelHierarquicoMin']))=="EN" || (trim($_POST['nivelHierarquicoMin']))=="SU" || (trim($_POST['nivelHierarquicoMin']))=="CO" || 
-(trim($_POST['nivelHierarquicoMin']))=="EP" || (trim($_POST['nivelHierarquicoMin']))=="CR" || (trim($_POST['nivelHierarquicoMin']))=="GE" || 
-(trim($_POST['nivelHierarquicoMin']))=="DI"){
-  $nivelHierarquicoMin = trim($_POST['nivelHierarquicoMin']);
-}else{
-  header("Location: ?pagina=");
-}
+// if((trim($_POST['empregado']))==1 || (trim($_POST['empregado']))==2){
+//   $empregado = trim($_POST['empregado']);
+// }else{
+//   header("Location: ?pagina=");
+// }
 
-if(
-(trim($_POST['nivelHierarquicoMax']))=="ES" || (trim($_POST['nivelHierarquicoMax']))=="OP" || (trim($_POST['nivelHierarquicoMax']))=="AU" || 
-(trim($_POST['nivelHierarquicoMax']))=="AS" || (trim($_POST['nivelHierarquicoMax']))=="TR" || (trim($_POST['nivelHierarquicoMax']))=="AN" || 
-(trim($_POST['nivelHierarquicoMax']))=="EN" || (trim($_POST['nivelHierarquicoMax']))=="SU" || (trim($_POST['nivelHierarquicoMax']))=="CO" || 
-(trim($_POST['nivelHierarquicoMax']))=="EP" || (trim($_POST['nivelHierarquicoMax']))=="CR" || (trim($_POST['nivelHierarquicoMax']))=="GE" || 
-(trim($_POST['nivelHierarquicoMax']))=="DI"){
-  $nivelHierarquicoMax = trim($_POST['nivelHierarquicoMax']);
-}else{
-  header("Location: ?pagina=");
-}
+// if((trim($_POST['jornada']))=="NO" || (trim($_POST['jornada']))=="MA" || (trim($_POST['jornada']))=="NI" || 
+// (trim($_POST['jornada']))=="TR" || (trim($_POST['jornada']))=="IN"){
+//   $jornada = trim($_POST['jornada']);
+// }else{
+//   header("Location: ?pagina=");
+// }
 
-if((trim($_POST['pretensao']))==1 || (trim($_POST['pretensao']))==2 || (trim($_POST['pretensao']))==3 || (trim($_POST['pretensao']))==4 || 
-(trim($_POST['pretensao']))==5 || (trim($_POST['pretensao']))==6 || (trim($_POST['pretensao']))==7 || (trim($_POST['pretensao']))==8 || 
-(trim($_POST['pretensao']))==9 || (trim($_POST['pretensao']))==10 || (trim($_POST['pretensao']))==11 || (trim($_POST['pretensao']))==12 || 
-(trim($_POST['pretensao']))==13){
-  $pretensao = trim($_POST['pretensao']);
-}else{
-  header("Location: ?pagina=");
-}
+// if((trim($_POST['tipoContrato']))=="AU" || (trim($_POST['tipoContrato']))=="CO" || (trim($_POST['tipoContrato']))=="EF" || 
+// (trim($_POST['tipoContrato']))=="ES" || (trim($_POST['tipoContrato']))=="OU" || (trim($_POST['tipoContrato']))=="PS" || 
+// (trim($_POST['tipoContrato']))=="TM" || (trim($_POST['tipoContrato']))=="TR"){
+//   $tipoContrato = trim($_POST['tipoContrato']);
+// }else{
+//   header("Location: ?pagina=");
+// }
+
+// if((trim($_POST['nivelHierarquicoMin']))=="ES" || (trim($_POST['nivelHierarquicoMin']))=="OP" || (trim($_POST['nivelHierarquicoMin']))=="AU" || 
+// (trim($_POST['nivelHierarquicoMin']))=="AS" || (trim($_POST['nivelHierarquicoMin']))=="TR" || (trim($_POST['nivelHierarquicoMin']))=="AN" || 
+// (trim($_POST['nivelHierarquicoMin']))=="EN" || (trim($_POST['nivelHierarquicoMin']))=="SU" || (trim($_POST['nivelHierarquicoMin']))=="CO" || 
+// (trim($_POST['nivelHierarquicoMin']))=="EP" || (trim($_POST['nivelHierarquicoMin']))=="CR" || (trim($_POST['nivelHierarquicoMin']))=="GE" || 
+// (trim($_POST['nivelHierarquicoMin']))=="DI"){
+//   $nivelHierarquicoMin = trim($_POST['nivelHierarquicoMin']);
+// }else{
+//   header("Location: ?pagina=");
+// }
+
+// if(
+// (trim($_POST['nivelHierarquicoMax']))=="ES" || (trim($_POST['nivelHierarquicoMax']))=="OP" || (trim($_POST['nivelHierarquicoMax']))=="AU" || 
+// (trim($_POST['nivelHierarquicoMax']))=="AS" || (trim($_POST['nivelHierarquicoMax']))=="TR" || (trim($_POST['nivelHierarquicoMax']))=="AN" || 
+// (trim($_POST['nivelHierarquicoMax']))=="EN" || (trim($_POST['nivelHierarquicoMax']))=="SU" || (trim($_POST['nivelHierarquicoMax']))=="CO" || 
+// (trim($_POST['nivelHierarquicoMax']))=="EP" || (trim($_POST['nivelHierarquicoMax']))=="CR" || (trim($_POST['nivelHierarquicoMax']))=="GE" || 
+// (trim($_POST['nivelHierarquicoMax']))=="DI"){
+//   $nivelHierarquicoMax = trim($_POST['nivelHierarquicoMax']);
+// }else{
+//   header("Location: ?pagina=");
+// }
+
+// if((trim($_POST['pretensao']))==1 || (trim($_POST['pretensao']))==2 || (trim($_POST['pretensao']))==3 || (trim($_POST['pretensao']))==4 || 
+// (trim($_POST['pretensao']))==5 || (trim($_POST['pretensao']))==6 || (trim($_POST['pretensao']))==7 || (trim($_POST['pretensao']))==8 || 
+// (trim($_POST['pretensao']))==9 || (trim($_POST['pretensao']))==10 || (trim($_POST['pretensao']))==11 || (trim($_POST['pretensao']))==12 || 
+// (trim($_POST['pretensao']))==13){
+//   $pretensao = trim($_POST['pretensao']);
+// }else{
+//   header("Location: ?pagina=");
+// }
 
 //Dados do curriculo
-$_SESSION['senha'] = $senha;
-$_SESSION['email'] = $email;
-$_SESSION['nome'] = $nome;
-$_SESSION['cpf'] = $cpf;
-$_SESSION['cep'] = $cep;
-$_SESSION['id_cidade'] = $id_cidade;
-$_SESSION['cargoAlmejado'] = $cargoAlmejado;
-$_SESSION['rua'] = $rua;
-$_SESSION['complemento'] = $complemento;
-$_SESSION['numero'] = $numero;
-$_SESSION['telefone'] = $telefone;
-$_SESSION['deficiencia'] = $deficiencia;
-$_SESSION['genero'] = $genero;
-$_SESSION['estadocivil'] = $estadocivil;
-$_SESSION['empregado'] = $empregado;
-$_SESSION['jornada'] = $jornada;
-$_SESSION['tipoContrato'] = $tipoContrato;
-$_SESSION['nivelHierarquicoMin'] = $nivelHierarquicoMin;
-$_SESSION['nivelHierarquicoMax'] = $nivelHierarquicoMax;
-$_SESSION['pretensao'] = $pretensao;
-
-if((trim($_POST['idioma2'])) == "" && (trim($_POST['nivel2'])) == ""){
-  header("Location: ?pagina=");
-}else{
-  $idioma2 = trim($_POST['idioma2']);
-  $nivel2 = trim($_POST['nivel2']);
-}
+// $_SESSION['senha'] = $senha;
+// $_SESSION['email'] = $email;
+// $_SESSION['nome'] = $nome;
+// $_SESSION['cpf'] = $cpf;
+// $_SESSION['cep'] = $cep;
+// $_SESSION['id_cidade'] = $id_cidade;
+// $_SESSION['cargoAlmejado'] = $cargoAlmejado;
+// $_SESSION['rua'] = $rua;
+// $_SESSION['complemento'] = $complemento;
+// $_SESSION['numero'] = $numero;
+// $_SESSION['telefone'] = $telefone;
+// $_SESSION['deficiencia'] = $deficiencia;
+// $_SESSION['genero'] = $genero;
+// $_SESSION['estadocivil'] = $estadocivil;
+// $_SESSION['empregado'] = $empregado;
+// $_SESSION['jornada'] = $jornada;
+// $_SESSION['tipoContrato'] = $tipoContrato;
+// $_SESSION['nivelHierarquicoMin'] = $nivelHierarquicoMin;
+// $_SESSION['nivelHierarquicoMax'] = $nivelHierarquicoMax;
+// $_SESSION['pretensao'] = $pretensao;
 
 // //Idiomas
 // $_SESSION['idioma1'] = $idioma1;

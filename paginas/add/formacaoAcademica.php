@@ -7,7 +7,7 @@ $con = conecta();
 $numFormacoes = $_SESSION['formacaoCont'];
 ?>
 
-<div id="formacaoAcademica">
+<div id="<?php echo"formacaoRow".$numFormacoes?>">
     <div class="form-row">
         <div class="form-group col-sm">
             <h5>Formação Acadêmica</h5>
@@ -37,7 +37,7 @@ $numFormacoes = $_SESSION['formacaoCont'];
             </select>
         </div>
     </div>
-    <div id="estado_pais" class="form-row estado">
+    <div id="<?php echo"estado_pais_formacao".$numFormacoes?>" class="form-row">
         <div class="form-group col-md">
             <label for="inputState">Estado</label>
             <label for="" class="text-danger">*</label>
@@ -76,31 +76,32 @@ $numFormacoes = $_SESSION['formacaoCont'];
             </select>
         </div>
     </div>
-    <div id="curso" class="form-row hidden">
+    <div id="<?php echo"curso".$numFormacoes?>" class="form-row hidden">
         <div class="form-group col-md">
             <label for="inputCity">Curso</label>
             <label for="" class="text-danger">*</label>
             <span class="carregando text-danger">carregando...</span>
-            <select name="id_curso" id="id_curso" class="form-control">
+            <select name="<?php echo"id_curso".$numFormacoes?>" id="<?php echo"id_curso".$numFormacoes?>" class="form-control">
             </select>
         </div>
     </div>
+
     <div class="form-row">
         <div class="form-group col-sm-4">
-            <label class="radio-inline"><input type="radio" id="concluido" name="estadoCurso">Concluído</label>
+            <label class="radio-inline"><input type="radio" id="<?php echo"concluido".$numFormacoes?>" name="estadoCurso">Concluído</label>
         </div>
         <div class="form-group col-sm-4">
-            <label class="radio-inline"><input type="radio" id="cursando" name="estadoCurso">Cursando</label>
+            <label class="radio-inline"><input type="radio" id="<?php echo"cursando".$numFormacoes?>" name="estadoCurso">Cursando</label>
         </div>
         <div class="form-group col-sm-4">
-            <label class="radio-inline"><input type="radio" id="trancado" name="estadoCurso">Trancado</label>
+            <label class="radio-inline"><input type="radio" id="<?php echo"trancado".$numFormacoes?>" name="estadoCurso">Trancado</label>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-sm">
             <label>EAD</label>
             <label class="text-danger">*</label>
-            <select name="ead" id="ead" class="form-control">
+            <select name="<?php echo"ead".$numFormacoes?>" id="<?php echo"ead".$numFormacoes?>" class="form-control">
                 <option value="">Escolha</option>
                 <option value="S">Sim</option>
                 <option value="N">Não</option>
@@ -110,17 +111,17 @@ $numFormacoes = $_SESSION['formacaoCont'];
     <div class="form-row">
         <div class="form-group col-sm-6">
             <label for="inputInicio">Inicio</label>
-            <input name="inicio" type="date" class="form-control" id="inputInicio" placeholder="Inicio">
+            <input name="<?php echo"inicio".$numFormacoes?>" type="date" class="form-control" id="<?php echo"inicio".$numFormacoes?>" placeholder="Inicio">
         </div>
         <div class="form-group col-sm-5" id="conclusao">
-            <label for="inputTermino" id="conclusaoLabel">Conclusão</label>
-            <label class="hidden" for="inputTermino" id="conclusaoLabel2">Conclusão esperada</label>
-            <input name="termino" type="date" class="form-control" id="inputConclusao" placeholder="Conclusão">
-            <input type="date" class="form-control hidden" id="inputConclusaoDisabled" placeholder="Conclusão" disabled>
+            <label for="inputTermino" id="<?php echo"conclusaoLabel".$numFormacoes?>">Conclusão</label>
+            <label class="hidden" for="inputTermino" id="<?php echo"conclusaoEsperadaLabel".$numFormacoes?>">Conclusão esperada</label>
+            <input name="<?php echo"termino".$numFormacoes?>" type="date" class="form-control" id="<?php echo"conclusao".$numFormacoes?>" placeholder="Conclusão">
+            <input type="date" class="form-control hidden" id="<?php echo"conclusaoDisabled".$numFormacoes?>" placeholder="Conclusão" disabled>
         </div>
         <div class="form-group col-md-1">
             <label class="text-white" for="">R</label>
-            <button type="button" id="excluirFormacao" class="btn btn-danger btn-excluir-formcao"><i class="fa fa-trash"
+            <button type="button" formacao="<?php echo"formacaoRow".$numFormacoes?>" class="btn btn-danger btn-excluir-formcao"><i class="fa fa-trash"
                     aria-hidden="true"></i></button>
         </div>
     </div>
@@ -128,47 +129,49 @@ $numFormacoes = $_SESSION['formacaoCont'];
 
 <script>
     $(document).ready(function () {
-    $('.nivel').change(function () {
+    
+    numFormacoes = "<?php echo$numFormacoes; ?>";
+    $('#nivelFormacao'+numFormacoes).change(function () {
       if ($(this).val()) {
-        $('#curso').show();
+        $('#curso'+numFormacoes).show();
         $.getJSON('http://localhost/BuscaEmp3/paginas/fks/curso_post.php', { id_nivel: $(this).val(), ajax: 'true' }, function (j) {
           var options = '<option value="">Escolha</option>';
           for (var i = 0; i < j.length; i++) {
             options += '<option value="' + j[i].idccurso + '">' + j[i].curso + '</option>';
           }
-          $('#id_curso').html(options).show();
+          $('#id_curso'+numFormacoes).html(options).show();
         });
       } else {
-        $('#id_curso').html('<option value="">– Escolha –</option>');
+        $('#id_curso'+numFormacoes).html('<option value="">– Escolha –</option>');
       }
     });
-    $('.estado').hide();
-        
+    $('#estado_pais_formacao'+numFormacoes).hide();
+
     $('.pais').change(function () {
     var pais = $(this).val();
 
     if (pais == 26) {
-        $('.estado').show();
+        $('#estado_pais_formacao'+numFormacoes).show();
     }
     });
 
-    $('#concluido').change(function () {
-        $('#inputConclusaoDisabled').hide();
-        $('#inputConclusao').show();
-        $('#conclusaoLabel2').hide();
-        $('#conclusaoLabel').show();
+    $('#concluido'+numFormacoes).change(function () {
+        $('#conclusaoDisabled'+numFormacoes).hide();
+        $('#conclusao'+numFormacoes).show();
+        $('#conclusaoEsperadaLabel'+numFormacoes).hide();
+        $('#conclusaoLabel'+numFormacoes).show();
     });
-    $('#cursando').change(function () {
-        $('#inputConclusaoDisabled').hide();
-        $('#inputConclusao').show();
-        $('#conclusaoLabel').hide();
-        $('#conclusaoLabel2').show();
+    $('#cursando'+numFormacoes).change(function () {
+        $('#conclusaoDisabled'+numFormacoes).hide();
+        $('#conclusao'+numFormacoes).show();
+        $('#conclusaoLabel'+numFormacoes).hide();
+        $('#conclusaoEsperadaLabel'+numFormacoes).show();
     });
-    $('#trancado').change(function () {
-        $('#inputConclusaoDisabled').show();
-        $('#inputConclusao').hide();
-        $('#conclusaoLabel2').hide();
-        $('#conclusaoLabel').show();
+    $('#trancado'+numFormacoes).change(function () {
+        $('#conclusaoDisabled'+numFormacoes).show();
+        $('#conclusao'+numFormacoes).hide();
+        $('#conclusaoEsperadaLabel'+numFormacoes).hide();
+        $('#conclusaoLabel'+numFormacoes).show();
     });
     
 });

@@ -128,3 +128,139 @@ if((trim($_POST['pretensao']))==1 || (trim($_POST['pretensao']))==2 || (trim($_P
 // $_SESSION['telefone'] = $telefone;
 // $_SESSION['acCurriculo'] = $ac;
 ?>
+
+
+
+   <div id="curso1" class="form-row hidden">
+        <div class="form-group col-md">
+            <label for="inputState">Curso</label>
+            <label for="" class="text-danger">*</label>
+            <select name="<?php echo"curso".$numFormacoes?>" id="<?php echo"curso".$numFormacoes?>" class="form-control">
+                <?php
+              $resCurso1 = mysqli_query ($con, 'SELECT * FROM curso WHERE nivel_idnivel=1');
+              while ($rowCurso1 = mysqli_fetch_assoc($resCurso1)):
+            ?>
+                <option value="<?php echo $rowCurso1['idcurso'] ?>"><?php echo utf8_encode($rowCurso1['curso']); ?>
+                </option>
+                <?php endwhile ?>
+            </select>
+        </div>
+    </div>
+
+    <div id="curso2" class="form-row hidden">
+    <div class="form-group col-md">
+            <label for="inputState">Curso</label>
+            <label for="" class="text-danger">*</label>
+            <select name="<?php echo"curso".$numFormacoes?>" id="<?php echo"curso".$numFormacoes?>" class="form-control">
+            <option value="0">Escolha</option>
+                <?php
+              $resCurso2 = mysqli_query ($con, 'SELECT * FROM curso WHERE nivel_idnivel=2');
+              while ($rowCurso2 = mysqli_fetch_assoc($resCurso2)):
+            ?>
+                <option value="<?php echo $rowCurso2['idcurso'] ?>"><?php echo utf8_encode($rowCurso2['curso']); ?>
+                </option>
+                <?php endwhile ?>
+            </select>
+        </div>
+    </div>
+
+    <div id="curso3" class="form-row hidden">
+    <div class="form-group col-md">
+            <label for="inputState">Curso</label>
+            <label for="" class="text-danger">*</label>
+            <select name="<?php echo"curso".$numFormacoes?>" id="<?php echo"curso".$numFormacoes?>" class="form-control">
+                <?php
+              $resCurso3 = mysqli_query ($con, 'SELECT * FROM curso WHERE nivel_idnivel=3');
+              while ($rowCurso3 = mysqli_fetch_assoc($resCurso3)):
+            ?>
+                <option value="<?php echo $rowCurso3['idcurso'] ?>"><?php echo utf8_encode($rowCurso3['curso']); ?>
+                </option>
+                <?php endwhile ?>
+            </select>
+        </div>
+    </div>
+
+    <div id="curso4" class="form-row hidden">
+    <div class="form-group col-md">
+            <label for="inputState">Curso</label>
+            <label for="" class="text-danger">*</label>
+            <select name="<?php echo"curso".$numFormacoes?>" id="<?php echo"curso".$numFormacoes?>" class="form-control">
+            <option value="0">Escolha</option>
+                <?php
+              $resCurso4 = mysqli_query ($con, 'SELECT * FROM curso WHERE nivel_idnivel=4');
+              while ($rowCurso4 = mysqli_fetch_assoc($resCurso4)):
+            ?>
+                <option value="<?php echo $rowCurso4['idcurso'] ?>"><?php echo utf8_encode($rowCurso4['curso']); ?>
+                </option>
+                <?php endwhile ?>
+            </select>
+        </div>
+    </div>
+
+    <div id="curso5" class="form-row hidden">
+    <div class="form-group col-md">
+            <label for="inputState">Curso</label>
+            <label for="" class="text-danger">*</label>
+            <select name="<?php echo"curso".$numFormacoes?>" id="<?php echo"curso".$numFormacoes?>" class="form-control">
+            <option value="0">Escolha</option>
+                <?php
+              $resCurso5 = mysqli_query ($con, 'SELECT * FROM curso WHERE nivel_idnivel=5');
+              while ($rowCurso5 = mysqli_fetch_assoc($resCurso5)):
+            ?>
+                <option value="<?php echo $rowCurso5['idcurso'] ?>"><?php echo utf8_encode($rowCurso5['curso']); ?>
+                </option>
+                <?php endwhile ?>
+            </select>
+        </div>
+    </div>
+
+    <div id="curso6" class="form-row hidden">
+    <div class="form-group col-md">
+            <label for="inputState">Curso</label>
+            <label for="" class="text-danger">*</label>
+            <select name="<?php echo"curso".$numFormacoes?>" id="<?php echo"curso".$numFormacoes?>" class="form-control">
+            <option value="0">Escolha</option>
+                <?php
+              $resCurso6 = mysqli_query ($con, 'SELECT * FROM curso WHERE nivel_idnivel=6');
+              while ($rowCurso6 = mysqli_fetch_assoc($resCurso6)):
+            ?>
+                <option value="<?php echo $rowCurso6['idcurso'] ?>"><?php echo utf8_encode($rowCurso6['curso']); ?>
+                </option>
+                <?php endwhile ?>
+            </select>
+        </div>
+    </div>
+
+    <div id="curso7" class="form-row hidden">
+    <div class="form-group col-md">
+            <label for="inputState">Curso</label>
+            <label for="" class="text-danger">*</label>
+            <select name="<?php echo"curso".$numFormacoes?>" id="<?php echo"curso".$numFormacoes?>" class="form-control">
+            <option value="0">Escolha</option>
+                <?php
+              $resCurso7 = mysqli_query ($con, 'SELECT * FROM curso WHERE nivel_idnivel=7');
+              while ($rowCurso7 = mysqli_fetch_assoc($resCurso7)):
+            ?>
+                <option value="<?php echo $rowCurso7['idcurso'] ?>"><?php echo utf8_encode($rowCurso7['curso']); ?>
+                </option>
+                <?php endwhile ?>
+            </select>
+        </div>
+    </div>
+
+    <div id="curso8" class="form-row hidden">
+    <div class="form-group col-md">
+            <label for="inputState">Curso</label>
+            <label for="" class="text-danger">*</label>
+            <select name="<?php echo"curso".$numFormacoes?>" id="<?php echo"curso".$numFormacoes?>" class="form-control">
+            <option value="0">Escolha</option>
+                <?php
+              $resCurso8 = mysqli_query ($con, 'SELECT * FROM curso WHERE nivel_idnivel=8');
+              while ($rowCurso8 = mysqli_fetch_assoc($resCurso8)):
+            ?>
+                <option value="<?php echo $rowCurso8['idcurso'] ?>"><?php echo utf8_encode($rowCurso8['curso']); ?>
+                </option>
+                <?php endwhile ?>
+            </select>
+        </div>
+    </div>
