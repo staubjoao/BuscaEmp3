@@ -62,7 +62,13 @@
                   Currículo
                 </label>
               </div>
-
+                  <script>
+                      grecaptcha.ready(function() {
+                          grecaptcha.execute('6Lc3xrgUAAAAAIPwfWwxR5VSOfAjmsaD_UGfyYfO', {action: 'homepage'}).then(function(token) {
+                           console.log(token);
+                          });
+                      });
+                  </script>
               <div class="form-row">
                 <br>
                 <button type="submit" name="btnlogin"class="btn btn-dark btn-lg btn-block">Entrar</button>

@@ -433,6 +433,13 @@ $_SESSION['cargosCont'] = 1;
           </div>
         </div>
       </form>
+        <script>
+          grecaptcha.ready(function() {
+            grecaptcha.execute('6Lc3xrgUAAAAAIPwfWwxR5VSOfAjmsaD_UGfyYfO', {action: 'homepage'}).then(function(token) {
+          console.log(token);
+            });
+          });
+        </script>
     </div>
   </div>
 </div>
