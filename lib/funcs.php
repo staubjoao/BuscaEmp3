@@ -2,6 +2,9 @@
 require_once('configs.php');
 function navega($pagina){
   switch ($pagina) {
+    case 'cadastrardados':
+      require 'paginas/cadastrar/cadastrardadoscurriculo.php';
+    break;
     case 'cadastrocurriculo':
       require 'paginas/cadastrar/cadastroCur.php';
     break;

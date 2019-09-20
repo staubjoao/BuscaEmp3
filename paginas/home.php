@@ -9,6 +9,7 @@
 
         <div class="col-md-3 border border-dark shadow-lg p-3 mb-5 bg-white rounded" style="margin-top: 100px">
           <h2>Candidato</h2>
+          <a href="?pagina=cadastrardados">asdasdad</a>
           <h4><li>Cadastre seu currículo</li></h4>
           <h4><li>Sempre a disposição</li></h4>
           <a class="btn btn-secondary btn-lg btn-block" href="?pagina=cadastrocurriculo" role="button">Cadastrar</a>
