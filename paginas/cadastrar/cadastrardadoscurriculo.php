@@ -1,6 +1,7 @@
 <?php
 $con = conecta();
 ?>
+
 <style type="text/css">
     .carregando {
         color: #ff0000;
@@ -15,17 +16,23 @@ $con = conecta();
     <div class="row justify-content-center bg-light">
         <div class="col-md-8 ml-md-5  border border-primary  shadow-lg p-3 mb-5 bg-white rounded"
             style="margin-top: 100px">
-            <form id="formCurriculoDados" action="?pagina=" method="post">
+            <form id="formCurriculoDados" action="?pagina=gravardados" method="post">
                 <div class="form-row">
-                    <div class="form-group col-md">
+                    <div class="form-group col-md-9">
                         <label for="inputEmail" class="control-label">Email</label>
                         <label for="" class="text-danger">*</label>
                         <input name="email" type="email" class="form-control obrigatorio" id="inputEmail"
                             placeholder="Email" data-error="Por favor, informe um e-mail válido.">
                         <div class="help-block with-errors text-danger"></div>
                     </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputText">Telefone</label>
+                        <label for="" class="text-danger">*</label>
+                        <input name="telefone" type="text" data-error="Digite seu telefone"
+                            class="form-control obrigatorio" id="telefone" placeholder="Telefone">
+                        <div class="help-block with-errors text-danger"></div>
+                    </div>
                 </div>
-
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">Senha</label>
@@ -105,8 +112,8 @@ $con = conecta();
                     <div class="form-group col-md-2">
                         <label for="inputAddress">Número</label>
                         <label for="" class="text-danger">*</label>
-                        <input name="numero" data-error="Digite o número" type="number"
-                            class="form-control obrigatorio" id="numero" placeholder="Número">
+                        <input name="numero" data-error="Digite o número" type="number" class="form-control obrigatorio"
+                            id="numero" placeholder="Número">
                         <div class="help-block with-errors text-danger"></div>
                     </div>
                     <div class="form-group col-md-4">
@@ -198,23 +205,23 @@ $con = conecta();
             validar(evento, $(this));
         });
 
-        $('body').on('click', '#proximo', function(evento){
-        $(".obrigatorio").each(function(){
-          // Se o valor do campo for vazio...
-          validar(evento, $(this));
+        $('body').on('click', '#proximo', function (evento) {
+            $(".obrigatorio").each(function () {
+                // Se o valor do campo for vazio...
+                validar(evento, $(this));
 
-            var tamanhomin = $(this).attr('data-minlength');
-            var tamonhomax = $(this).attr('data-maxlength');
+                var tamanhomin = $(this).attr('data-minlength');
+                var tamonhomax = $(this).attr('data-maxlength');
 
-            if(parseInt(tamanhomin) > $(this).val().trim().length){
-              $(this).next("div").text("A senha precisa ter, pelo menos, "+ tamanhomin + " caracteres.");
-              $(this).addClass("border-danger");
-            }else if(parseInt(tamonhomax) < $(this).val().trim().length){
-              $(this).next("div").text("A senha pode ter  até "+ tamonhomax + " caracteres.");
-              $(this).addClass("border-danger");
-            }
+                if (parseInt(tamanhomin) > $(this).val().trim().length) {
+                    $(this).next("div").text("A senha precisa ter, pelo menos, " + tamanhomin + " caracteres.");
+                    $(this).addClass("border-danger");
+                } else if (parseInt(tamonhomax) < $(this).val().trim().length) {
+                    $(this).next("div").text("A senha pode ter  até " + tamonhomax + " caracteres.");
+                    $(this).addClass("border-danger");
+                }
 
-          });
+            });
         });
 
 

@@ -5,7 +5,6 @@ $con = conecta();
 $_SESSION['idiomasCont'] = 2;
 $_SESSION['formacaoCont'] = 1;
 $_SESSION['experienciaCont'] = 1;
-$_SESSION['cargosCont'] = 1;
 ?>
 
 <style type="text/css">
@@ -321,7 +320,7 @@ $_SESSION['cargosCont'] = 1;
               <option value="5">A partir de R$ 4.000,00</option>
               <option value="6">A partir de R$ 5.000,00</option>
               <option value="7">A partir de R$ 6.000,00</option>
-              <option value="8">A partir de R$ 7.000,00</option>
+              <option value="8">A partir de R$ 7.000,00</option>  
               <option value="9">A partir de R$ 8.000,00</option>
               <option value="10">A partir de R$ 9.000,00</option>
               <option value="11">A partir de R$ 10.000,00</option>

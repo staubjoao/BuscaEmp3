@@ -4,7 +4,9 @@ require_once('../../lib/funcs.php');
 
 $con = conecta();
 
-$numCargos = $_SESSION['cargosCont'];
+$numCargos = $_SESSION['cargosCont'] + 1;
+$_SESSION['cargosCont'] = $numCargos;
+
 ?>
 <div id="<?php echo"cargoRow".$numCargos?>">
 <div class="form-row">
@@ -25,13 +27,9 @@ $numCargos = $_SESSION['cargosCont'];
         </div>
         <div class="help-block with-errors text-danger"></div>
         <div class="form-group col-md-1">
-            <label class="text-white">R</label>
+            <label class="text-white">Remove</label>
             <button cargoAlmejado="<?php echo"cargoRow".$numCargos?>" type="button" class="btn btn-danger btn-excluir-cargo"
                 numIdioma=""><i class="fa fa-trash" aria-hidden="true"></i></button>
     </div>
 </div>
 </div>
-
-<?php
-$_SESSION['cargosCont'] = $numCargos + 1;
-?>

@@ -5,6 +5,23 @@ function navega($pagina){
     case 'cadastrardados':
       require 'paginas/cadastrar/cadastrardadoscurriculo.php';
     break;
+    case 'gravardados':
+      require 'controle/gravardadoscurriculo.php';
+    break;
+    case 'cadastrarpretencao':
+      require 'paginas/cadastrar/cadastrarpretencao.php';
+    break;
+    case 'gravarpretencao':
+      require 'controle/gravarpretencao.php';
+    break;
+    case 'cadastraridiomas':
+      require 'paginas/cadastrar/cadastraridiomas.php';
+    break;
+    case 'gravaridiomas':
+      require 'controle/gravaridiomas.php';
+    break;
+
+
     case 'cadastrocurriculo':
       require 'paginas/cadastrar/cadastroCur.php';
     break;

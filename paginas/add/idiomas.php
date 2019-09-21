@@ -4,13 +4,14 @@ require_once('../../lib/funcs.php');
 
 $con = conecta();
 
-$numIdiomas = $_SESSION['idiomasCont'];
+$numIdiomas = $_SESSION['idiomasCont'] + 1;
+$_SESSION['idiomasCont'] = $numIdiomas;
 ?>
 <div class="form-row" id="<?php echo"idiomaRow".$numIdiomas?>">
     <div class="form-group col-md-6">
         <label for="inputIdioma">Idioma</label>
         <label for="" class="text-danger">*</label>
-        <select name="<?php echo"idioma".$numIdiomas?>" class="custom-select" id="<?php echo"idioma".$numIdiomas?>">
+        <select name="<?php echo"idioma".$numIdiomas?>" class="custom-select obrigatorio" id="<?php echo"idioma".$numIdiomas?>">
             <option selected value="0">Escolha</option>
             <?php
               $resIdiomas = mysqli_query ($con, 'SELECT * FROM idiomas');
@@ -24,7 +25,7 @@ $numIdiomas = $_SESSION['idiomasCont'];
     <div class="form-group col-md-5">
         <label for="inputIdioma">Nível</label>
         <label for="" class="text-danger">*</label>
-        <select name="<?php echo"nivel".$numIdiomas?>" class="custom-select" id="<?php echo"idioma".$numIdiomas?>">
+        <select name="<?php echo"nivel".$numIdiomas?>" class="custom-select obrigatorio" id="<?php echo"idioma".$numIdiomas?>">
             <option value="0">Nível</option>
             <option value="Basico">Básico</option>
             <option value="Intermediario">Intermediário</option>
@@ -33,11 +34,7 @@ $numIdiomas = $_SESSION['idiomasCont'];
         </select>
     </div>
     <div class="form-group col-md-1">
-        <label class="text-white">R</label>
+        <label class="text-white">Remove</label>
         <button idioma="<?php echo"idiomaRow".$numIdiomas?>" type="button" class="btn btn-danger btn-excluir-idioma" numIdioma=""><i class="fa fa-trash" aria-hidden="true"></i></button>
     </div>
 </div>
-
-<?php
-$_SESSION['idiomasCont'] = $numIdiomas + 1;
-?>
