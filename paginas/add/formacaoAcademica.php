@@ -4,7 +4,8 @@ require_once('../../lib/funcs.php');
 
 $con = conecta();
 
-$numFormacoes = $_SESSION['formacaoCont'];
+$numFormacoes = $_SESSION['formacaoCont'] + 1;
+$_SESSION['formacaoCont'] = $numFormacoes;
 ?>
 
 <div id="<?php echo"formacaoRow".$numFormacoes?>">
@@ -129,7 +130,7 @@ $numFormacoes = $_SESSION['formacaoCont'];
         $.getJSON('http://localhost/BuscaEmp3/paginas/fks/curso_post.php', { id_nivel: $(this).val(), ajax: 'true' }, function (j) {
           var options = '<option value="">Escolha</option>';
           for (var i = 0; i < j.length; i++) {
-            options += '<option value="' + j[i].idccurso + '">' + j[i].curso + '</option>';
+            options += '<option value="' + j[i].idcurso + '">' + j[i].curso + '</option>';
           }
           $('#id_curso'+numFormacoes).html(options).show();
         });
@@ -171,7 +172,3 @@ $numFormacoes = $_SESSION['formacaoCont'];
     
 });
 </script>
-
-<?php
-$_SESSION['formacaoCont'] = $numFormacoes + 1;
-?>

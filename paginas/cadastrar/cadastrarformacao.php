@@ -2,7 +2,7 @@
 @session_start();
 $con = conecta();
 
-$_SESSION['formacaoCont'] = 1;
+$_SESSION['formacaoCont'] = 0;
 ?>
 
 <style type="text/css">

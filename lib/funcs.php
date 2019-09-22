@@ -26,6 +26,13 @@ function navega($pagina){
     case 'gravarformacao':
       require 'controle/gravarformacao.php';
     break;
+    case 'cadastrarexperienciaprofissional':
+      require 'paginas/cadastrar/cadastrarexperienciaprofissional.php';
+    break;
+    case 'gravarexperienciaprofissional':
+      require 'controle/gravarexperienciaprofissional.php';
+    break;
+
 
 
     case 'cadastrocurriculo':
