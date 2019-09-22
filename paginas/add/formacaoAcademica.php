@@ -10,11 +10,6 @@ $numFormacoes = $_SESSION['formacaoCont'];
 <div id="<?php echo"formacaoRow".$numFormacoes?>">
     <div class="form-row">
         <div class="form-group col-sm">
-            <h5>Formação Acadêmica</h5>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-sm">
             <label for="inputText">Nome da Instituição</label>
             <label for="" class="text-danger">*</label>
             <input name="<?php echo"instituicao".$numFormacoes?>" type="text" class="form-control" id="<?php echo"instituicao".$numFormacoes?>"
@@ -26,7 +21,7 @@ $numFormacoes = $_SESSION['formacaoCont'];
             <label for="inputState">País</label>
             <label for="" class="text-danger">*</label>
             <select name="<?php echo"pais".$numFormacoes?>" id="<?php echo"pais".$numFormacoes?>" class="form-control pais">
-                <option value="0">Escolha</option>
+                <option value="">Escolha</option>
                 <?php
               $resPais = mysqli_query ($con, 'SELECT * FROM pais');
               while ($rowPais = mysqli_fetch_assoc($resPais)):
@@ -36,13 +31,11 @@ $numFormacoes = $_SESSION['formacaoCont'];
                 <?php endwhile ?>
             </select>
         </div>
-    </div>
-    <div id="<?php echo"estado_pais_formacao".$numFormacoes?>" class="form-row">
-        <div class="form-group col-md">
+        <div id="<?php echo"estado_pais_formacao".$numFormacoes?>" class="form-group col-md">
             <label for="inputState">Estado</label>
             <label for="" class="text-danger">*</label>
             <select name="<?php echo"estadoFormacao".$numFormacoes?>" id="<?php echo"estadoFormacao".$numFormacoes?>" class="form-control">
-                <option value="0">Escolha</option>
+                <option value="">Escolha</option>
                 <?php
               $resEstado = mysqli_query ($con, 'SELECT * FROM estado');
               while ($rowEstado = mysqli_fetch_assoc($resEstado)):
@@ -65,7 +58,7 @@ $numFormacoes = $_SESSION['formacaoCont'];
             <label for="inputState">Nível</label>
             <label for="" class="text-danger">*</label>
             <select name="<?php echo"nivelFormacao".$numFormacoes?>" id="<?php echo"nivelFormacao".$numFormacoes?>" class="form-control nivel">
-                <option value="0">Escolha</option>
+                <option value="">Escolha</option>
                 <?php
               $resnivel = mysqli_query ($con, 'SELECT * FROM nivel');
               while ($rowNivel = mysqli_fetch_assoc($resnivel)):
@@ -75,9 +68,7 @@ $numFormacoes = $_SESSION['formacaoCont'];
                 <?php endwhile ?>
             </select>
         </div>
-    </div>
-    <div id="<?php echo"curso".$numFormacoes?>" class="form-row hidden">
-        <div class="form-group col-md">
+        <div id="<?php echo"curso".$numFormacoes?>" class="form-group col-md hidden">
             <label for="inputCity">Curso</label>
             <label for="" class="text-danger">*</label>
             <span class="carregando text-danger">carregando...</span>
@@ -120,11 +111,12 @@ $numFormacoes = $_SESSION['formacaoCont'];
             <input type="date" class="form-control hidden" id="<?php echo"conclusaoDisabled".$numFormacoes?>" placeholder="Conclusão" disabled>
         </div>
         <div class="form-group col-md-1">
-            <label class="text-white" for="">R</label>
+            <label class="text-white" for="">Remove</label>
             <button type="button" formacao="<?php echo"formacaoRow".$numFormacoes?>" class="btn btn-danger btn-excluir-formcao"><i class="fa fa-trash"
                     aria-hidden="true"></i></button>
         </div>
     </div>
+    <hr>
 </div>
 
 <script>
@@ -152,6 +144,9 @@ $numFormacoes = $_SESSION['formacaoCont'];
 
     if (pais == 26) {
         $('#estado_pais_formacao'+numFormacoes).show();
+    }else{
+        // $("#estado_pais_formacao"+numFormacoes"+ option:contains("")").attr('selected', true);
+        $('#estado_pais_formacao'+numFormacoes).hide();
     }
     });
 

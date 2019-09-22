@@ -20,6 +20,12 @@ function navega($pagina){
     case 'gravaridiomas':
       require 'controle/gravaridiomas.php';
     break;
+    case 'cadastrarformacao':
+      require 'paginas/cadastrar/cadastrarformacao.php';
+    break; 
+    case 'gravarformacao':
+      require 'controle/gravarformacao.php';
+    break;
 
 
     case 'cadastrocurriculo':

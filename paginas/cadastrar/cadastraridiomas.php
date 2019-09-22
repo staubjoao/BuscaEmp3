@@ -29,7 +29,7 @@ $_SESSION['idiomasCont'] = 1;
                         <label for="inputIdioma">Nível</label>
                         <label for="" class="text-danger">*</label>
                         <select name="nivel1" class="custom-select obrigatorio" id="nivel1">
-                            <option value="">Nível</option>
+                            <option value="">Escolha</option>
                             <option value="Basico">Básico</option>
                             <option value="Intermediario">Intermediário</option>
                             <option value="Avancado">Avançado</option>

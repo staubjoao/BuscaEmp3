@@ -1,5 +1,8 @@
 <?php
+@session_start();
 $con = conecta();
+
+unset($_SESSION['idcurriculo']);    
 ?>
 
 <style type="text/css">
