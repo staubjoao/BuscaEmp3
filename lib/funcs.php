@@ -32,6 +32,12 @@ function navega($pagina){
     case 'gravarexperienciaprofissional':
       require 'controle/gravarexperienciaprofissional.php';
     break;
+    case 'questionario':
+    require 'paginas/cadastrar/questionario.php';
+    break;
+    case 'gravarquestionario':
+    require 'controle/gravarquestionario.php';
+    break;
 
 
 
@@ -46,9 +52,6 @@ function navega($pagina){
     break;
     case 'salvarcurriculo':
       require 'controle/gravarcurriculo.php';
-    break;
-    case 'salvarall':
-      require 'controle/salvarCurriculoQuestionario.php';
     break;
     case 'login':
       require 'paginas/login.php';
@@ -76,9 +79,6 @@ function navega($pagina){
     break;
     case 'fkcidade':
       require 'paginas/fks/cidade_post.php';
-    break;
-    case 'questionario':
-      require 'paginas/cadastrar/questionario.php';
     break;
 
     case 'idiomas';

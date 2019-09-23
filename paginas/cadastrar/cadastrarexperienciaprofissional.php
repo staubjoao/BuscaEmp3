@@ -16,13 +16,13 @@ $_SESSION['experienciaCont'] = 0;
         <div class="col-md-8 ml-md-5  border border-primary  shadow-lg p-3 mb-5 bg-white rounded"
             style="margin-top: 100px">
             <form id="formPretencao" action="?pagina=gravarexperienciaprofissional" method="post">
-                <div id="trabalhou" class="hidden"></div>
+                <div id="trabalhou" class=""></div>
                 <div class="form-row">
                     <div class="col-sm-4">
                         <h5>Já trabalhou?</h5>
                     </div>
                     <div class="col-sm-2">
-                        <button type="button" id="trabalhouNao" name="trabalhouNao" class="btn btn-danger">Não</button>
+                        <button type="button" id="trabalhouNao" class="btn btn-danger">Não</button>
                     </div>
                     <div class="col-sm-3">
                         <button type="button" id="trabalhouSim" class="btn btn-danger">Sim</button>
@@ -154,12 +154,10 @@ $_SESSION['experienciaCont'] = 0;
         $("#trabalhouNao").click(function () {
             $("#experienciaHidden").show("slow");
             $("#novasexp").hide("slow");
-            // $("#trabalhou").html('<input name="trabalhou" type="text" value="N" disabled>');
         });
         $("#trabalhouSim").click(function () {
             $("#experienciaHidden").hide("slow");
             $("#novasexp").show("slow");
-            // $("#trabalhou").remove();
         });
         $("#addexperienciaprof").click(function () {
             $.ajax({

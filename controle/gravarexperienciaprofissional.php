@@ -7,10 +7,6 @@ $contExperiencia = $_SESSION['experienciaCont'];
 
 $i = 1;
 
-if(isset("#trabalhouNao")){
-    echo "";
-}
-
 while($i <= $contExperiencia){
     $empresa = trim($_POST["empresa".$i]);
     $cargoExperiencia = trim($_POST["cargoExperiencia".$i]);
@@ -33,7 +29,7 @@ while($i <= $contExperiencia){
             '$cidadeExperiencia', '$id_estado_experiencia')";
             $res = mysqli_query($con, $insertexperiencia);
             if($res){
-                header("Location: ?pagina=");
+                header("Location: ?pagina=questionario");
             }else{
                 echo"não salvou";
             }
@@ -44,7 +40,7 @@ while($i <= $contExperiencia){
             '$cidadeExperiencia')";
             $res = mysqli_query($con, $insertexperiencia);
             if($res){
-                header("Location: ?pagina=");
+                header("Location: ?pagina=questionario");
             }else{
                 echo"não salvou";
             }
@@ -58,7 +54,7 @@ while($i <= $contExperiencia){
         '$cidadeExperiencia', '$id_estado_experiencia')";
         $res = mysqli_query($con, $insertexperiencia);
         if($res){
-            header("Location: ?pagina=");
+            header("Location: ?pagina=questionario");
         }else{
             echo"não salvou";
         }
@@ -69,7 +65,7 @@ while($i <= $contExperiencia){
         '$cidadeExperiencia')";
         $res = mysqli_query($con, $insertexperiencia);
         if($res){
-            header("Location: ?pagina=");
+            header("Location: ?pagina=questionario");
         }else{
             echo"não salvou";
         }

@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center bg-light">
-    <div class="col-md-5 ml-md-4  border border-dark  shadow-lg p-3 mb-5 bg-white rounded" style="margin-top: 100px">
-      <form action="?pagina=salvarall" method="post">
+    <div class="col-md-8 ml-md-5  border border-primary  shadow-lg p-3 mb-5 bg-white rounded" style="margin-top: 100px">
+      <form id="formPretencao" action="?pagina=gravarexperienciaprofissional" method="post">
         <div class="form-row">
           <div class="form-group col-md">
             <h4>Formulário de competências:</h4>
@@ -512,11 +512,9 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <button type="reset" class="btn btn-danger btn-lg btn-block">Limpar</button>
-          </div>
-          <div class="form-group col-md-6">
-            <button type="submit" class="btn btn-dark btn-lg btn-block">Próximo</button>
+          <div class="form-group col-md-8"></div>
+          <div class="form-group col-md-4">
+            <button type="submit" id="proximo" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
           </div>
         </div>
       </form>
