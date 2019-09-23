@@ -7,7 +7,7 @@ $con = conecta();
 $numIdiomas = $_SESSION['idiomasCont'] + 1;
 $_SESSION['idiomasCont'] = $numIdiomas;
 ?>
-<div class="form-row" id="<?php echo"idiomaRow".$numIdiomas?>">
+<div class="form-row" style="display: none" id="<?php echo"idiomaRow".$numIdiomas?>">
     <div class="form-group col-md-6">
         <label for="inputIdioma">Idioma</label>
         <label for="" class="text-danger">*</label>

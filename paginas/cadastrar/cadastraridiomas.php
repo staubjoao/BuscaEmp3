@@ -70,6 +70,7 @@ $_SESSION['idiomasCont'] = 1;
                 url: 'http://localhost/BuscaEmp3/paginas/add/idiomas.php',
                 success: function (idiomas) {
                     $("#novosIdiomas").append(idiomas);
+                    $('#novosIdiomas .form-row:last').show(500);
                 }
             });
         });

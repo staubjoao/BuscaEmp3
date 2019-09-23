@@ -1,7 +1,7 @@
 -- -----------------------------------------------------
--- Table `buscaemp8`.`pais`
+-- Table `pais`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`pais` (
+CREATE TABLE IF NOT EXISTS `pais` (
   `idpais` INT NOT NULL AUTO_INCREMENT,
   `pais` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idpais`))
@@ -9,9 +9,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`estado`
+-- Table `estado`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`estado` (
+CREATE TABLE IF NOT EXISTS `estado` (
   `idestado` INT NOT NULL AUTO_INCREMENT,
   `estado` VARCHAR(45) NOT NULL,
   `uf` CHAR(2) NOT NULL,
@@ -20,16 +20,16 @@ CREATE TABLE IF NOT EXISTS `buscaemp8`.`estado` (
   INDEX `fk_estado_pais1_idx` (`pais_idpais` ASC),
   CONSTRAINT `fk_estado_pais1`
     FOREIGN KEY (`pais_idpais`)
-    REFERENCES `buscaemp8`.`pais` (`idpais`)
+    REFERENCES `pais` (`idpais`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`cidade`
+-- Table `cidade`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`cidade` (
+CREATE TABLE IF NOT EXISTS `cidade` (
   `idcidade` INT NOT NULL AUTO_INCREMENT,
   `cidade` VARCHAR(100) NOT NULL,
   `estado_idestado` INT NOT NULL,
@@ -37,23 +37,23 @@ CREATE TABLE IF NOT EXISTS `buscaemp8`.`cidade` (
   INDEX `fk_cidade_estado1_idx` (`estado_idestado` ASC),
   CONSTRAINT `fk_cidade_estado1`
     FOREIGN KEY (`estado_idestado`)
-    REFERENCES `buscaemp8`.`estado` (`idestado`)
+    REFERENCES `estado` (`idestado`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`curriculo`
+-- Table `curriculo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`curriculo` (
+CREATE TABLE IF NOT EXISTS `curriculo` (
   `idcurriculo` INT NOT NULL AUTO_INCREMENT,
   `ac` CHAR(1) NOT NULL,
   `email` VARCHAR(80) NOT NULL,
   `senha` VARCHAR(12) NOT NULL,
   `nome` VARCHAR(100) NOT NULL,
-  `cpf` CHAR(11) NOT NULL,
-  `cep` CHAR(8) NOT NULL,
+  `cpf` CHAR(14) NOT NULL,
+  `cep` CHAR(10) NOT NULL,
   `rua` VARCHAR(100) NOT NULL,
   `numero` INT NOT NULL,
   `complemento` VARCHAR(150) NULL,
@@ -66,16 +66,16 @@ CREATE TABLE IF NOT EXISTS `buscaemp8`.`curriculo` (
   INDEX `fk_curriculo_cidade1_idx` (`cidade_idcidade` ASC),
   CONSTRAINT `fk_curriculo_cidade1`
     FOREIGN KEY (`cidade_idcidade`)
-    REFERENCES `buscaemp8`.`cidade` (`idcidade`)
+    REFERENCES `cidade` (`idcidade`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`idiomas`
+-- Table `idiomas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`idiomas` (
+CREATE TABLE IF NOT EXISTS `idiomas` (
   `ididiomas` INT NOT NULL AUTO_INCREMENT,
   `idioma` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ididiomas`))
@@ -83,9 +83,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`idiomas_curriculo`
+-- Table `idiomas_curriculo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`idiomas_curriculo` (
+CREATE TABLE IF NOT EXISTS `idiomas_curriculo` (
   `idiomas_ididiomas` INT NULL,
   `curriculo_idcurriculo` INT NOT NULL,
   `nivel` VARCHAR(45) NULL,
@@ -93,21 +93,21 @@ CREATE TABLE IF NOT EXISTS `buscaemp8`.`idiomas_curriculo` (
   INDEX `fk_idiomas_curriculo_curriculo1_idx` (`curriculo_idcurriculo` ASC),
   CONSTRAINT `fk_idiomas_curriculo_idiomas`
     FOREIGN KEY (`idiomas_ididiomas`)
-    REFERENCES `buscaemp8`.`idiomas` (`ididiomas`)
+    REFERENCES `idiomas` (`ididiomas`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_idiomas_curriculo_curriculo1`
     FOREIGN KEY (`curriculo_idcurriculo`)
-    REFERENCES `buscaemp8`.`curriculo` (`idcurriculo`)
+    REFERENCES `curriculo` (`idcurriculo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`cargos`
+-- Table `cargos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`cargos` (
+CREATE TABLE IF NOT EXISTS `cargos` (
   `idcargos` INT NOT NULL AUTO_INCREMENT,
   `cargo` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`idcargos`))
@@ -115,9 +115,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`expProfissional`
+-- Table `expProfissional`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`expProfissional` (
+CREATE TABLE IF NOT EXISTS `expProfissional` (
   `idexpProfissional` INT NOT NULL AUTO_INCREMENT,
   `empresa` VARCHAR(45) NULL,
   `inicio` DATE NULL,
@@ -135,31 +135,31 @@ CREATE TABLE IF NOT EXISTS `buscaemp8`.`expProfissional` (
   INDEX `fk_expProfissional_cargos1_idx` (`cargos_idcargos` ASC),
   CONSTRAINT `fk_expProfissional_curriculo1`
     FOREIGN KEY (`curriculo_idcurriculo`)
-    REFERENCES `buscaemp8`.`curriculo` (`idcurriculo`)
+    REFERENCES `curriculo` (`idcurriculo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_expProfissional_pais1`
     FOREIGN KEY (`pais_idpais`)
-    REFERENCES `buscaemp8`.`pais` (`idpais`)
+    REFERENCES `pais` (`idpais`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_expProfissional_estado1`
     FOREIGN KEY (`estado_idestado`)
-    REFERENCES `buscaemp8`.`estado` (`idestado`)
+    REFERENCES `estado` (`idestado`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_expProfissional_cargos1`
     FOREIGN KEY (`cargos_idcargos`)
-    REFERENCES `buscaemp8`.`cargos` (`idcargos`)
+    REFERENCES `cargos` (`idcargos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`perguntas`
+-- Table `perguntas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`perguntas` (
+CREATE TABLE IF NOT EXISTS `perguntas` (
   `idperguntas` INT NOT NULL AUTO_INCREMENT,
   `pergunta` VARCHAR(8000) NOT NULL,
   PRIMARY KEY (`idperguntas`))
@@ -167,9 +167,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`perguntas_curriculo`
+-- Table `perguntas_curriculo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`perguntas_curriculo` (
+CREATE TABLE IF NOT EXISTS `perguntas_curriculo` (
   `curriculo_idcurriculo` INT NOT NULL,
   `perguntas_idperguntas` INT NOT NULL,
   `resposta` VARCHAR(45) NOT NULL,
@@ -178,21 +178,21 @@ CREATE TABLE IF NOT EXISTS `buscaemp8`.`perguntas_curriculo` (
   PRIMARY KEY (`curriculo_idcurriculo`, `perguntas_idperguntas`),
   CONSTRAINT `fk_perguntas_curriculo_curriculo1`
     FOREIGN KEY (`curriculo_idcurriculo`)
-    REFERENCES `buscaemp8`.`curriculo` (`idcurriculo`)
+    REFERENCES `curriculo` (`idcurriculo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_perguntas_curriculo_perguntas1`
     FOREIGN KEY (`perguntas_idperguntas`)
-    REFERENCES `buscaemp8`.`perguntas` (`idperguntas`)
+    REFERENCES `perguntas` (`idperguntas`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`empresa`
+-- Table `empresa`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`empresa` (
+CREATE TABLE IF NOT EXISTS `empresa` (
   `idempresa` INT NOT NULL AUTO_INCREMENT,
   `ac` CHAR(42) NOT NULL,
   `email` VARCHAR(80) NOT NULL,
@@ -209,16 +209,16 @@ CREATE TABLE IF NOT EXISTS `buscaemp8`.`empresa` (
   INDEX `fk_empresa_cidade1_idx` (`cidade_idcidade` ASC),
   CONSTRAINT `fk_empresa_cidade1`
     FOREIGN KEY (`cidade_idcidade`)
-    REFERENCES `buscaemp8`.`cidade` (`idcidade`)
+    REFERENCES `cidade` (`idcidade`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`nivel`
+-- Table `nivel`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`nivel` (
+CREATE TABLE IF NOT EXISTS `nivel` (
   `idnivel` INT NOT NULL AUTO_INCREMENT,
   `nivel` VARCHAR(80) NOT NULL,
   PRIMARY KEY (`idnivel`))
@@ -226,9 +226,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`curso`
+-- Table `curso`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`curso` (
+CREATE TABLE IF NOT EXISTS `curso` (
   `idcurso` INT NOT NULL AUTO_INCREMENT,
   `curso` VARCHAR(80) NOT NULL,
   `nivel_idnivel` INT NOT NULL,
@@ -236,16 +236,16 @@ CREATE TABLE IF NOT EXISTS `buscaemp8`.`curso` (
   INDEX `fk_curso_nivel1_idx` (`nivel_idnivel` ASC),
   CONSTRAINT `fk_curso_nivel1`
     FOREIGN KEY (`nivel_idnivel`)
-    REFERENCES `buscaemp8`.`nivel` (`idnivel`)
+    REFERENCES `nivel` (`idnivel`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`curso_curriculo`
+-- Table `curso_curriculo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`curso_curriculo` (
+CREATE TABLE IF NOT EXISTS `curso_curriculo` (
   `curso_idcurso` INT NOT NULL,
   `curriculo_idcurriculo` INT NOT NULL,
   `nomeInstituicao` VARCHAR(200) NULL,
@@ -262,31 +262,31 @@ CREATE TABLE IF NOT EXISTS `buscaemp8`.`curso_curriculo` (
   INDEX `fk_curso_curriculo_estado1_idx` (`estado_idestado` ASC),
   CONSTRAINT `fk_curso_curriculo_curso1`
     FOREIGN KEY (`curso_idcurso`)
-    REFERENCES `buscaemp8`.`curso` (`idcurso`)
+    REFERENCES `curso` (`idcurso`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_curso_curriculo_curriculo1`
     FOREIGN KEY (`curriculo_idcurriculo`)
-    REFERENCES `buscaemp8`.`curriculo` (`idcurriculo`)
+    REFERENCES `curriculo` (`idcurriculo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_curso_curriculo_pais1`
     FOREIGN KEY (`pais_idpais`)
-    REFERENCES `buscaemp8`.`pais` (`idpais`)
+    REFERENCES `pais` (`idpais`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_curso_curriculo_estado1`
     FOREIGN KEY (`estado_idestado`)
-    REFERENCES `buscaemp8`.`estado` (`idestado`)
+    REFERENCES `estado` (`idestado`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`pretecao`
+-- Table `pretecao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`pretecao` (
+CREATE TABLE IF NOT EXISTS `pretecao` (
   `idpretecao` INT NOT NULL AUTO_INCREMENT,
   `visivel` CHAR(1) NOT NULL,
   `datapretencao` DATE NOT NULL,
@@ -301,16 +301,16 @@ CREATE TABLE IF NOT EXISTS `buscaemp8`.`pretecao` (
   INDEX `fk_pretecao_curriculo1_idx` (`curriculo_idcurriculo` ASC),
   CONSTRAINT `fk_pretecao_curriculo1`
     FOREIGN KEY (`curriculo_idcurriculo`)
-    REFERENCES `buscaemp8`.`curriculo` (`idcurriculo`)
+    REFERENCES `curriculo` (`idcurriculo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `buscaemp8`.`cargos_curriculo`
+-- Table `cargos_curriculo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `buscaemp8`.`cargos_curriculo` (
+CREATE TABLE IF NOT EXISTS `cargos_curriculo` (
   `cargos_idcargos` INT NOT NULL,
   `pretecao_idpretecao` INT NOT NULL,
   PRIMARY KEY (`cargos_idcargos`, `pretecao_idpretecao`),
@@ -318,12 +318,12 @@ CREATE TABLE IF NOT EXISTS `buscaemp8`.`cargos_curriculo` (
   INDEX `fk_cargos_curriculo_pretecao1_idx` (`pretecao_idpretecao` ASC),
   CONSTRAINT `fk_cargos_has_curriculo_cargos1`
     FOREIGN KEY (`cargos_idcargos`)
-    REFERENCES `buscaemp8`.`cargos` (`idcargos`)
+    REFERENCES `cargos` (`idcargos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_cargos_curriculo_pretecao1`
     FOREIGN KEY (`pretecao_idpretecao`)
-    REFERENCES `buscaemp8`.`pretecao` (`idpretecao`)
+    REFERENCES `pretecao` (`idpretecao`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
