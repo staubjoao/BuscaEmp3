@@ -17,72 +17,31 @@
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você está preparado para trabalhar com um grupo de pessoas?</h5>
+
+            <div class="rating">
+              <input type="radio" id="p1-star5" name="grupo1" value="5" /><label for="p1-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p1-star4" name="grupo1" value="4" /><label for="p1-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p1-star3" name="grupo1" value="3" /><label for="p1-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p1-star2" name="grupo1" value="2" /><label for="p1-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p1-star1" name="grupo1" value="1" /><label for="p1-star1" title="ruim">1 star</label>
+            </div>
+
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo1" id="q1r0" value="0">
-              <label class="form-check-label" for="q1r0">0</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="1">
-              <label class="form-check-label" for="q1r1">1</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="2">
-              <label class="form-check-label" for="q1r2">2</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="3">
-              <label class="form-check-label" for="q1r3">3</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="5">
-              <label class="form-check-label" for="q1r4">4</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo1" id="q1r1" value="6">
-              <label class="form-check-label" for="q1r5">5</label>
-            </div>
-          </div>
-        </div>
-
-
+        
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você está pronto para apresentar suas ideias para a sua equipe?</h5>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo2" id="q2r0" value="0">
-              <label class="form-check-label" for="q2r0">0</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="1">
-              <label class="form-check-label" for="q2r1">1</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="2">
-              <label class="form-check-label" for="q2r2">2</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="3">
-              <label class="form-check-label" for="q2r3">3</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="5">
-              <label class="form-check-label" for="q2r4">4</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="grupo2" id="q2r1" value="6">
-              <label class="form-check-label" for="q2r5">5</label>
+            <div class="rating">
+              <input type="radio" id="p2-star5" name="grupo2" value="5" /><label for="p2-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p2-star4" name="grupo2" value="4" /><label for="p2-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p2-star3" name="grupo2" value="3" /><label for="p2-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p2-star2" name="grupo2" value="2" /><label for="p2-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p2-star1" name="grupo2" value="1" /><label for="p2-star1" title="ruim">1 star</label>
             </div>
           </div>
         </div>
-
+        <hr>
         <div class="form-row">
           <div class="form-group col-md">
             <h4>Adaptação/Aprendizado</h4>
@@ -91,74 +50,30 @@
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você está aberto a novas experiências profissionais?</h5>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-group col-md">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo3" id="q3r0" value="0">
-                <label class="form-check-label" for="q3r0">0</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="1">
-                <label class="form-check-label" for="q3r1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="2">
-                <label class="form-check-label" for="q3r2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="3">
-                <label class="form-check-label" for="q3r3">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="5">
-                <label class="form-check-label" for="q3r4">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo3" id="q3r1" value="6">
-                <label class="form-check-label" for="q3r5">5</label>
-              </div>
+            <div class="rating">
+              <input type="radio" id="p3-star5" name="grupo3" value="5" /><label for="p3-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p3-star4" name="grupo3" value="4" /><label for="p3-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p3-star3" name="grupo3" value="3" /><label for="p3-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p3-star2" name="grupo3" value="2" /><label for="p3-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p3-star1" name="grupo3" value="1" /><label for="p3-star1" title="ruim">1 star</label>
             </div>
           </div>
         </div>
+        
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você sabe lidar com mudanças? </h5>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-group col-md">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo4" id="q4r0" value="0">
-                <label class="form-check-label" for="q4r0">0</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="1">
-                <label class="form-check-label" for="q4r1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="2">
-                <label class="form-check-label" for="q4r2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="3">
-                <label class="form-check-label" for="q4r3">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="5">
-                <label class="form-check-label" for="q4r4">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo4" id="q4r1" value="6">
-                <label class="form-check-label" for="q4r5">5</label>
-              </div>
+            <div class="rating">
+              <input type="radio" id="p4-star5" name="grupo4" value="5" /><label for="p4-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p4-star3" name="grupo4" value="4" /><label for="p4-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p4-star3" name="grupo4" value="3" /><label for="p4-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p4-star2" name="grupo4" value="2" /><label for="p4-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p4-star1" name="grupo4" value="1" /><label for="p4-star1" title="ruim">1 star</label>
             </div>
           </div>
         </div>
-
+        
+        <hr>
         <div class="form-row">
           <div class="form-group col-md">
             <h4>Aceitação</h4>
@@ -167,39 +82,17 @@
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você está preparado para receber críticas construtivas do seu trabalho?</h5>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-group col-md">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo5" id="q5r0" value="0">
-                <label class="form-check-label" for="q5r0">0</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="1">
-                <label class="form-check-label" for="q5r1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="2">
-                <label class="form-check-label" for="q5r2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="3">
-                <label class="form-check-label" for="q5r3">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="5">
-                <label class="form-check-label" for="q5r4">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo5" id="q5r1" value="6">
-                <label class="form-check-label" for="q5r5">5</label>
-              </div>
+            <div class="rating">
+              <input type="radio" id="p5-star5" name="grupo5" value="5" /><label for="p5-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p5-star4" name="grupo5" value="4" /><label for="p5-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p5-star3" name="grupo5" value="3" /><label for="p5-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p5-star2" name="grupo5" value="2" /><label for="p5-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p5-star1" name="grupo5" value="1" /><label for="p5-star1" title="ruim">1 star</label>
             </div>
           </div>
         </div>
-
+      
+        <hr>
         <div class="form-row">
           <div class="form-group col-md">
             <h4>Proatividade</h4>
@@ -208,39 +101,17 @@
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você está preparado para tomar uma decisão levando em conta os possíveis riscos dessa decisão?</h5>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-group col-md">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo6" id="q6r0" value="0">
-                <label class="form-check-label" for="q6r0">0</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="1">
-                <label class="form-check-label" for="q6r1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="2">
-                <label class="form-check-label" for="q6r2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="3">
-                <label class="form-check-label" for="q6r3">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="5">
-                <label class="form-check-label" for="q6r4">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo6" id="q6r1" value="6">
-                <label class="form-check-label" for="q6r5">5</label>
-              </div>
+            <div class="rating">
+              <input type="radio" id="p6-star5" name="grupo6" value="5" /><label for="p6-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p6-star4" name="grupo6" value="4" /><label for="p6-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p6-star3" name="grupo6" value="3" /><label for="p6-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p6-star2" name="grupo6" value="2" /><label for="p6-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p6-star1" name="grupo6" value="1" /><label for="p6-star1" title="ruim">1 star</label>
             </div>
           </div>
         </div>
-
+        
+        <hr>
         <div class="form-row">
           <div class="form-group col-md">
             <h4>Comprometimento</h4>
@@ -249,39 +120,17 @@
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você está comprometido em cumprir horários e metas?</h5>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-group col-md">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo7" id="q7r0" value="0">
-                <label class="form-check-label" for="q7r0">0</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="1">
-                <label class="form-check-label" for="q7r1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="2">
-                <label class="form-check-label" for="q7r2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="3">
-                <label class="form-check-label" for="q7r3">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="5">
-                <label class="form-check-label" for="q7r4">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo7" id="q7r1" value="6">
-                <label class="form-check-label" for="q7r5">5</label>
-              </div>
+            <div class="rating">
+              <input type="radio" id="p7-star5" name="grupo7" value="5" /><label for="p7-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p7-star4" name="grupo7" value="4" /><label for="p7-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p7-star3" name="grupo7" value="3" /><label for="p7-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p7-star2" name="grupo7" value="2" /><label for="p7-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p7-star1" name="grupo7" value="1" /><label for="p7-star1" title="ruim">1 star</label>
             </div>
           </div>
         </div>
-
+      
+        <hr>
         <div class="form-row">
           <div class="form-group col-md">
             <h4>Autocontrole</h4>
@@ -290,75 +139,31 @@
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você se considera uma pessoa capaz de lidar com adversidades?</h5>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-group col-md">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo8" id="q8r0" value="0">
-                <label class="form-check-label" for="q8r0">0</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="1">
-                <label class="form-check-label" for="q8r1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="2">
-                <label class="form-check-label" for="q8r2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="3">
-                <label class="form-check-label" for="q8r3">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="5">
-                <label class="form-check-label" for="q8r4">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo8" id="q8r1" value="6">
-                <label class="form-check-label" for="q8r5">5</label>
-              </div>
+            <div class="rating">
+              <input type="radio" id="p8-star5" name="grupo8" value="5" /><label for="p8-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p8-star4" name="grupo8" value="4" /><label for="p8-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p8-star3" name="grupo8" value="3" /><label for="p8-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p8-star2" name="grupo8" value="2" /><label for="p8-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p8-star1" name="grupo8" value="1" /><label for="p8-star1" title="ruim">1 star</label>
             </div>
           </div>
         </div>
-
+       
+        <hr>
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você consegue lidar com suas emoções?</h5>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-group col-md">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo9" id="q8r0" value="0">
-                <label class="form-check-label" for="q8r0">0</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo9" id="q8r1" value="1">
-                <label class="form-check-label" value="1" for="q8r1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo9" id="q8r1" value="2">
-                <label class="form-check-label" for="q8r2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo9" id="q8r1" value="3">
-                <label class="form-check-label" for="q8r3">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo9" id="q8r1" value="5">
-                <label class="form-check-label" for="q8r4">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo9" id="q8r1" value="6">
-                <label class="form-check-label" for="q8r5">5</label>
-              </div>
+            <div class="rating">
+              <input type="radio" id="p9-star5" name="grupo9" value="5" /><label for="p9-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p9-star4" name="grupo9" value="4" /><label for="p9-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p9-star3" name="grupo9" value="3" /><label for="p9-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p9-star2" name="grupo9" value="2" /><label for="p9-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p9-star1" name="grupo9" value="1" /><label for="p9-star1" title="ruim">1 star</label>
             </div>
           </div>
         </div>
-
+        
+        <hr>
         <div class="form-row">
           <div class="form-group col-md">
             <h4>Habilidade de Comunicação</h4>
@@ -367,75 +172,32 @@
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você se considera uma pessoa comunicativa?</h5>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-group col-md">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo10" id="q9r0" value="0">
-                <label class="form-check-label" for="q9r0">0</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo10" id="q9r1" value="1">
-                <label class="form-check-label" for="q9r1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo10" id="q9r1" value="2">
-                <label class="form-check-label" for="q9r2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo10" id="q9r1" value="3">
-                <label class="form-check-label" for="q9r3">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo10" id="q9r1" value="5">
-                <label class="form-check-label" for="q9r4">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo10" id="q9r1" value="6">
-                <label class="form-check-label" for="q9r5">5</label>
-              </div>
+            <div class="rating">
+              <input type="radio" id="p10-star5" name="grupo10" value="5" /><label for="p10-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p10-star4" name="grupo10" value="4" /><label for="p10-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p10-star3" name="grupo10" value="3" /><label for="p10-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p10-star2" name="grupo10" value="2" /><label for="p10-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p10-star1" name="grupo10" value="1" /><label for="p10-star1" title="ruim">1 star</label>
             </div>
           </div>
         </div>
+        
 
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você tem experiência e/ou facilidade em falar em público?</h5>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-group col-md">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo11" id="q10r0" value="0">
-                <label class="form-check-label" for="q10r0">0</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo11" id="q10r1" value="1">
-                <label class="form-check-label" for="q10r1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo11" id="q10r1" value="2">
-                <label class="form-check-label" for="q10r2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo11" id="q10r1" value="3">
-                <label class="form-check-label" for="q10r3">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo11" id="q10r1" value="5">
-                <label class="form-check-label" for="q10r4">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo11" id="q10r1" value="6">
-                <label class="form-check-label" for="q10r5">5</label>
-              </div>
+            <div class="rating">
+              <input type="radio" id="p11-star5" name="grupo11" value="5" /><label for="p11-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p11-star4" name="grupo11" value="4" /><label for="p11-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p11-star3" name="grupo11" value="3" /><label for="p11-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p11-star2" name="grupo11" value="2" /><label for="p11-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p11-star1" name="grupo11" value="1" /><label for="p11-star1" title="ruim">1 star</label>
             </div>
           </div>
         </div>
 
+        <hr>
+        
         <div class="form-row">
           <div class="form-group col-md">
             <h4>Conhecimento Técnico</h4>
@@ -444,73 +206,29 @@
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você tem experiência na sua área de atuação?</h5>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-group col-md">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo12" id="q11r0" value="0">
-                <label class="form-check-label" for="q11r0">0</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo12" id="q11r1" value="1">
-                <label class="form-check-label" for="q11r1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo12" id="q11r1" value="2">
-                <label class="form-check-label" for="q11r2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo12" id="q11r1" value="3">
-                <label class="form-check-label" for="q11r3">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo12" id="q11r1" value="5">
-                <label class="form-check-label" for="q11r4">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo12" id="q11r1" value="6">
-                <label class="form-check-label" for="q11r5">5</label>
-              </div>
+            <div class="rating">
+              <input type="radio" id="p12-star5" name="grupo12" value="5" /><label for="p12-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p12-star4" name="grupo12" value="4" /><label for="p12-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p12-star3" name="grupo12" value="3" /><label for="p12-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p12-star2" name="grupo12" value="2" /><label for="p12-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p12-star1" name="grupo12" value="1" /><label for="p12-star1" title="ruim">1 star</label>
             </div>
           </div>
         </div>
+        
         <div class="form-row">
           <div class="form-group col-md">
             <h5>Você consegue aplicar seus conhecimentos com destreza?</h5>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <div class="form-group col-md">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo13" id="q11r0" value="0">
-                <label class="form-check-label" for="q11r0">0</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo13" id="q11r1" value="1">
-                <label class="form-check-label" for="q11r1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo13" id="q11r1" value="2">
-                <label class="form-check-label" for="q11r2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo13" id="q11r1" value="3">
-                <label class="form-check-label" for="q11r3">3</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo13" id="q11r1" value="5">
-                <label class="form-check-label" for="q11r4">4</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="grupo13" id="q11r1" value="6">
-                <label class="form-check-label" for="q11r5">5</label>
-              </div>
+            <div class="rating">
+              <input type="radio" id="p13-star5" name="grupo13" value="5" /><label for="p13-star5" title="Muito bom">5 stars</label>
+              <input type="radio" id="p13-star4" name="grupo13" value="4" /><label for="p13-star4" title="Bom">4 stars</label>
+              <input type="radio" id="p13-star3" name="grupo13" value="3" /><label for="p13-star3" title="Medio">3 stars</label>
+              <input type="radio" id="p13-star2" name="grupo13" value="2" /><label for="p13-star2" title="Não tão ruim">2 stars</label>
+              <input type="radio" id="p13-star1" name="grupo13" value="1" /><label for="p13-star1" title="ruim">1 star</label>
             </div>
           </div>
         </div>
+       
         <div class="form-row">
           <div class="form-group col-md-8"></div>
           <div class="form-group col-md-4">
