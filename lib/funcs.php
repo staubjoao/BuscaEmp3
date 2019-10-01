@@ -45,7 +45,7 @@ function navega($pagina){
       require 'paginas/cadastrar/cadastroCur.php';
     break;
     case 'cadastroempresa':
-      require 'paginas/cadastrar/cadastroEmp.php';
+      require 'paginas/cadastrar/cadastroempresa.php';
     break;
     case 'salvaremp':
       require 'controle/gravarempresa.php';
