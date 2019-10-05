@@ -7,6 +7,10 @@ $contExperiencia = $_SESSION['experienciaCont'];
 
 $i = 1;
 
+if($contExperiencia == 0){
+    header("Location: ?pagina=questionario");
+}
+ 
 while($i <= $contExperiencia){
     $empresa = trim($_POST["empresa".$i]);
     $cargoExperiencia = trim($_POST["cargoExperiencia".$i]);

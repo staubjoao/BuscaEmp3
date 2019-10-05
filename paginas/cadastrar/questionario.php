@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center bg-light">
     <div class="col-md-8 ml-md-5  border border-primary  shadow-lg p-3 mb-5 bg-white rounded" style="margin-top: 100px">
-      <form id="formPretencao" action="?pagina=gravarexperienciaprofissional" method="post">
+      <form id="formPretencao" action="?pagina=gravarquestionario" method="post">
         <div class="form-row">
           <div class="form-group col-md">
             <h4>Formulário de competências:</h4>

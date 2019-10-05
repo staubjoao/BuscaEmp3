@@ -3,8 +3,27 @@
       <a href="?pagina=teste">tabelaTestes2</a>
       <a href="?pagina=estado">tabelaTestes3</a> -->
 
-      
-      
+      <?php
+      @session_start();
+      $con = conecta();
+
+      $idcurriculo = $_SESSION['idcurriculo'];
+      if(isset($_SESSION['cadastrado'])){
+        $selcurriculo = "SELECT nome FROM curriculo WHERE idcurriculo='$idcurriculo' LIMIT 1";
+        $rescurriculo = mysqli_query($con, $selcurriculo);
+        $rowcurriculo = mysqli_fetch_assoc($rescurriculo);
+        if($rescurriculo){
+          echo "<h1>Cadastrado com sucesso. Seja bem vindo(a) ".$rowcurriculo['nome'];
+          unset($_SESSION['cadastrado']);
+          unset($_SESSION['idcurriculo']);
+        }else{
+
+        }
+      }else{
+
+      }
+      ?>
+
       <div class="row justify-content-center bg-light">
 
         <div class="col-md-3 border border-dark shadow-lg p-3 mb-5 bg-white rounded" style="margin-top: 100px">
