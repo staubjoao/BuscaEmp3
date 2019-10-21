@@ -7,8 +7,8 @@
       @session_start();
       $con = conecta();
 
-      $idcurriculo = $_SESSION['idcurriculo'];
       if(isset($_SESSION['cadastrado'])){
+        $idcurriculo = $_SESSION['idcurriculo'];
         $selcurriculo = "SELECT nome FROM curriculo WHERE idcurriculo='$idcurriculo' LIMIT 1";
         $rescurriculo = mysqli_query($con, $selcurriculo);
         $rowcurriculo = mysqli_fetch_assoc($rescurriculo);
