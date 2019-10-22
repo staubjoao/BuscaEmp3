@@ -1,5 +1,5 @@
 <?php
-//print_r($_POST);
+print_r($_POST);
 if(trim($_POST['email']) != ""){
   $email = trim($_POST['email']);
 }
@@ -33,7 +33,7 @@ if(trim($_POST['id_cidade']) != ""){
 $ac = "E";
 
 $con = conecta();
-$insert = "INSERT INTO empresa (ac, email, senha, nome, endereco, numero, cnpj, cep, ramoAtividade, cidade_idcidade) 
+$insert = "INSERT INTO empresa (ac, email, senha, nome, rua, numero, cnpj, cep, ramoAtividade, cidade_idcidade) 
 VALUES ('$ac', '$email', '$senha', '$nome', '$endereco', '$numero', '$cnpj', '$cep', '$ramo', '$idcidade')";
 $res = mysqli_query($con, $insert);
 

@@ -1,3 +1,8 @@
+<style type="text/css">
+    .hidden {
+        display: none;
+    }
+</style>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <a class="navbar-brand text-danger" href="?pagina=home">BuscaEmpregos</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +22,11 @@
         <a class="nav-link" href="?pagina=login">Login</a>
       </li>
     </ul>
+    <ul class="navbar-nav hidden">
+      <li class="nav-item">
+        <a class="nav-link" href="?pagina=login">Sair</a>
+      </li>
+    </ul>
     </form>
   </div>
 </nav>
-

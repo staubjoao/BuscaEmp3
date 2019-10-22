@@ -1,7 +1,7 @@
 <?php
-session_start();
+@session_start();
 
-if(!empty($_SESSION['id'])){
+if(!empty($_SESSION['idempresa'])){
     echo"<h1>Olá, ".$_SESSION['nome']." bem vinda</h1>";
 }else{
     $_SESSION['msg'] = "Faça login";
@@ -10,5 +10,7 @@ if(!empty($_SESSION['id'])){
 ?>
 
 <div class='container-fluid'>
-    <a href="?pagina=sair">sair</a>
+    <a href="?pagina=buscarcurriculo">Buscar</a>
+    <br>
+    <a href="?pagina=sair">Sair</a>
 </div>

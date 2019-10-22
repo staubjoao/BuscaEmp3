@@ -62,6 +62,9 @@ function navega($pagina){
     case 'controleempresa':
       require 'paginas/users/empresa.php';
     break;
+    case 'buscarcurriculo':
+      require 'paginas/buscarcurriculo.php';
+    break;
     case 'controlecurriculo':
       require 'paginas/users/curriculo.php';
     break;

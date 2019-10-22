@@ -22,7 +22,7 @@ if(isset($_POST['btnlogin'])){
                     if($resempresa){
                         $rowempresa = mysqli_fetch_assoc($resempresa);
                         if(($rowempresa['senha']) == $senha){
-                            $_SESSION['id'] = $rowempresa['idempresa'];
+                            $_SESSION['idempresa'] = $rowempresa['idempresa'];
                             $_SESSION['nome'] = $rowempresa['nome'];
                             $_SESSION['ac'] = $rowempresa['ac'];
                             header("Location: ?pagina=controleempresa");
@@ -40,7 +40,7 @@ if(isset($_POST['btnlogin'])){
                     if($rescurriculo){
                         $rowcurriculo = mysqli_fetch_assoc($rescurriculo);
                         if(($rowcurriculo['senha']) == $senha){
-                            $_SESSION['id'] = $rowcurriculo['idcurriculo'];
+                            $_SESSION['idcurriculo'] = $rowcurriculo['idcurriculo'];
                             $_SESSION['nome'] = $rowcurriculo['nome'];
                             $_SESSION['ac'] = $rowcurriculo['ac'];
                             header("Location: ?pagina=controlecurriculo");
