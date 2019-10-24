@@ -1,10 +1,13 @@
 <?php
-for($i = 1; $i <= 4000; $i++){
-    $n1 = rand(1, 3976);
+for($i = 1; $i <= 1032; $i++){
+    $numidi = rand(1, 5);
+    
+    for($j = 1; $j <= $numidi; $j++){
+        $idioma = rand(1, 64);
+        $nivel = array("Basico", "Intermediario", "Avancado", "Nativo");
+        $nivellen = rand(0, 3);
 
-    $cidade = $n1;
-    echo "'".$cidade."'"."AAAAAA";
-} 
-
-// 87.600.000
+        echo "INSERT INTO idiomas_curriculo (idiomas_ididiomas, curriculo_idcurriculo, nivel) VALUES ('".$idioma."', '".$i."', '".$nivel[$nivellen]."');"."<br>";
+    }
+}
 ?>
