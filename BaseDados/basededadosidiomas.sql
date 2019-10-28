@@ -2987,9 +2987,4 @@ INSERT INTO idiomas_curriculo (idiomas_ididiomas, curriculo_idcurriculo, nivel) 
 ('27', '1030', 'Nativo'),
 ('36', '1030', 'Intermediario'),
 ('44', '1030', 'Intermediario'),
-('53', '1031', 'Basico'),
-('36', '1032', 'Basico'),
-('8', '1032', 'Intermediario'),
-('34', '1032', 'Basico'),
-('4', '1032', 'Basico'),
-('19', '1032', 'Nativo');
+('53', '1031', 'Basico');

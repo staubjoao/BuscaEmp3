@@ -86,10 +86,11 @@ ENGINE = InnoDB;
 -- Table `idiomas_curriculo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `idiomas_curriculo` (
+  `ididiomas_curriculo` INT NOT NULL AUTO_INCREMENT,
   `idiomas_ididiomas` INT NULL,
   `curriculo_idcurriculo` INT NOT NULL,
   `nivel` VARCHAR(45) NULL,
-  PRIMARY KEY (`idiomas_ididiomas`, `curriculo_idcurriculo`),
+  PRIMARY KEY (`ididiomas_curriculo`),
   INDEX `fk_idiomas_curriculo_curriculo1_idx` (`curriculo_idcurriculo` ASC),
   CONSTRAINT `fk_idiomas_curriculo_idiomas`
     FOREIGN KEY (`idiomas_ididiomas`)
@@ -246,6 +247,7 @@ ENGINE = InnoDB;
 -- Table `curso_curriculo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `curso_curriculo` (
+  `idcurso_curriculo` INT NOT NULL AUTO_INCREMENT,
   `curso_idcurso` INT NOT NULL,
   `curriculo_idcurriculo` INT NOT NULL,
   `nomeInstituicao` VARCHAR(200) NULL,
@@ -255,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `curso_curriculo` (
   `pais_idpais` INT NULL,
   `cidade` VARCHAR(100) NULL,
   `estado_idestado` INT NULL,
-  PRIMARY KEY (`curso_idcurso`, `curriculo_idcurriculo`),
+  PRIMARY KEY (`idcurso_curriculo`),
   INDEX `fk_curso_curriculo_curso1_idx` (`curso_idcurso` ASC),
   INDEX `fk_curso_curriculo_curriculo1_idx` (`curriculo_idcurriculo` ASC),
   INDEX `fk_curso_curriculo_pais1_idx` (`pais_idpais` ASC),
