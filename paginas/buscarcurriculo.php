@@ -2,11 +2,9 @@
     <div class="row justify-content-center bg-light">
         <div class="col-md-8 ml-md-5  border border-primary  shadow-lg p-3 mb-5 bg-white rounded"
             style="margin-top: 100px">
-            <form id="formCurriculoDados" action="?pagina=gravardados" method="post">
-                <div class="form-row">
-                    <div class="form-group col-sm-4">
+                <div class="row">
+                    <div class="col-sm-4">
                         <label>Jornada</label>
-                        <label class="text-danger">*</label>
                         <select name="jornada" data-error="Selecione uma jornada" class=" custom-select obrigatorio"
                             id="jornada">
                             <option selected="selected" value="">Selecione</option>
@@ -19,9 +17,8 @@
                         </select>
                         <div class="help-block with-errors text-danger"></div>
                     </div>
-                    <div class="form-group col-sm-4">
+                    <div class="col-sm-4">
                         <label>Tipo Contrato</label>
-                        <label class="text-danger">*</label>
                         <select name="tipoContrato" data-error="Selecione um tipo de contrato"
                             class="custom-select obrigatorio" id="tipoContrato">
                             <option selected="selected" value="">Selecione</option>
@@ -37,9 +34,8 @@
                         </select>
                         <div class="help-block with-errors text-danger"></div>
                     </div>
-                    <div class="form-group col-sm">
+                    <div class="col-sm">
                         <label for="inputIdioma">Pretensão salarial</label>
-                        <label for="" class="text-danger">*</label>
                         <select name="pretensao" data-error="Selecione a pretensão salarial"
                             class="custom-select obrigatorio" id="pretensao">
                             <option selected="selected" value="">Selecione</option>
@@ -60,20 +56,19 @@
                         <div class="help-block with-errors text-danger"></div>
                     </div>
                 </div>
-                <!-- <div class="form-row">
-                    <div class="form-group col-sm">
+                <!-- <div class="row">
+                    <div class="col-sm">
                         <label class="radio-inline"><input value="1" type="radio" name="empregado">Sim</label>
                     </div>
-                    <div class="form-group col-sm">
+                    <div class="col-sm">
                         <label class="radio-inline"><input value="2" checked type="radio" name="empregado">Não</label>
                     </div>
                 </div> -->
-                <div class="form-row">
-                    <div class="form-group col-sm-4">
+                <div class="row">
+                    <div class="col-sm-4">
                         <label>Nível hierárquico da vaga</label>
-                        <label class="text-danger">*</label>
-                        <select name="nivelHierarquicoMin" data-error="Selecione um nível hierárquico mínimo"
-                            class="custom-select obrigatorio" id="nivelHierarquicoMin">
+                        <select name="nivelHierarquico" data-error="Selecione um nível hierárquico mínimo"
+                            class="custom-select obrigatorio" id="nivelHierarquico">
                             <option selected="selected" value="">Selecione</option>
                             <option value="1">Estagiário</option>
                             <option value="2">Operacional</option>
@@ -91,13 +86,13 @@
                         </select>
                         <div class="help-block with-errors text-danger"></div>
                     </div>
-                    <div class="form-group col-sm-8">
-                        <label>Cargo almejado</label>
-                        <label class="text-danger">*</label>
-                        <select name="cargoAlmejado1" data-error="Selecione um cargo almejado"
-                            class="custom-select obrigatorio" id="cargoAlmejado1">
+                    <div class="col-sm-8">
+                        <label>Cargo ofertado</label>
+                        <select name="cargoAlmejado" data-error="Selecione um cargo almejado"
+                            class="custom-select obrigatorio" id="cargoAlmejado">
                             <option value="">Escolha</option>
                             <?php
+                            $con = conecta();
                             $resCargos = mysqli_query ($con, 'SELECT * FROM cargos');
                             while ($rowCargos = mysqli_fetch_assoc($resCargos)):
                           ?>
@@ -109,13 +104,45 @@
                         <div class="help-block with-errors text-danger"></div>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-8"></div>
-                    <div class="form-group col-md-4">
-                        <button type="submit" id="proximo" class="btn btn-primary btn-lg btn-block">Buscar</button>
+                <div class="row">
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4">
+                        <button type="submit" id="buscar" class="btn btn-primary btn-lg btn-block">Buscar</button>
                     </div>
                 </div>
-            </form>
+            <div id="curriculos">
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    function buscar(jornada, tipoContrato, pretensao, nivelHierarquico, cargoAlmejado) {
+        //O método $.ajax(); é o responsável pela requisição
+        $.ajax
+            ({
+                //Configurações
+                type: 'POST',//Método que está sendo utilizado.
+                dataType: 'html',//É o tipo de dado que a página vai retornar.
+                url: 'paginas/buscarcurriculosbd.php',//Indica a página que está sendo solicitada.
+                //função que vai ser executada assim que a requisição for enviada
+                beforeSend: function () {
+                    $("#curriculos").html("Carregando...");
+                },
+                data: {"jornada": jornada, "tipoContrato": tipoContrato, "pretensao": pretensao, 
+                "nivelHierarquico": nivelHierarquico, "cargoAlmejado": cargoAlmejado},//Dados para consulta
+                //função que será executada quando a solicitação for finalizada.
+                success: function (msg) {
+                    $("#curriculos").html(msg);
+                }
+            });
+    }
+
+    $('#buscar').click(function () {
+        buscar($("#jornada").val(), $("#tipoContrato").val(), $("#pretensao").val(), $("#nivelHierarquico").val(), 
+        $("#cargoAlmejado").val());
+    });
+</script>

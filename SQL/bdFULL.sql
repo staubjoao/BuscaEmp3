@@ -313,9 +313,10 @@ ENGINE = InnoDB;
 -- Table `cargos_curriculo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `cargos_curriculo` (
+  `idcargos_curriculo` INT NOT NULL AUTO_INCREMENT,
   `cargos_idcargos` INT NOT NULL,
   `pretecao_idpretecao` INT NOT NULL,
-  PRIMARY KEY (`cargos_idcargos`, `pretecao_idpretecao`),
+  PRIMARY KEY (`idcargos_curriculo`),
   INDEX `fk_cargos_has_curriculo_cargos1_idx` (`cargos_idcargos` ASC),
   INDEX `fk_cargos_curriculo_pretecao1_idx` (`pretecao_idpretecao` ASC),
   CONSTRAINT `fk_cargos_has_curriculo_cargos1`
