@@ -37,6 +37,10 @@ if((trim($_POST['cargoAlmejado'])) == ""){
     $cargoAlmejadoBoo = FALSE;
 }
 
+$competencia1 = trim($_POST['competencia1']);
+
+echo $competencia1;
+
 if($jornadaBoo == FALSE || $tipoContratoBoo == FALSE ||  $pretensaoBoo == FALSE || $nivelHierarquicoBoo == FALSE || $cargoAlmejadoBoo == FALSE){
     echo"sadasdsadsa";
 }else{
