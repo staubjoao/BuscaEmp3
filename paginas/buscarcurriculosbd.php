@@ -55,8 +55,22 @@ if($jornadaBoo == TRUE && $tipoContratoBoo == TRUE &&  $pretensaoBoo == TRUE && 
             // echo "vai bucar";
             $qtdCargo = mysqli_num_rows($resCargo);
         if($qtdCargo > 0){
-            $selectHierarqui = "SELECT * FROM pretecao";
-            $resHierarqui = mysqli_query($con, $selectHierarqui);
+            $i = 1;
+            while($rowCargo = mysqli_fetch_assoc($resCargo)){
+                $a = "pretencaoBD";
+                $c = $a.$i;
+                $d = $rowCargo["pretecao_idpretecao"];
+                $selectHierarqui = "SELECT * FROM pretecao WHERE pretecao_idpretecao='$d'";
+                $resHierarqui = mysqli_query($con, $selectHierarqui);
+                echo $d."<br>";
+                if($resHierarqui){
+                    echo"deubom kk"."<br>";
+                }else{
+                    echo"vishh moio"."<br>";
+                }
+                $i++;
+            }
+            
 
             if($resHierarqui){
                 $hierarqui = mysqli_fetch_assoc($resHierarqui);
@@ -80,7 +94,7 @@ if($jornadaBoo == TRUE && $tipoContratoBoo == TRUE &&  $pretensaoBoo == TRUE && 
 
                     }
                 }else{
-                    echo "<h4>Não foi encontrado nenhum curriculo com esse nivel hierarquico</h4>";
+                    // echo "<h4>Não foi encontrado nenhum curriculo com esse nivel hierarquico</h4>";
                 }
             }else{
                 echo "asdasdasddasdaqsddddddddddddddddddddddddddddd";

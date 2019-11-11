@@ -109,25 +109,25 @@
                 <div class="col-sm-3">
                 <label>Trabalho em equipe:</label>
                     <div class="range-slider">
-                        <input name="competencia1" class="custom-range" type="range" value="0" min="0" max="10">
+                        <input name="competencia1" class="custom-range" type="range" value="0" min="1" max="8">
                     </div>
                 </div>
                 <div class="col-sm-3">
                 <label>Adaptação: </label>
                     <div class="range-slider">
-                        <input class="custom-range" type="range" value="0" min="0" max="10">
+                        <input class="custom-range" type="range" value="0" min="1" max="8">
                     </div>
                 </div>
                 <div class="col-sm-3">
                 <label >Aceitação:</label>
                     <div class="range-slider">
-                        <input class="custom-range" type="range" value="0" min="0" max="10">
+                        <input class="custom-range" type="range" value="0" min="1" max="8">
                     </div>
                 </div>
                 <div class="col-sm-3">
                 <label>Proatividade:</label>
                     <div class="range-slider">
-                        <input class="custom-range" type="range" value="0" min="0" max="10">
+                        <input class="custom-range" type="range" value="0" min="1" max="8">
                     </div>
                 </div>
             </div>
@@ -136,25 +136,25 @@
                 <div class="col-sm-3">
                 <label>Comprometimento:</label>
                     <div class="range-slider">
-                        <input class="custom-range" type="range" value="0" min="0" max="10">
+                        <input class="custom-range" type="range" value="0" min="1" max="8">
                     </div>
                 </div>
                 <div class="col-sm-3">
                 <label>Autocontrole:</label>
                     <div class="range-slider">
-                        <input class="custom-range" type="range" value="0" min="0" max="10">
+                        <input class="custom-range" type="range" value="0" min="1" max="8">
                     </div>
                 </div>
                 <div class="col-sm-3">
                 <label >Habilidade de Comunicação:</label>
                     <div class="range-slider">
-                        <input class="custom-range" type="range" value="0" min="0" max="10">
+                        <input class="custom-range" type="range" value="0" min="1" max="8">
                     </div>
                 </div>
                 <div class="col-sm-3">
                 <label>Conhecimento Técnico:</label>
                     <div class="range-slider">
-                        <input class="custom-range" type="range" value="0" min="0" max="10">
+                        <input class="custom-range" type="range" value="0" min="1" max="8">
                     </div>
                 </div>
             </div>

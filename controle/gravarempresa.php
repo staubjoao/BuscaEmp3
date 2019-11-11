@@ -44,15 +44,15 @@ if($cnpj == ""){
   } else {
     echo "<script>alert('Erro')</script>";
   }
-}
+}else{
+  $insert = "INSERT INTO empresa (ac, email, senha, nome, rua, numero, cnpj, cep, ramoAtividade, cidade_idcidade) 
+  VALUES ('$ac', '$email', '$senha', '$nome', '$endereco', '$numero', '$cnpj', '$cep', '$ramo', '$idcidade')";
+  $res = mysqli_query($con, $insert);
 
-$insert = "INSERT INTO empresa (ac, email, senha, nome, rua, numero, cnpj, cep, ramoAtividade, cidade_idcidade) 
-VALUES ('$ac', '$email', '$senha', '$nome', '$endereco', '$numero', '$cnpj', '$cep', '$ramo', '$idcidade')";
-$res = mysqli_query($con, $insert);
-
-if ($res){
-  echo "<script>alert('Empresa cadastrada')</script>";
-} else {
-  echo "<script>alert('Erro')</script>";
+  if ($res){
+    echo "<script>alert('Empresa cadastrada')</script>";
+  } else {
+    echo "<script>alert('Erro')</script>";
+  }
 }
 ?>
