@@ -25,7 +25,6 @@
       ?>
 
       <div class="row justify-content-center bg-light backg" >
-        
         <div class="container ml-5 mt-5 shadow-lg p-3 mb-5 rounded tran " >
             <h2>Busca empregos</h2>
             <h3>Automação para simplificar o processo de recrutamento e seleção e inteligência para acertar na contratação de profissionais.</h3>  
@@ -38,14 +37,14 @@
               </div>
             </div>
         </div>
-        <div class="col-md- shadow-lg p-3 mb-5  rounded tran" style="margin-top: 100px">
+        <div class="col-md shadow-lg p-3 mb-5  rounded tran" style="margin-top: 100px">
           <h2>Candidato</h2>
           <h4><li>Cadastre seu currículo</li></h4>
           <h4><li>Sempre a disposição</li></h4>
           <a class="btn btn-secondary btn-lg btn-block" href="?pagina=cadastrardados" role="button">Cadastrar</a>
         </div>
 
-        <div class="col-md-3 ml-md-4 shadow-lg p-3 mb-5 rounded tran" style="margin-top: 100px">
+        <div class="col-md ml-md-4 shadow-lg p-3 mb-5 rounded tran" style="margin-top: 100px">
           <h2>Empresa</h2>
           <h4><li>Busque um candidato</li></h4>
           <h4><li>Sempre a disposição</li></h4>

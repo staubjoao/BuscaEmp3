@@ -23,7 +23,7 @@ if((trim($_POST['tipoContrato'])) == "AU" || (trim($_POST['tipoContrato'])) == "
 }
 
 if((trim($_POST['pretensao'])) == "1" || (trim($_POST['pretensao'])) == "2" || (trim($_POST['pretensao'])) == "3" || (trim($_POST['pretensao'])) == "4" || (trim($_POST['pretensao'])) == "5" || (trim($_POST['pretensao'])) == "6" || (trim($_POST['pretensao'])) == "7" || (trim($_POST['pretensao'])) == "8" || (trim($_POST['pretensao'])) == "9" || (trim($_POST['pretensao'])) == "10" || (trim($_POST['pretensao'])) == "11" || (trim($_POST['pretensao'])) == "12" || (trim($_POST['pretensao'])) == "13"){
-    $pretensao = trim($_POST['pretensao']);
+    $pretencaoSalarial = trim($_POST['pretensao']);
     $pretensaoBoo = TRUE;
 }else{
     echo "Tipo de pretenção invalida"."<br>";
@@ -48,72 +48,131 @@ if((trim($_POST['cargoAlmejado'])) == ""){
 // echo $competencia1;
 
 if($jornadaBoo == TRUE && $tipoContratoBoo == TRUE &&  $pretensaoBoo == TRUE && $nivelHierarquicoBoo == TRUE && $cargoAlmejadoBoo == TRUE){
-    if($jornada == "AL" && $tipoContrato == "AL"){
-        $selectCargo = "SELECT * FROM cargos_curriculo WHERE cargos_idcargos='$cargoAlmejado'";
-        $resCargo = mysqli_query($con, $selectCargo);
-        if($resCargo){
-            // echo "vai bucar";
-            $qtdCargo = mysqli_num_rows($resCargo);
+    $selectCargo = "SELECT * FROM cargos_curriculo WHERE cargos_idcargos='$cargoAlmejado'";
+    $resCargo = mysqli_query($con, $selectCargo);
+
+    if($resCargo){
+        $qtdCargo = mysqli_num_rows($resCargo);
         if($qtdCargo > 0){
-            $i = 1;
             while($rowCargo = mysqli_fetch_assoc($resCargo)){
-                $a = "pretencaoBD";
-                $c = $a.$i;
-                $d = $rowCargo["pretecao_idpretecao"];
-                $selectHierarqui = "SELECT * FROM pretecao WHERE pretecao_idpretecao='$d'";
-                $resHierarqui = mysqli_query($con, $selectHierarqui);
-                echo $d."<br>";
-                if($resHierarqui){
-                    echo"deubom kk"."<br>";
-                }else{
-                    echo"vishh moio"."<br>";
-                }
-                $i++;
-            }
-            
-
+            $d = $rowCargo["pretecao_idpretecao"];
+            $selectHierarqui = "SELECT * FROM pretecao WHERE idpretecao='$d'";
+            $resHierarqui = mysqli_query($con, $selectHierarqui);
+            // echo $d."<br>";
             if($resHierarqui){
-                $hierarqui = mysqli_fetch_assoc($resHierarqui);
-                $nivelHierarquicoMin = $hierarqui['nivelHierarquicoMin'];
-                $nivelHierarquicoMax = $hierarqui['nivelHierarquicoMax'];
-                if($nivelHierarquico <= $nivelHierarquicoMax && $nivelHierarquico >= $nivelHierarquicoMin){
-                    //troca de pretencao para pretensao
-                    $selectPretencao = "SELECT * FROM pretecao";
-                    $resPretencao = mysqli_query($con, $selectPretencao);
-                    
-                    if($resPretencao){
-                        $pretencao = mysqli_fetch_assoc($resPretencao);
-                        $pretencaoSalarial = $pretencao['pretencaosalarial'];
+                while($rowPretencao = mysqli_fetch_assoc($resHierarqui)){
+                    $jornadaBD = $rowPretencao["jornada"];
+                    $tipoContratoBD = $rowPretencao["tipoContrato"];
+                    $nivelHierarquicoMinBD = $rowPretencao["nivelHierarquicoMin"];
+                    $nivelHierarquicoMaxBD = $rowPretencao["nivelHierarquicoMax"];
+                    $pretencaoSalarialBD = $rowPretencao["pretencaosalarial"];
 
-                        if($pretensao <= $pretencao){
+                    $pretencaoSalarial = intval($pretencaoSalarial);
+                    $pretencaoSalarialBD = intval($pretencaoSalarialBD);
+                    $nivelHierarquico = intval($nivelHierarquico);
+                    $nivelHierarquicoMinBD = intval($nivelHierarquicoMinBD);
+                    $nivelHierarquicoMaxBD = intval($nivelHierarquicoMaxBD);
 
+                    var_dump($nivelHierarquico);
+                    var_dump($nivelHierarquicoMinBD);
+                    var_dump($nivelHierarquicoMaxBD);
+                    var_dump($pretencaoSalarial);
+                    var_dump($pretencaoSalarialBD);
+
+                    if($jornadaBD == "AL"){
+                        if(($pretencaoSalarial == $pretencaoSalarialBD) AND ($nivelHierarquico <= $nivelHierarquicoMaxBD) AND ($nivelHierarquico >= $nivelHierarquicoMinBD)){
+                            echo "<h1>FOI KKKKKK</h1>";
                         }else{
-
+                            echo "<h4>Não foi encontrado nenhum curriculo</h4>";
                         }
+                    }else{
+                        
+                    }
+                    if($tipoContratoBD == "AL"){
+
                     }else{
 
                     }
-                }else{
-                    // echo "<h4>Não foi encontrado nenhum curriculo com esse nivel hierarquico</h4>";
                 }
             }else{
-                echo "asdasdasddasdaqsddddddddddddddddddddddddddddd";
+                echo"<h4>Deu ruim linha 82</h4>";
             }
+        }
         }else{
             echo "<h4>Não foi encontrado nenhum curriculo com esse cargo</h4>";
         }
     }else{
-        echo "Não fez a busca";
-    }
-    }else{
-        if($jornada == "AL"){
-        // echo "ta aqui";
-    }
-    if($tipoContrato == "Al"){
-        echo "ta aqui";
+        echo "Não fez a busca pelo cargo";
     }
     
-    }
+    
+    
+    
+    
+    // if($jornada == "AL" && $tipoContrato == "AL"){
+    //     $selectCargo = "SELECT * FROM cargos_curriculo WHERE cargos_idcargos='$cargoAlmejado'";
+    //     $resCargo = mysqli_query($con, $selectCargo);
+    //     if($resCargo){
+    //         // echo "vai bucar";
+    //         $qtdCargo = mysqli_num_rows($resCargo);
+    //     if($qtdCargo > 0){
+    //         $i = 1;
+    //         while($rowCargo = mysqli_fetch_assoc($resCargo)){
+    //             $d = $rowCargo["pretecao_idpretecao"];
+    //             $selectHierarqui = "SELECT * FROM pretecao WHERE idpretecao='$d'";
+    //             $resHierarqui = mysqli_query($con, $selectHierarqui);
+    //             // echo $d."<br>";
+    //             if($resHierarqui){
+    //                 $qtdHierarquico = mysqli_num_rows($resHierarqui);
+    //                 echo $qtdHierarquico."<br>";
+    //             }else{
+    //                 echo"<h4>Deu ruim linha 67</h4>";
+    //             }
+    //             $i++;
+    //         }
+            
+
+    //         if($resHierarqui){
+    //             $hierarqui = mysqli_fetch_assoc($resHierarqui);
+    //             $nivelHierarquicoMin = $hierarqui['nivelHierarquicoMin'];
+    //             $nivelHierarquicoMax = $hierarqui['nivelHierarquicoMax'];
+    //             if($nivelHierarquico <= $nivelHierarquicoMax && $nivelHierarquico >= $nivelHierarquicoMin){
+    //                 //troca de pretencao para pretensao
+    //                 $selectPretencao = "SELECT * FROM pretecao";
+    //                 $resPretencao = mysqli_query($con, $selectPretencao);
+                    
+    //                 if($resPretencao){
+    //                     $pretencao = mysqli_fetch_assoc($resPretencao);
+    //                     $pretencaoSalarial = $pretencao['pretencaosalarial'];
+
+    //                     if($pretensao <= $pretencao){
+
+    //                     }else{
+
+    //                     }
+    //                 }else{
+
+    //                 }
+    //             }else{
+    //                 // echo "<h4>Não foi encontrado nenhum curriculo com esse nivel hierarquico</h4>";
+    //             }
+    //         }else{
+    //             echo "asdasdasddasdaqsddddddddddddddddddddddddddddd";
+    //         }
+    //     }else{
+    //         echo "<h4>Não foi encontrado nenhum curriculo com esse cargo</h4>";
+    //     }
+    // }else{
+    //     echo "Não fez a busca";
+    // }
+    // }else{
+    //     if($jornada == "AL"){
+    //     echo "ta aqui";
+    // }else{
+    //     echo "tasdasd aqui";
+    // }
+    
+    // }
 
     // $selectJornada = "SELECT * FROM cargos_curriculo WHERE cargos_idcargos='$cargoAlmejado'";
     // $resJornada = mysqli_query($con, $selectCargo);
