@@ -33,12 +33,14 @@ function navega($pagina){
       require 'controle/gravarexperienciaprofissional.php';
     break;
     case 'questionario':
-    require 'paginas/cadastrar/questionario.php';
+      require 'paginas/cadastrar/questionario.php';
     break;
     case 'gravarquestionario':
-    require 'controle/gravarquestionario.php';
+      require 'controle/gravarquestionario.php';
     break;
-
+    case 'buscarcurriculoCargo':
+      require 'paginas/buscarcurriculoCargo.php';
+    break;
 
 
     case 'cadastrocurriculo':

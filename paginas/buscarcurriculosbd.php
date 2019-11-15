@@ -23,7 +23,7 @@ if((trim($_POST['tipoContrato'])) == "AU" || (trim($_POST['tipoContrato'])) == "
 }
 
 if((trim($_POST['pretensao'])) == "1" || (trim($_POST['pretensao'])) == "2" || (trim($_POST['pretensao'])) == "3" || (trim($_POST['pretensao'])) == "4" || (trim($_POST['pretensao'])) == "5" || (trim($_POST['pretensao'])) == "6" || (trim($_POST['pretensao'])) == "7" || (trim($_POST['pretensao'])) == "8" || (trim($_POST['pretensao'])) == "9" || (trim($_POST['pretensao'])) == "10" || (trim($_POST['pretensao'])) == "11" || (trim($_POST['pretensao'])) == "12" || (trim($_POST['pretensao'])) == "13"){
-    $pretencaoSalarial = trim($_POST['pretensao']);
+    $pretensaoSalarial = trim($_POST['pretensao']);
     $pretensaoBoo = TRUE;
 }else{
     echo "Tipo de pretenção invalida"."<br>";
@@ -60,33 +60,103 @@ if($jornadaBoo == TRUE && $tipoContratoBoo == TRUE &&  $pretensaoBoo == TRUE && 
             $resHierarqui = mysqli_query($con, $selectHierarqui);
             // echo $d."<br>";
             if($resHierarqui){
-                while($rowPretencao = mysqli_fetch_assoc($resHierarqui)){
-                    $jornadaBD = $rowPretencao["jornada"];
-                    $tipoContratoBD = $rowPretencao["tipoContrato"];
-                    $nivelHierarquicoMinBD = $rowPretencao["nivelHierarquicoMin"];
-                    $nivelHierarquicoMaxBD = $rowPretencao["nivelHierarquicoMax"];
-                    $pretencaoSalarialBD = $rowPretencao["pretencaosalarial"];
+                while($rowpretensao = mysqli_fetch_assoc($resHierarqui)){
+                    $jornadaBD = $rowpretensao["jornada"];
+                    $tipoContratoBD = $rowpretensao["tipoContrato"];
+                    $nivelHierarquicoMinBD = $rowpretensao["nivelHierarquicoMin"];
+                    $nivelHierarquicoMaxBD = $rowpretensao["nivelHierarquicoMax"];
+                    $pretensaoSalarialBD = $rowpretensao["pretensaosalarial"];
 
-                    $pretencaoSalarial = intval($pretencaoSalarial);
-                    $pretencaoSalarialBD = intval($pretencaoSalarialBD);
+                    $idcurriclo = $rowpretensao["curriculo_idcurriculo"];
+
+                    $pretensaoSalarial = intval($pretensaoSalarial);
+                    $pretensaoSalarialBD = intval($pretensaoSalarialBD);
                     $nivelHierarquico = intval($nivelHierarquico);
                     $nivelHierarquicoMinBD = intval($nivelHierarquicoMinBD);
                     $nivelHierarquicoMaxBD = intval($nivelHierarquicoMaxBD);
 
-                    var_dump($nivelHierarquico);
-                    var_dump($nivelHierarquicoMinBD);
-                    var_dump($nivelHierarquicoMaxBD);
-                    var_dump($pretencaoSalarial);
-                    var_dump($pretencaoSalarialBD);
+                    echo $idcurriclo."<br>";
 
-                    if($jornadaBD == "AL"){
-                        if(($pretencaoSalarial == $pretencaoSalarialBD) AND ($nivelHierarquico <= $nivelHierarquicoMaxBD) AND ($nivelHierarquico >= $nivelHierarquicoMinBD)){
-                            echo "<h1>FOI KKKKKK</h1>";
+                    if($jornadaBD == "AL" OR $jornada == "AL"){
+                        if(($pretensaoSalarial == $pretensaoSalarialBD) AND (($nivelHierarquico <= $nivelHierarquicoMaxBD) OR ($nivelHierarquico >= $nivelHierarquicoMinBD))){
+                            $selectCurriculo = "SELECT * FROM curriculo WHERE idcurriculo='$idcurriclo'";
+                            $resCurriculo = mysqli_query($con, $selectCurriculo);
+                            if($resCurriculo){
+                            ?> 
+                            <br>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Telefone</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <?php 
+                                    $j = 1;
+                                    while($rowCurriculo = mysqli_fetch_assoc($resCurriculo)):
+                                    ?>
+                                    <th scope="row"><?php echo $j;?></th>
+                                    <?php $j++; ?>
+                                    <td><?php echo $rowCurriculo["nome"]; ?></td>
+                                    <td><?php echo $rowCurriculo["email"]; ?></td>
+                                    <td><?php echo $rowCurriculo["telefone"]; ?></td>
+                                    </tr>
+                                    <?php 
+                                    endwhile ?>
+                                    <tr>
+                                </tbody>
+                            </table>
+                            <?php
+                            }else{
+                                echo "Erro ao buscar curriculo";
+                            }
                         }else{
-                            echo "<h4>Não foi encontrado nenhum curriculo</h4>";
+                            // echo "<h4>Não foi encontrado nenhum curriculo</h4>";
                         }
                     }else{
-                        
+                        if($jornadaBD == $jornada){                       
+                            $selectCurriculo = "SELECT * FROM curriculo WHERE idcurriculo='$idcurriclo'";
+                            $resCurriculo = mysqli_query($con, $selectCurriculo);
+                            if($resCurriculo){
+                            ?> 
+                            <br>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Telefone</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <?php 
+                                    $j = 1;
+                                    while($rowCurriculo = mysqli_fetch_assoc($resCurriculo)):
+                                    ?>
+                                    <th scope="row"><?php echo $j;?></th>
+                                    <?php $j++; ?>
+                                    <td><?php echo $rowCurriculo["nome"]; ?></td>
+                                    <td><?php echo $rowCurriculo["email"]; ?></td>
+                                    <td><?php echo $rowCurriculo["telefone"]; ?></td>
+                                    </tr>
+                                    <?php 
+                                    endwhile ?>
+                                    <tr>
+                                </tbody>
+                            </table>
+                            <?php
+                            }else{
+                                echo "Erro ao buscar curriculo";
+                            }
+                       }else{
+
+                       }
                     }
                     if($tipoContratoBD == "AL"){
 
@@ -137,15 +207,15 @@ if($jornadaBoo == TRUE && $tipoContratoBoo == TRUE &&  $pretensaoBoo == TRUE && 
     //             $nivelHierarquicoMin = $hierarqui['nivelHierarquicoMin'];
     //             $nivelHierarquicoMax = $hierarqui['nivelHierarquicoMax'];
     //             if($nivelHierarquico <= $nivelHierarquicoMax && $nivelHierarquico >= $nivelHierarquicoMin){
-    //                 //troca de pretencao para pretensao
-    //                 $selectPretencao = "SELECT * FROM pretecao";
-    //                 $resPretencao = mysqli_query($con, $selectPretencao);
+    //                 //troca de pretensao para pretensao
+    //                 $selectpretensao = "SELECT * FROM pretecao";
+    //                 $respretensao = mysqli_query($con, $selectpretensao);
                     
-    //                 if($resPretencao){
-    //                     $pretencao = mysqli_fetch_assoc($resPretencao);
-    //                     $pretencaoSalarial = $pretencao['pretencaosalarial'];
+    //                 if($respretensao){
+    //                     $pretensao = mysqli_fetch_assoc($respretensao);
+    //                     $pretensaoSalarial = $pretensao['pretensaosalarial'];
 
-    //                     if($pretensao <= $pretencao){
+    //                     if($pretensao <= $pretensao){
 
     //                     }else{
 
