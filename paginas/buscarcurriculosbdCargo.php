@@ -22,7 +22,11 @@ if((trim($_POST['cargo'])) == ""){
         </tr>
     </thead>
 <?php
-$selectCargo = "SELECT * FROM cargos_curriculo WHERE cargos_idcargos='$cargo'";
+$selectCargo = "SELECT curriculo.nome, curriculo.email, curriculo.telefone, curriculo.idcurriculo 
+FROM 
+curriculo inner join pretensao on curriculo.idcurriculo = pretensao.curriculo_idcurriculo
+INNER join cargos_curriculo on pretensao.idpretensao = cargos_curriculo.pretensao_idpretensao
+WHERE cargos_curriculo.cargos_idcargos = 1";
 $resCargo = mysqli_query($con, $selectCargo);
 
 $j = 1;
