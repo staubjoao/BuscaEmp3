@@ -41,6 +41,9 @@ function navega($pagina){
     case 'buscarcurriculoCargo':
       require 'paginas/buscarcurriculoCargo.php';
     break;
+    case 'listardadosCargo':
+      require 'paginas/listardadosCargos.php';
+    break;
 
 
     case 'cadastrocurriculo':
