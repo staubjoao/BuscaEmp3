@@ -2,9 +2,18 @@
 <br>
 <br>
 <?php
-print_r($_POST);
-$idcurriculo = trim($_POST['idcurriculo']);
+require_once('../lib/funcs.php');
+$con = conecta();
+print_r($_GET);
+$idcurriculo = trim($_GET['idcurriculo']);
 
+echo $idcurriculo;
 
-
+$selectCurriculo = "SELECT * FROM curriculo WHERE idcurriculo='$idcurriculo'";
+$resCurriculo = mysqli_query($con, $selectCurriculo);
+if($resCurriculo){
+    echo "foi";
+}else{
+    echo"nfoi";
+}
 ?>
