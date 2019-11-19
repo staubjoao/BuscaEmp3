@@ -86,11 +86,10 @@ ENGINE = InnoDB;
 -- Table `idiomas_curriculo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `idiomas_curriculo` (
-  `ididiomas_curriculo` INT NOT NULL AUTO_INCREMENT,
   `idiomas_ididiomas` INT NULL,
   `curriculo_idcurriculo` INT NOT NULL,
   `nivel` VARCHAR(45) NULL,
-  PRIMARY KEY (`ididiomas_curriculo`),
+  PRIMARY KEY (`idiomas_ididiomas`, `curriculo_idcurriculo`),
   INDEX `fk_idiomas_curriculo_curriculo1_idx` (`curriculo_idcurriculo` ASC),
   CONSTRAINT `fk_idiomas_curriculo_idiomas`
     FOREIGN KEY (`idiomas_ididiomas`)
@@ -120,14 +119,14 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `expProfissional` (
   `idexpProfissional` INT NOT NULL AUTO_INCREMENT,
-  `empresa` VARCHAR(45) NULL,
+  `empresa` VARCHAR(45) NOT NULL,
   `inicio` DATE NULL,
-  `termino` DATE NULL,
-  `cargos_idcargos` INT NULL,
-  `salario` INT NULL,
-  `curriculo_idcurriculo` INT NULL,
-  `pais_idpais` INT NULL,
-  `cidade` VARCHAR(100) NULL,
+  `termino` DATE NOT NULL,
+  `cargos_idcargos` INT NOT NULL,
+  `salario` INT NOT NULL,
+  `curriculo_idcurriculo` INT NOT NULL,
+  `pais_idpais` INT NOT NULL,
+  `cidade` VARCHAR(100) NOT NULL,
   `estado_idestado` INT NULL,
   PRIMARY KEY (`idexpProfissional`),
   INDEX `fk_expProfissional_curriculo1_idx` (`curriculo_idcurriculo` ASC),
@@ -247,17 +246,16 @@ ENGINE = InnoDB;
 -- Table `curso_curriculo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `curso_curriculo` (
-  `idcurso_curriculo` INT NOT NULL AUTO_INCREMENT,
   `curso_idcurso` INT NOT NULL,
   `curriculo_idcurriculo` INT NOT NULL,
-  `nomeInstituicao` VARCHAR(200) NULL,
-  `inicio` DATE NULL,
+  `nomeInstituicao` VARCHAR(200) NOT NULL,
+  `inicio` DATE NOT NULL,
   `termino` DATE NULL,
-  `ead` CHAR(1) NULL,
-  `pais_idpais` INT NULL,
-  `cidade` VARCHAR(100) NULL,
+  `ead` CHAR(1) NOT NULL,
+  `pais_idpais` INT NOT NULL,
+  `cidade` VARCHAR(100) NOT NULL,
   `estado_idestado` INT NULL,
-  PRIMARY KEY (`idcurso_curriculo`),
+  PRIMARY KEY (`curso_idcurso`, `curriculo_idcurriculo`),
   INDEX `fk_curso_curriculo_curso1_idx` (`curso_idcurso` ASC),
   INDEX `fk_curso_curriculo_curriculo1_idx` (`curriculo_idcurriculo` ASC),
   INDEX `fk_curso_curriculo_pais1_idx` (`pais_idpais` ASC),
@@ -286,9 +284,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `pretecao`
+-- Table `pretensao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `pretecao` (
+CREATE TABLE IF NOT EXISTS `pretensao` (
   `idpretecao` INT NOT NULL AUTO_INCREMENT,
   `visivel` CHAR(1) NOT NULL,
   `datapretencao` DATE NOT NULL,
@@ -310,23 +308,22 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `cargos_curriculo`
+-- Table `cargos_pretensao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cargos_curriculo` (
-  `idcargos_curriculo` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `cargos_pretensao` (
   `cargos_idcargos` INT NOT NULL,
-  `pretecao_idpretecao` INT NOT NULL,
-  PRIMARY KEY (`idcargos_curriculo`),
+  `pretensao_idpretensao` INT NOT NULL,
+  PRIMARY KEY (`cargos_idcargos`, `pretensao_idpretensao`),
   INDEX `fk_cargos_has_curriculo_cargos1_idx` (`cargos_idcargos` ASC),
-  INDEX `fk_cargos_curriculo_pretecao1_idx` (`pretecao_idpretecao` ASC),
+  INDEX `fk_cargos_curriculo_pretecao1_idx` (`pretensao_idpretensao` ASC),
   CONSTRAINT `fk_cargos_has_curriculo_cargos1`
     FOREIGN KEY (`cargos_idcargos`)
     REFERENCES `cargos` (`idcargos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_cargos_curriculo_pretecao1`
-    FOREIGN KEY (`pretecao_idpretecao`)
-    REFERENCES `pretecao` (`idpretecao`)
+    FOREIGN KEY (`pretensao_idpretensao`)
+    REFERENCES `pretensao` (`idpretecao`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
