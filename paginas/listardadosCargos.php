@@ -17,7 +17,7 @@ $con = conecta();
 // print_r($_GET);
 $idcurriculo = trim($_GET['idcurriculo']);
 
-$selectCurriculo = "SELECT * FROM curriculo WHERE idcurriculo='$idcurriculo'";
+$selectCurriculo = "SELECT curriculo.nome, curriculo.email, curriculo.telefone, curriculo.cep, curriculo.rua, curriculo.numero, curriculo.genero, curriculo.estadocivil, curriculo.deficiencia, cidade.cidade, estado.estado, pais.pais FROM `curriculo` INNER JOIN cidade ON curriculo.cidade_idcidade = cidade.idcidade INNER JOIN estado ON cidade.estado_idestado = estado.idestado INNER JOIN pais ON estado.pais_idpais = pais.idpais WHERE idcurriculo ='$idcurriculo'";
 $resCurriculo = mysqli_query($con, $selectCurriculo);
 $curriculos = mysqli_fetch_assoc($resCurriculo);
 if($resCurriculo){
@@ -38,7 +38,12 @@ if($resCurriculo){
             </div>
             <div class="row">
                 <div class="col-sm">
-                    <p class="fontN"><?php echo $curriculos["email"]; ?> | </p>
+                    <p class="fontN"><?php echo utf8_encode($curriculos["rua"]); ?> |
+                    <?php echo $curriculos["numero"]; ?> |
+                    <?php echo utf8_encode($curriculos["email"]); ?> | 
+                    <?php echo utf8_encode($curriculos["cidade"]); ?> | 
+                    <?php echo utf8_encode($curriculos["estado"]); ?> | 
+                    <?php echo utf8_encode($curriculos["pais"]); ?> </p>
                 </div>
             </div>
             </div>
