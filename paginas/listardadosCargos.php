@@ -1,3 +1,17 @@
+<style>
+    .fontG{
+        font-family: 'Roboto';font-size: 50px;
+    }
+
+    .fontN{
+        font-family: 'Roboto';font-size: 16px;
+    }
+
+    .new4 {
+        border: 1px solid blue;
+    }
+</style>
+
 <?php
 $con = conecta();
 // print_r($_GET);
@@ -13,17 +27,18 @@ if($resCurriculo){
         <div class="col-md-8 ml-md-5  border border-primary  shadow-lg p-3 mb-5 bg-white rounded"
             style="margin-top: 100px">
             <div class="row">
-                <div class="col-sm-9">
-                    <h1><?php echo $curriculos["nome"]; ?></h1>
+                <div class="col-sm">
+                    <p class="fontG"><?php echo $curriculos["nome"]; ?></p>
                 </div>
-                <div class="col-sm-3">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Morbi leo risus</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <hr class="new4">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p class="fontN"><?php echo $curriculos["email"]; ?> | </p>
                 </div>
             </div>
             </div>
