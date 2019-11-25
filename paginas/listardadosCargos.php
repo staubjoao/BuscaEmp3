@@ -28,7 +28,10 @@ INNER JOIN curso_curriculo ON curriculo.idcurriculo = curso_curriculo.curriculo_
 INNER JOIN curso ON curso_curriculo.curso_idcurso = curso.idcurso
 INNER JOIN nivel ON curso.nivel_idnivel = nivel.idnivel
 INNER JOIN pretensao ON pretensao.curriculo_idcurriculo = curriculo.idcurriculo
-INNER JOIN cargos_curriculo ON curso_curriculo 
+INNER JOIN cargos_curriculo ON cargos_curriculo.pretensao_idpretensao = pretensao.idpretensao
+INNER JOIN cargos ON cargos_curriculo.cargos_idcargos = cargos.idcargos
+INNER JOIN perguntas_curriculo ON perguntas_curriculo.curriculo_idcurriculo = curriculo.idcurriculo
+INNER JOIN perguntas ON perguntas.idperguntas = perguntas_curriculo.perguntas_idperguntas 
 WHERE idcurriculo = 5";
 $resCurriculo = mysqli_query($con, $selectCurriculo);
 $curriculos = mysqli_fetch_assoc($resCurriculo);
