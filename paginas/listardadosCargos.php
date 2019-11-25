@@ -17,13 +17,22 @@ $con = conecta();
 // print_r($_GET);
 $idcurriculo = trim($_GET['idcurriculo']);
 
-$selectCurriculo = "SELECT curriculo.nome, curriculo.email, curriculo.telefone, curriculo.cep, curriculo.rua, curriculo.numero, curriculo.genero, curriculo.estadocivil, curriculo.deficiencia, cidade.cidade, estado.estado, pais.pais
+$selectCurriculo = "SELECT curriculo.nome, curriculo.email, curriculo.telefone, curriculo.cep, curriculo.rua, curriculo.numero, curriculo.genero, curriculo.estadocivil, curriculo.deficiencia, 
+cidade.cidade, 
+estado.estado, 
+pais.pais,
+idiomas_curriculo.nivel, 
+idiomas.idioma,
+expprofissional.empresa, expprofissional.inicio, expprofissional.termino, expprofissional.salario, expprofissional.cidade, expprofissional.idexpProfissional, expprofissional.pais_idpais, expprofissional.estado_idestado, expprofissional.cargos_idcargos,
+pretensao.visivel, pretensao.datapretensao, pretensao.jornada, pretensao.tipoContrato, pretensao.nivelHierarquicoMin, pretensao.nivelHierarquicoMax, pretensao.empregado, pretensao.pretensaosalarial,
+cargos.cargo
 FROM `curriculo` 
 INNER JOIN cidade ON curriculo.cidade_idcidade = cidade.idcidade 
-INNER JOIN estado ON cidade.estado_idestado = estado.idestado INNER JOIN pais ON estado.pais_idpais = pais.idpais
+INNER JOIN estado ON cidade.estado_idestado = estado.idestado 
+INNER JOIN pais ON estado.pais_idpais = pais.idpais
 INNER JOIN idiomas_curriculo ON curriculo.idcurriculo = idiomas_curriculo.curriculo_idcurriculo
 INNER JOIN idiomas ON idiomas.ididiomas = idiomas_curriculo.idiomas_ididiomas
-INNER JOIN expprofissional ON curriculo.idcurriculo = expprofissional.curriculo_idcurriculo
+LEFT JOIN expprofissional ON curriculo.idcurriculo = expprofissional.curriculo_idcurriculo
 INNER JOIN curso_curriculo ON curriculo.idcurriculo = curso_curriculo.curriculo_idcurriculo
 INNER JOIN curso ON curso_curriculo.curso_idcurso = curso.idcurso
 INNER JOIN nivel ON curso.nivel_idnivel = nivel.idnivel
@@ -32,7 +41,7 @@ INNER JOIN cargos_curriculo ON cargos_curriculo.pretensao_idpretensao = pretensa
 INNER JOIN cargos ON cargos_curriculo.cargos_idcargos = cargos.idcargos
 INNER JOIN perguntas_curriculo ON perguntas_curriculo.curriculo_idcurriculo = curriculo.idcurriculo
 INNER JOIN perguntas ON perguntas.idperguntas = perguntas_curriculo.perguntas_idperguntas 
-WHERE idcurriculo = 5";
+WHERE idcurriculo ='$idcurriculo'";
 $resCurriculo = mysqli_query($con, $selectCurriculo);
 $curriculos = mysqli_fetch_assoc($resCurriculo);
 if($resCurriculo){
