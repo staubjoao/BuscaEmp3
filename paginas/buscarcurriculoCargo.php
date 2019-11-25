@@ -37,6 +37,8 @@
 </div>
 
 <script>
+    // document.getElementById('cargo').selectedIndex = "";
+
     function buscar(cargo) {
         //O método $.ajax(); é o responsável pela requisição
         $.ajax

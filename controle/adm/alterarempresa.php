@@ -2,7 +2,7 @@
 
 $email = trim($_POST['email']);
 $nome = trim($_POST['empNome']);
-$endereco = trim($_POST['endereco']);
+$endereco = trim($_POST['rua']);
 $numero = trim($_POST['numero']);
 $cnpj = trim($_POST['cnpj']);
 $cep = trim($_POST['cep']);
@@ -13,7 +13,7 @@ $idempresa = trim($_POST['idempresa']);
 //$idcidade = trim($_POST['id_cidade']);
 
 $con = conecta();
-$update = "update empresa set email='$email', nome='$nome', endereco='$endereco', numero='$numero', cnpj='$cnpj', cep='$cep', ramoAtividade='$ramo' where idempresa=$idempresa";
+$update = "update empresa set email='$email', nome='$nome', rua='$endereco', numero='$numero', cnpj='$cnpj', cep='$cep', ramoAtividade='$ramo' where idempresa=$idempresa";
 $res = mysqli_query($con, $update);
 
 if ($res){

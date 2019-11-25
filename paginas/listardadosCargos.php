@@ -17,7 +17,13 @@ $con = conecta();
 // print_r($_GET);
 $idcurriculo = trim($_GET['idcurriculo']);
 
-$selectCurriculo = "SELECT curriculo.nome, curriculo.email, curriculo.telefone, curriculo.cep, curriculo.rua, curriculo.numero, curriculo.genero, curriculo.estadocivil, curriculo.deficiencia, cidade.cidade, estado.estado, pais.pais FROM `curriculo` INNER JOIN cidade ON curriculo.cidade_idcidade = cidade.idcidade INNER JOIN estado ON cidade.estado_idestado = estado.idestado INNER JOIN pais ON estado.pais_idpais = pais.idpais WHERE idcurriculo ='$idcurriculo'";
+$selectCurriculo = "SELECT curriculo.nome, curriculo.email, curriculo.telefone, curriculo.cep, curriculo.rua, curriculo.numero, curriculo.genero, curriculo.estadocivil, curriculo.deficiencia, cidade.cidade, estado.estado, pais.pais,  
+FROM `curriculo` INNER JOIN cidade ON curriculo.cidade_idcidade = cidade.idcidade 
+INNER JOIN estado ON cidade.estado_idestado = estado.idestado INNER JOIN pais ON estado.pais_idpais = pais.idpais
+INNER JOIN idiomas_curriculo ON curriculo.idcurriculo = idiomas_curriculo.curriculo_idcurriculo
+INNER JOIN idiomas ON idiomas.ididiomas = idiomas_curriculo.idiomas_ididiomas
+INNER JOIN expProfissinal ON curriculo.idcurriculo = expProfissinal.curriculo_idcurriculo
+WHERE idcurriculo ='$idcurriculo'";
 $resCurriculo = mysqli_query($con, $selectCurriculo);
 $curriculos = mysqli_fetch_assoc($resCurriculo);
 if($resCurriculo){

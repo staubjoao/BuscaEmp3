@@ -28,7 +28,7 @@ $empresas = mysqli_fetch_assoc($resempresa);
       <div class="form-group col-sm-10">
         <label for="inputAddress">Endereço</label>
         <label for="" class="text-danger">*</label>
-        <input name="endereco" value="<?php echo $empresas['endereco']; ?>" type="text" class="form-control" id="endereco" placeholder="Endereço">
+        <input name="endereco" value="<?php echo $empresas['rua']; ?>" type="text" class="form-control" id="endereco" placeholder="Endereço">
       </div>
       <div class="form-group col-sm-2">
         <label for="inputAddress">Número</label>
