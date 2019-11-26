@@ -56,34 +56,34 @@ if((trim($_POST['pretensao']))==1 || (trim($_POST['pretensao']))==2 || (trim($_P
   header("Location: ?pagina=cadastrarpretencao");
 }
 
-$visiel = "V";
+$visiel = "S";
 $data = date('y/m/d');
 
-$insertpretencao = "INSERT INTO pretecao (visivel, datapretencao, jornada, tipoContrato, nivelHierarquicoMin, 
-nivelHierarquicoMax, empregado, pretencaosalarial, curriculo_idcurriculo) VALUES ('$visiel', '$data', '$jornada',
+$insertpretencao = "INSERT INTO pretensao (visivel, datapretensao, jornada, tipoContrato, nivelHierarquicoMin, 
+nivelHierarquicoMax, empregado, pretensaosalarial, curriculo_idcurriculo) VALUES ('$visiel', '$data', '$jornada',
 '$tipoContrato', '$nivelHierarquicoMin', '$nivelHierarquicoMax', '$empregado', '$pretensao', '$idcurriculo')";
 $res = mysqli_query($con, $insertpretencao);
 
 if($res){
-    $selectidpretencao = "SELECT * FROM pretecao WHERE curriculo_idcurriculo='$idcurriculo'";
+    $selectidpretencao = "SELECT * FROM pretensao WHERE curriculo_idcurriculo='$idcurriculo'";
     $residpretencao  = mysqli_query($con, $selectidpretencao);
     while($rowidpretencao = mysqli_fetch_assoc($residpretencao)){
-        $_SESSION['idpretecao'] = $rowidpretencao['idpretecao'];
+        $_SESSION['idpretensao'] = $rowidpretencao['idpretensao'];
       }
     $i = 1;
-    if(isset($_SESSION['idpretecao'])){
+    if(isset($_SESSION['idpretensao'])){
         while($i <= $contCargos){
             if((trim($_POST['cargoAlmejado'.$i])) == ""){
             }else{
                 $cargo = trim($_POST['cargoAlmejado'.$i]);
-                $idpretencao = $_SESSION['idpretecao'];
-                $insertcargopretencao = "INSERT INTO cargos_curriculo (cargos_idcargos, pretecao_idpretecao) VALUES 
+                $idpretencao = $_SESSION['idpretensao'];
+                $insertcargopretencao = "INSERT INTO cargos_curriculo (cargos_idcargos, pretensao_idpretensao) VALUES 
                 ('$cargo', '$idpretencao')";
                 $rescargopretencao= mysqli_query($con, $insertcargopretencao);
                 if($res){
                     header("Location: ?pagina=cadastraridiomas");
                 }else{
-                    echo "<script>alert('Erro')</script>";
+                    echo "<script>alert('Erro linha 86')</script>";
                 }
             }
             $i++;
@@ -91,10 +91,10 @@ if($res){
     }else{
         header("Location: ?pagina=cadastrarpretencao");
     }
-    unset($_SESSION['idpretecao']);
+    unset($_SESSION['idpretensao']);
     // header("Location: ?pagina=cadastrarpretencao");
 }else{
-    echo "<script>alert('Erro')</script>";
+    echo "<script>alert('Erro linha 97')</script>";
 }
 
 ?>
