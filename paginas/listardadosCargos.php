@@ -52,7 +52,7 @@ if($resCurriculo){
             style="margin-top: 100px">
             <div class="row">
                 <div class="col-sm">
-                    <p class="fontG"><?php echo $curriculos["nome"]; ?></p>
+                    <p class="fontG"> Nome <?php //echo $curriculos["nome"]; ?></p>
                 </div>
             </div>
             <div class="row">
@@ -62,12 +62,19 @@ if($resCurriculo){
             </div>
             <div class="row">
                 <div class="col-sm">
-                    <p class="fontN"><?php echo utf8_encode($curriculos["rua"]); ?> |
-                    <?php echo $curriculos["numero"]; ?> |
-                    <?php echo utf8_encode($curriculos["email"]); ?> | 
-                    <?php echo utf8_encode($curriculos["cidade"]); ?> | 
-                    <?php echo utf8_encode($curriculos["estado"]); ?> | 
-                    <?php echo utf8_encode($curriculos["pais"]); ?> </p>
+                    <p class="fontN"><?php //echo utf8_encode($curriculos["rua"]); ?> Rua |
+                    <?php //echo $curriculos["numero"]; ?> 111 |
+                    <?php //echo utf8_encode($curriculos["email"]); ?> email@email.com | 
+                    <?php //echo utf8_encode($curriculos["cidade"]); ?>Cidade | 
+                    <?php //echo utf8_encode($curriculos["estado"]); ?>Estado | 
+                    <?php //echo utf8_encode($curriculos["pais"]); ?>País </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p class="fontN">
+                        Lista das experiências profissionais, formação acadêmica do candidato e idiomas.
+                    </p>
                 </div>
             </div>
             </div>
